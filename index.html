@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Cat Safe</title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find My Cat</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background: #f4f4f4;
             text-align: center;
-            padding: 30px;
+            padding: 20px;
         }
-
         .card {
             background: white;
-            max-width: 400px;
+            max-width: 420px;
             margin: auto;
             padding: 25px;
             border-radius: 15px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
         }
-
         input {
             width: 90%;
             padding: 12px;
@@ -27,145 +27,150 @@
             border-radius: 8px;
             box-sizing: border-box;
         }
-
         button {
             padding: 12px 20px;
             margin: 8px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
+            background: #222;
+            color: white;
         }
-
         #profile {
             display: none;
             margin-top: 20px;
-            padding: 15px;
+            padding: 20px;
             background: #eee;
             border-radius: 10px;
         }
-
         #qrcode {
             margin: 20px auto;
             width: 180px;
         }
+        .found {
+            display: none;
+        }
     </style>
 </head>
-
 <body>
-
 <div class="card">
-
-    <h1>🐱 Cat Safe</h1>
-
+    <h1>🐱 Find My Cat</h1>
     <p>Keep your cat safe and easy to identify.</p>
-
-    <h2>Create Cat Profile</h2>
-
-    <input type="text" id="catName" placeholder="Cat Name">
-
-    <input type="text" id="ownerName" placeholder="Owner Name">
-
-    <input type="text" id="phone" placeholder="Phone Number">
-
-    <input type="text" id="catColor" placeholder="Cat Color">
-
-    <input type="text" id="catBreed" placeholder="Cat Breed">
-
-    <br>
-
-    <button onclick="saveProfile()">💾 Save Profile</button>
-
-    <div id="profile">
-
-        <h2>🐱 Cat Information</h2>
-
-        <p id="showCat"></p>
-        <p id="showOwner"></p>
-        <p id="showPhone"></p>
-        <p id="showColor"></p>
-        <p id="showBreed"></p>
-
-        <button onclick="callOwner()">📞 Call Owner</button>
-
-        <button onclick="whatsappOwner()">💬 WhatsApp Owner</button>
-
-        <h3>📱 Cat QR Code</h3>
-
-        <div id="qrcode"></div>
-
+    <div id="register">
+        <h2>Create Cat Profile</h2>
+        <input type="text" id="catName" placeholder="Cat Name">
+        <input type="text" id="ownerName" placeholder="Owner Name">
+        <input type="text" id="phone" placeholder="Phone Number">
+        <input type="text" id="catColor" placeholder="Cat Color">
+        <input type="text" id="catBreed" placeholder="Cat Breed">
+        <br>
+        <button onclick="saveProfile()">💾 Save Profile</button>
+        <div id="profile">
+            <h2>🐱 Cat Information</h2>
+            <p id="showCat"></p>
+            <p id="showOwner"></p>
+            <p id="showPhone"></p>
+            <p id="showColor"></p>
+            <p id="showBreed"></p>
+            <button onclick="callOwner()">📞 Call Owner</button>
+            <button onclick="whatsappOwner()">💬 WhatsApp Owner</button>
+            <h3>📱 Scan This QR Code</h3>
+            <div id="qrcode"></div>
+        </div>
     </div>
-
+    <div id="found" class="found">
+        <h2>🐱 Cat Found!</h2>
+        <p id="foundCat"></p>
+        <p id="foundColor"></p>
+        <p id="foundBreed"></p>
+        <p>Please contact the owner to return this cat safely.</p>
+        <button id="foundCall">📞 Call Owner</button>
+        <button id="foundWhatsApp">💬 WhatsApp Owner</button>
+    </div>
 </div>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
 <script>
-
 function saveProfile() {
-
-    let cat = document.getElementById("catName").value;
-    let owner = document.getElementById("ownerName").value;
-    let phone = document.getElementById("phone").value;
-    let color = document.getElementById("catColor").value;
-    let breed = document.getElementById("catBreed").value;
-
+    let cat = document.getElementById("catName").value.trim();
+    let owner = document.getElementById("ownerName").value.trim();
+    let phone = document.getElementById("phone").value.trim();
+    let color = document.getElementById("catColor").value.trim();
+    let breed = document.getElementById("catBreed").value.trim();
     if (cat === "" || owner === "" || phone === "") {
         alert("Please enter Cat Name, Owner Name and Phone Number.");
         return;
     }
-
     document.getElementById("showCat").innerHTML =
         "🐱 Cat Name: " + cat;
-
     document.getElementById("showOwner").innerHTML =
         "👤 Owner: " + owner;
-
     document.getElementById("showPhone").innerHTML =
         "📞 Phone: " + phone;
-
     document.getElementById("showColor").innerHTML =
         "🎨 Color: " + color;
-
     document.getElementById("showBreed").innerHTML =
         "🐾 Breed: " + breed;
-
     document.getElementById("profile").style.display = "block";
-
+    let baseURL = window.location.origin + window.location.pathname;
+    let qrData =
+        baseURL +
+        "?cat=" + encodeURIComponent(cat) +
+        "&owner=" + encodeURIComponent(owner) +
+        "&phone=" + encodeURIComponent(phone) +
+        "&color=" + encodeURIComponent(color) +
+        "&breed=" + encodeURIComponent(breed);
     document.getElementById("qrcode").innerHTML = "";
-
     new QRCode(document.getElementById("qrcode"), {
-        text:
-            "Cat Name: " + cat +
-            "\nOwner: " + owner +
-            "\nPhone: " + phone +
-            "\nColor: " + color +
-            "\nBreed: " + breed,
+        text: qrData,
         width: 180,
         height: 180
     });
 }
-
 function callOwner() {
-
     let phone = document.getElementById("phone").value;
-
     window.location.href = "tel:" + phone;
 }
-
 function whatsappOwner() {
-
     let phone = document.getElementById("phone").value;
-
     phone = phone.replace(/\D/g, "");
-
     if (phone.startsWith("0")) {
         phone = "92" + phone.substring(1);
     }
-
     window.open("https://wa.me/" + phone, "_blank");
 }
-
+function showFoundCat() {
+    let params = new URLSearchParams(window.location.search);
+    let cat = params.get("cat");
+    if (!cat) {
+        return;
+    }
+    let owner = params.get("owner");
+    let phone = params.get("phone");
+    let color = params.get("color");
+    let breed = params.get("breed");
+    document.getElementById("register").style.display = "none";
+    document.getElementById("found").style.display = "block";
+    document.getElementById("foundCat").innerHTML =
+        "🐱 Cat Name: " + cat;
+    document.getElementById("foundColor").innerHTML =
+        "🎨 Color: " + (color || "Not provided");
+    document.getElementById("foundBreed").innerHTML =
+        "🐾 Breed: " + (breed || "Not provided");
+    document.getElementById("foundCall").onclick = function() {
+        window.location.href = "tel:" + phone;
+    };
+    document.getElementById("foundWhatsApp").onclick = function() {
+        let whatsappNumber = phone.replace(/\D/g, "");
+        if (whatsappNumber.startsWith("0")) {
+            whatsappNumber = "92" + whatsappNumber.substring(1);
+        }
+        window.open(
+            "https://wa.me/" + whatsappNumber,
+            "_blank"
+        );
+    };
+}
+showFoundCat();
 </script>
-
 </body>
 </html>
