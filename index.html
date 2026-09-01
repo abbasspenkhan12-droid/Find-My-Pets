@@ -22,7 +22,7 @@
             box-shadow: 0 3px 15px rgba(0,0,0,0.1);
         }
 
-        input, select {
+        input, select, textarea {
             width: 90%;
             padding: 12px;
             margin: 7px 0;
@@ -30,6 +30,12 @@
             border-radius: 8px;
             box-sizing: border-box;
             background: white;
+            font-family: Arial, sans-serif;
+        }
+
+        textarea {
+            height: 80px;
+            resize: vertical;
         }
 
         button {
@@ -53,6 +59,11 @@
         #qrcode {
             margin: 20px auto;
             width: 180px;
+        }
+
+        .pet-id {
+            font-weight: bold;
+            font-size: 18px;
         }
 
         .found {
@@ -87,6 +98,8 @@
 
         <input type="text" id="phone" placeholder="Phone Number">
 
+        <textarea id="address" placeholder="Owner Address"></textarea>
+
         <input type="text" id="petColor" placeholder="Pet Color">
 
         <input type="text" id="petBreed" placeholder="Breed">
@@ -99,10 +112,12 @@
 
             <h2>🐾 Pet Information</h2>
 
+            <p id="showID" class="pet-id"></p>
             <p id="showType"></p>
             <p id="showPet"></p>
             <p id="showOwner"></p>
             <p id="showPhone"></p>
+            <p id="showAddress"></p>
             <p id="showColor"></p>
             <p id="showBreed"></p>
 
@@ -118,15 +133,17 @@
 
     </div>
 
-
     <div id="found" class="found">
 
         <h2>🐾 Pet Found!</h2>
 
+        <p id="foundID" class="pet-id"></p>
         <p id="foundType"></p>
         <p id="foundPet"></p>
         <p id="foundColor"></p>
         <p id="foundBreed"></p>
+        <p id="foundOwner"></p>
+        <p id="foundAddress"></p>
 
         <p>
             Please contact the owner to return this pet safely.
@@ -144,24 +161,26 @@
 
 </div>
 
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
-
 <script>
-    
-    function generatePetID() {
+
+function generatePetID() {
+
     let characters = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
     let result = "FMP-";
 
     for (let i = 0; i < 6; i++) {
+
         result += characters.charAt(
             Math.floor(Math.random() * characters.length)
         );
+
     }
 
     return result;
 }
+
 
 function saveProfile() {
 
@@ -169,17 +188,28 @@ function saveProfile() {
     let pet = document.getElementById("petName").value.trim();
     let owner = document.getElementById("ownerName").value.trim();
     let phone = document.getElementById("phone").value.trim();
+    let address = document.getElementById("address").value.trim();
     let color = document.getElementById("petColor").value.trim();
     let breed = document.getElementById("petBreed").value.trim();
 
+    if (
+        type === "" ||
+        pet === "" ||
+        owner === "" ||
+        phone === ""
+    ) {
 
-    if (type === "" || pet === "" || owner === "" || phone === "") {
-
-        alert("Please select Pet Type and enter Pet Name, Owner Name and Phone Number.");
+        alert(
+            "Please select Pet Type and enter Pet Name, Owner Name and Phone Number."
+        );
 
         return;
     }
 
+    let petID = generatePetID();
+
+    document.getElementById("showID").innerHTML =
+        "🆔 Pet ID: " + petID;
 
     document.getElementById("showType").innerHTML =
         "🐾 Pet Type: " + type;
@@ -193,12 +223,14 @@ function saveProfile() {
     document.getElementById("showPhone").innerHTML =
         "📞 Phone: " + phone;
 
+    document.getElementById("showAddress").innerHTML =
+        "📍 Address: " + (address || "Not provided");
+
     document.getElementById("showColor").innerHTML =
         "🎨 Color: " + (color || "Not provided");
 
     document.getElementById("showBreed").innerHTML =
         "🐾 Breed: " + (breed || "Not provided");
-
 
     document.getElementById("profile").style.display = "block";
 
@@ -209,10 +241,12 @@ function saveProfile() {
 
     let qrData =
         baseURL +
-        "?type=" + encodeURIComponent(type) +
+        "?id=" + encodeURIComponent(petID) +
+        "&type=" + encodeURIComponent(type) +
         "&pet=" + encodeURIComponent(pet) +
         "&owner=" + encodeURIComponent(owner) +
         "&phone=" + encodeURIComponent(phone) +
+        "&address=" + encodeURIComponent(address) +
         "&color=" + encodeURIComponent(color) +
         "&breed=" + encodeURIComponent(breed);
 
@@ -220,15 +254,14 @@ function saveProfile() {
     document.getElementById("qrcode").innerHTML = "";
 
 
-    new QRCode(document.getElementById("qrcode"), {
-
-        text: qrData,
-
-        width: 180,
-
-        height: 180
-
-    });
+    new QRCode(
+        document.getElementById("qrcode"),
+        {
+            text: qrData,
+            width: 180,
+            height: 180
+        }
+    );
 
 }
 
@@ -252,14 +285,12 @@ function whatsappOwner() {
     phone =
         phone.replace(/\D/g, "");
 
-
     if (phone.startsWith("0")) {
 
         phone =
             "92" + phone.substring(1);
 
     }
-
 
     window.open(
         "https://wa.me/" + phone,
@@ -274,17 +305,15 @@ function showFoundPet() {
     let params =
         new URLSearchParams(window.location.search);
 
-
     let pet =
         params.get("pet");
 
-
     if (!pet) {
-
         return;
-
     }
 
+    let id =
+        params.get("id");
 
     let type =
         params.get("type");
@@ -294,6 +323,9 @@ function showFoundPet() {
 
     let phone =
         params.get("phone");
+
+    let address =
+        params.get("address");
 
     let color =
         params.get("color");
@@ -305,25 +337,30 @@ function showFoundPet() {
     document.getElementById("register").style.display =
         "none";
 
-
     document.getElementById("found").style.display =
         "block";
 
 
+    document.getElementById("foundID").innerHTML =
+        "🆔 Pet ID: " + (id || "Not provided");
+
     document.getElementById("foundType").innerHTML =
         "🐾 Pet Type: " + (type || "Pet");
-
 
     document.getElementById("foundPet").innerHTML =
         "🐾 Pet Name: " + pet;
 
-
     document.getElementById("foundColor").innerHTML =
         "🎨 Color: " + (color || "Not provided");
 
-
     document.getElementById("foundBreed").innerHTML =
         "🐾 Breed: " + (breed || "Not provided");
+
+    document.getElementById("foundOwner").innerHTML =
+        "👤 Owner: " + (owner || "Not provided");
+
+    document.getElementById("foundAddress").innerHTML =
+        "📍 Address: " + (address || "Not provided");
 
 
     document.getElementById("foundCall").onclick =
@@ -341,7 +378,6 @@ function showFoundPet() {
             let whatsappNumber =
                 phone.replace(/\D/g, "");
 
-
             if (whatsappNumber.startsWith("0")) {
 
                 whatsappNumber =
@@ -349,9 +385,9 @@ function showFoundPet() {
 
             }
 
-
             window.open(
-                "https://wa.me/" + whatsappNumber,
+                "https://wa.me/" +
+                whatsappNumber,
                 "_blank"
             );
 
