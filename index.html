@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Find My Pets</title>
+<title>Find My Pet</title>
 
 <style>
 * {
@@ -54,7 +54,7 @@ body {
     outline: none;
 }
 
-/* Main heading */
+/* Heading */
 h1 {
     font-size: 30px;
     margin: 8px 0;
@@ -66,7 +66,7 @@ h1 {
     margin-bottom: 10px;
 }
 
-/* Small explanation sentence */
+/* Small explanation */
 .how-it-works {
     font-size: 11px;
     color: #b05a20;
@@ -197,13 +197,12 @@ button:hover {
 
 
     <!-- Heading -->
-    <h1 id="title">🐾 Find My Pets</h1>
+    <h1 id="title">🐾 Find My Pet</h1>
 
     <p id="subtitle" class="subtitle">
         Keep your pet safe and easy to identify.
     </p>
 
-    <!-- Small sentence -->
     <p id="howItWorks" class="how-it-works">
         🐾 Enter your pet's details, get a QR code, and attach it to your pet's collar.
         Anyone who finds your pet can scan it to contact you.
@@ -216,6 +215,7 @@ button:hover {
         <h2 id="registerTitle">Register Your Pet</h2>
 
         <select id="petType">
+            <option value="" selected disabled>Select Pet Type</option>
             <option value="Cat">Cat</option>
             <option value="Dog">Dog</option>
             <option value="Rabbit">Rabbit</option>
@@ -300,7 +300,7 @@ button:hover {
     </div>
 
 
-    <!-- Find My Pet -->
+    <!-- Find Pet -->
     <div class="section">
 
         <h2 id="findTitle">
@@ -337,14 +337,6 @@ button:hover {
 
         <div id="foundInfo"></div>
 
-        <button onclick="callFoundOwner()" id="foundCallButton">
-            📞 Call Owner
-        </button>
-
-        <button onclick="whatsappFoundOwner()" id="foundWhatsappButton">
-            💬 WhatsApp Owner
-        </button>
-
     </div>
 
 </div>
@@ -363,12 +355,13 @@ button:hover {
 const languages = {
 
     en: {
-        title: "🐾 Find My Pets",
+        title: "🐾 Find My Pet",
         subtitle: "Keep your pet safe and easy to identify.",
 
         how: "🐾 Enter your pet's details, get a QR code, and attach it to your pet's collar. Anyone who finds your pet can scan it to contact you.",
 
         registerTitle: "Register Your Pet",
+        petType: "Select Pet Type",
 
         petName: "Pet Name",
         ownerName: "Owner Name",
@@ -407,7 +400,7 @@ const languages = {
 
 
     ur: {
-        title: "🐾 Find My Pets",
+        title: "🐾 Find My Pet",
 
         subtitle:
         "اپنے پالتو جانور کو محفوظ اور آسانی سے شناخت کے قابل رکھیں۔",
@@ -417,6 +410,9 @@ const languages = {
 
         registerTitle:
         "اپنے پالتو جانور کو رجسٹر کریں",
+
+        petType:
+        "پالتو جانور کی قسم منتخب کریں",
 
         petName:
         "پالتو جانور کا نام",
@@ -502,7 +498,7 @@ const languages = {
 
 
     ar: {
-        title: "🐾 Find My Pets",
+        title: "🐾 Find My Pet",
 
         subtitle:
         "حافظ على حيوانك الأليف آمناً وسهل التعرف عليه.",
@@ -512,6 +508,9 @@ const languages = {
 
         registerTitle:
         "تسجيل الحيوان الأليف",
+
+        petType:
+        "اختر نوع الحيوان الأليف",
 
         petName:
         "اسم الحيوان",
@@ -597,7 +596,7 @@ const languages = {
 
 
     ru: {
-        title: "🐾 Find My Pets",
+        title: "🐾 Find My Pet",
 
         subtitle:
         "Защитите своего питомца и сделайте его легко узнаваемым.",
@@ -607,6 +606,9 @@ const languages = {
 
         registerTitle:
         "Регистрация питомца",
+
+        petType:
+        "Выберите тип питомца",
 
         petName:
         "Имя питомца",
@@ -692,7 +694,7 @@ const languages = {
 
 
     ky: {
-        title: "🐾 Find My Pets",
+        title: "🐾 Find My Pet",
 
         subtitle:
         "Үй жаныбарыңызды коопсуз жана оңой таанылуучу кылыңыз.",
@@ -702,6 +704,9 @@ const languages = {
 
         registerTitle:
         "Үй жаныбарын каттоо",
+
+        petType:
+        "Үй жаныбарынын түрүн тандаңыз",
 
         petName:
         "Жаныбардын аты",
@@ -819,6 +824,9 @@ function changeLanguage() {
     document.getElementById("registerTitle").innerText =
         t.registerTitle;
 
+    document.getElementById("petType").options[0].text =
+        t.petType;
+
     document.getElementById("petName").placeholder =
         t.petName;
 
@@ -872,12 +880,6 @@ function changeLanguage() {
 
     document.getElementById("foundTitle").innerText =
         t.foundTitle;
-
-    document.getElementById("foundCallButton").innerText =
-        t.foundCall;
-
-    document.getElementById("foundWhatsappButton").innerText =
-        t.foundWhatsApp;
 }
 
 
@@ -923,10 +925,10 @@ function saveProfile() {
         document.getElementById("breed").value.trim();
 
 
-    if (!petName || !ownerName || !phone) {
+    if (!petType || !petName || !ownerName || !phone) {
 
         alert(
-            "Please enter Pet Name, Owner Name and Phone Number."
+            "Please select Pet Type and enter Pet Name, Owner Name and Phone Number."
         );
 
         return;
@@ -1251,10 +1253,17 @@ function showFoundPet() {
     );
 
 
+    const lang =
+        document.getElementById("language").value;
+
+    const t =
+        languages[lang];
+
+
     document.querySelector(".card").innerHTML = `
 
         <h1>
-            🐾 Pet Found!
+            ${t.foundTitle}
         </h1>
 
         <div
