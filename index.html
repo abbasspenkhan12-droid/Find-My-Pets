@@ -64,7 +64,48 @@ body{
 }
 
 
-/* BROWN PAW ONLY */
+/* =========================
+   BACK BUTTON
+   LEFT OF LANGUAGE
+========================= */
+
+.back-button{
+    position:absolute;
+
+    right:55px;
+    top:0;
+
+    width:auto;
+
+    margin:0;
+
+    padding:8px 10px;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.9);
+
+    border:1px solid #e2d6cb;
+
+    color:#332a24;
+
+    font-size:12px;
+
+    font-weight:800;
+
+    box-shadow:0 4px 12px rgba(76,48,29,.06);
+
+    z-index:10;
+}
+
+.back-button:hover{
+    background:#f5eee8;
+}
+
+
+/* =========================
+   LOGO
+========================= */
 
 .logo{
     width:82px;
@@ -341,43 +382,6 @@ button:active{
     position:relative;
 }
 
-
-/* =========================
-   NEW BACK BUTTON
-========================= */
-
-.back-button{
-    position:absolute;
-
-    left:0;
-    top:0;
-
-    width:auto;
-
-    margin:0;
-
-    padding:7px 11px;
-
-    border-radius:10px;
-
-    background:#f1ebe5;
-
-    color:#4a392f;
-
-    font-size:12px;
-
-    font-weight:800;
-
-    box-shadow:none;
-}
-
-.back-button:hover{
-    background:#e9dfd6;
-}
-
-
-/* QR TITLE */
-
 .qrSectionTitle{
     padding-top:3px;
 }
@@ -599,11 +603,11 @@ button:active{
 }
 
 
-/* BACK STAYS ON LEFT */
+/* BACK STILL LEFT OF LANGUAGE */
 
 [dir="rtl"] .back-button{
-    left:0;
-    right:auto;
+    right:55px;
+    left:auto;
 }
 
 
@@ -647,7 +651,11 @@ button:active{
     }
 
     .back-button{
+        right:55px;
+        top:0;
+
         font-size:11px;
+
         padding:6px 9px;
     }
 
@@ -868,7 +876,7 @@ button:active{
     class="card">
 
 
-    <!-- NEW BACK BUTTON -->
+    <!-- BACK BUTTON -->
 
     <button
         class="back-button"
@@ -916,8 +924,6 @@ button:active{
 
     </p>
 
-
-    <!-- SAVE INFORMATION BUTTON -->
 
     <button
         class="primary"
@@ -1034,7 +1040,9 @@ button:active{
 
 
 
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer class="watermark">
 
@@ -1749,9 +1757,6 @@ function changeLanguage(){
 
 /* =========================
    EASY PET ID
-   FMP-001
-   FMP-002
-   FMP-003
 ========================= */
 
 function generatePetId(){
@@ -1983,40 +1988,30 @@ function showQRCode(pet){
 
 
 /* =========================
-   NEW BACK TO MENU
+   BACK TO MENU
 ========================= */
 
 function backToMenu(){
-
-    /* Show registration */
 
     document.getElementById(
         "registrationSection"
     ).style.display = "block";
 
 
-    /* Show search again */
-
     document.getElementById(
         "searchSection"
     ).style.display = "block";
 
-
-    /* Hide QR */
 
     document.getElementById(
         "qrSection"
     ).style.display = "none";
 
 
-    /* Hide found pet */
-
     document.getElementById(
         "foundSection"
     ).style.display = "none";
 
-
-    /* Clear old registration form */
 
     document.getElementById(
         "petType"
@@ -2048,14 +2043,10 @@ function backToMenu(){
     ).value = "";
 
 
-    /* Clear QR */
-
     document.getElementById(
         "qrcode"
     ).innerHTML = "";
 
-
-    /* Remove QR pet URL from browser */
 
     if(
         window.history &&
@@ -2071,36 +2062,31 @@ function backToMenu(){
     }
 
 
-    /* Scroll to registration */
-
     document.getElementById(
         "registrationSection"
     ).scrollIntoView({
+
         behavior:"smooth",
+
         block:"start"
+
     });
 
 }
 
 
 /* =========================
-   SAVE INFORMATION
+   CREATE INFORMATION IMAGE
 ========================= */
 
-function saveInformation(){
+function createInformationCanvas(){
 
     const pet =
         window.currentRegisteredPet;
 
 
-    if(!pet){
-
-        alert(
-            "Pet information is not available."
-        );
-
-        return;
-    }
+    if(!pet)
+        return null;
 
 
     const canvas =
@@ -2118,8 +2104,6 @@ function saveInformation(){
         canvas.getContext("2d");
 
 
-    /* BACKGROUND */
-
     ctx.fillStyle =
         "#fbf7f2";
 
@@ -2131,26 +2115,39 @@ function saveInformation(){
     );
 
 
-    /* CARD */
-
     ctx.fillStyle =
         "#ffffff";
 
-    ctx.roundRect(
-        45,
-        45,
-        810,
-        960,
-        35
-    );
 
-    ctx.fill();
+    if(ctx.roundRect){
 
+        ctx.beginPath();
 
-    /* TITLE */
+        ctx.roundRect(
+            45,
+            45,
+            810,
+            960,
+            35
+        );
+
+        ctx.fill();
+
+    }else{
+
+        ctx.fillRect(
+            45,
+            45,
+            810,
+            960
+        );
+
+    }
+
 
     ctx.textAlign =
         "center";
+
 
     ctx.fillStyle =
         "#7b4728";
@@ -2165,8 +2162,6 @@ function saveInformation(){
     );
 
 
-    /* PET NAME */
-
     ctx.fillStyle =
         "#2d241f";
 
@@ -2180,8 +2175,6 @@ function saveInformation(){
     );
 
 
-    /* PET ID */
-
     ctx.fillStyle =
         "#8b7567";
 
@@ -2194,8 +2187,6 @@ function saveInformation(){
         255
     );
 
-
-    /* INFORMATION TITLE */
 
     ctx.textAlign =
         "left";
@@ -2289,10 +2280,9 @@ function saveInformation(){
     );
 
 
-    /* FOOTER */
-
     ctx.textAlign =
         "center";
+
 
     ctx.fillStyle =
         "#7b4728";
@@ -2320,27 +2310,165 @@ function saveInformation(){
     );
 
 
-    /* SAVE IMAGE */
+    return canvas;
 
-    const link =
-        document.createElement(
-            "a"
+}
+
+
+/* =========================
+   SAVE INFORMATION
+   iPHONE / GALLERY FIX
+========================= */
+
+async function saveInformation(){
+
+    const canvas =
+        createInformationCanvas();
+
+
+    if(!canvas){
+
+        alert(
+            "Pet information is not available."
         );
 
+        return;
 
-    link.download =
-        "Find-My-Pet-" +
-        pet.petId +
-        "-Information.png";
+    }
 
 
-    link.href =
-        canvas.toDataURL(
-            "image/png"
-        );
+    canvas.toBlob(
+        async function(blob){
+
+            if(!blob){
+
+                alert(
+                    "Unable to create image."
+                );
+
+                return;
+
+            }
 
 
-    link.click();
+            const file =
+                new File(
+
+                    [blob],
+
+                    "Find-My-Pet-" +
+                    window.currentRegisteredPet.petId +
+                    "-Information.png",
+
+                    {
+                        type:"image/png"
+                    }
+
+                );
+
+
+            /*
+              iPhone/iPad:
+              Open Share Sheet.
+              User can choose "Save Image".
+            */
+
+            if(
+                navigator.share &&
+                navigator.canShare &&
+                navigator.canShare({
+                    files:[file]
+                })
+            ){
+
+                try{
+
+                    await navigator.share({
+
+                        files:[file],
+
+                        title:"Find My Pet",
+
+                        text:
+                        "Pet Information"
+
+                    });
+
+                    return;
+
+                }catch(error){
+
+                    if(
+                        error &&
+                        error.name === "AbortError"
+                    ){
+
+                        return;
+
+                    }
+
+                }
+
+            }
+
+
+            /*
+              Fallback for browsers
+              without file sharing.
+            */
+
+            const url =
+                URL.createObjectURL(
+                    blob
+                );
+
+
+            const link =
+                document.createElement(
+                    "a"
+                );
+
+
+            link.href = url;
+
+            link.download =
+                "Find-My-Pet-" +
+                window.currentRegisteredPet.petId +
+                "-Information.png";
+
+
+            document.body.appendChild(
+                link
+            );
+
+
+            link.click();
+
+
+            link.remove();
+
+
+            setTimeout(
+                function(){
+
+                    URL.revokeObjectURL(
+                        url
+                    );
+
+                },
+                1000
+            );
+
+
+            alert(
+                "Image created. If it did not save automatically, open the downloaded image and choose Save Image."
+            );
+
+        },
+
+        "image/png"
+
+    );
 
 }
 
@@ -2720,10 +2848,11 @@ function showFoundPetFromQR(){
 
 
 /* =========================
-   SAVE QR
+   SAVE QR TO GALLERY
+   iPHONE / GALLERY FIX
 ========================= */
 
-function saveQRToGallery(){
+async function saveQRToGallery(){
 
     const qrCanvas =
         document.querySelector(
@@ -2867,25 +2996,144 @@ function saveQRToGallery(){
     );
 
 
-    const link =
-        document.createElement(
-            "a"
-        );
+    canvas.toBlob(
+        async function(blob){
+
+            if(!blob){
+
+                alert(
+                    "Unable to create QR image."
+                );
+
+                return;
+
+            }
 
 
-    link.download =
-        "Find-My-Pet-" +
-        petId +
-        ".png";
+            const file =
+                new File(
+
+                    [blob],
+
+                    "Find-My-Pet-" +
+                    petId.replace(
+                        "Pet ID: ",
+                        ""
+                    ) +
+                    ".png",
+
+                    {
+                        type:"image/png"
+                    }
+
+                );
 
 
-    link.href =
-        canvas.toDataURL(
-            "image/png"
-        );
+            /*
+              iPhone / iPad:
+              Share Sheet opens.
+              Select "Save Image".
+            */
+
+            if(
+                navigator.share &&
+                navigator.canShare &&
+                navigator.canShare({
+                    files:[file]
+                })
+            ){
+
+                try{
+
+                    await navigator.share({
+
+                        files:[file],
+
+                        title:"Find My Pet QR",
+
+                        text:
+                        "Pet QR Code"
+
+                    });
+
+                    return;
+
+                }catch(error){
+
+                    if(
+                        error &&
+                        error.name === "AbortError"
+                    ){
+
+                        return;
+
+                    }
+
+                }
+
+            }
 
 
-    link.click();
+            /*
+              Fallback
+            */
+
+            const url =
+                URL.createObjectURL(
+                    blob
+                );
+
+
+            const link =
+                document.createElement(
+                    "a"
+                );
+
+
+            link.href = url;
+
+
+            link.download =
+                "Find-My-Pet-" +
+                petId.replace(
+                    "Pet ID: ",
+                    ""
+                ) +
+                ".png";
+
+
+            document.body.appendChild(
+                link
+            );
+
+
+            link.click();
+
+
+            link.remove();
+
+
+            setTimeout(
+                function(){
+
+                    URL.revokeObjectURL(
+                        url
+                    );
+
+                },
+                1000
+            );
+
+
+            alert(
+                "QR image created. If it did not save automatically, open the image and choose Save Image."
+            );
+
+        },
+
+        "image/png"
+
+    );
 
 }
 
@@ -2935,6 +3183,17 @@ function printQR(){
             "",
             "_blank"
         );
+
+
+    if(!printWindow){
+
+        alert(
+            "Please allow pop-ups for printing."
+        );
+
+        return;
+
+    }
 
 
     printWindow.document.write(`
