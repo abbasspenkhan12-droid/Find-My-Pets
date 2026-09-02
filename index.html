@@ -1,4 +1,4 @@
-=<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 
@@ -337,6 +337,49 @@ button:active{
     display:none;
 
     text-align:center;
+
+    position:relative;
+}
+
+
+/* =========================
+   NEW BACK BUTTON
+========================= */
+
+.back-button{
+    position:absolute;
+
+    left:0;
+    top:0;
+
+    width:auto;
+
+    margin:0;
+
+    padding:7px 11px;
+
+    border-radius:10px;
+
+    background:#f1ebe5;
+
+    color:#4a392f;
+
+    font-size:12px;
+
+    font-weight:800;
+
+    box-shadow:none;
+}
+
+.back-button:hover{
+    background:#e9dfd6;
+}
+
+
+/* QR TITLE */
+
+.qrSectionTitle{
+    padding-top:3px;
 }
 
 .pet-name-display{
@@ -556,6 +599,14 @@ button:active{
 }
 
 
+/* BACK STAYS ON LEFT */
+
+[dir="rtl"] .back-button{
+    left:0;
+    right:auto;
+}
+
+
 /* =========================
    MOBILE
 ========================= */
@@ -593,6 +644,11 @@ button:active{
 
     .instruction{
         font-size:11px;
+    }
+
+    .back-button{
+        font-size:11px;
+        padding:6px 9px;
     }
 
 }
@@ -811,8 +867,25 @@ button:active{
     id="qrSection"
     class="card">
 
-    <h2 id="qrTitle">
+
+    <!-- NEW BACK BUTTON -->
+
+    <button
+        class="back-button"
+        onclick="backToMenu()"
+        id="backButton">
+
+        ← Back
+
+    </button>
+
+
+    <h2
+        id="qrTitle"
+        class="qrSectionTitle">
+
         Your Pet QR Code
+
     </h2>
 
 
@@ -844,7 +917,7 @@ button:active{
     </p>
 
 
-    <!-- NEW SAVE INFORMATION BUTTON -->
+    <!-- SAVE INFORMATION BUTTON -->
 
     <button
         class="primary"
@@ -1054,6 +1127,9 @@ save:
 print:
 "Print QR",
 
+back:
+"← Back",
+
 searchTitle:
 "Search Registered Pet",
 
@@ -1148,6 +1224,9 @@ save:
 
 print:
 "QR پرنٹ کریں",
+
+back:
+"← واپس",
 
 searchTitle:
 "رجسٹرڈ پالتو جانور تلاش کریں",
@@ -1244,6 +1323,9 @@ save:
 print:
 "طباعة QR",
 
+back:
+"← رجوع",
+
 searchTitle:
 "البحث عن حيوان مسجل",
 
@@ -1339,6 +1421,9 @@ save:
 print:
 "Печать QR",
 
+back:
+"← Назад",
+
 searchTitle:
 "Поиск зарегистрированного питомца",
 
@@ -1433,6 +1518,9 @@ save:
 
 print:
 "QR басып чыгаруу",
+
+back:
+"← Артка",
 
 searchTitle:
 "Катталган жаныбарды издөө",
@@ -1580,6 +1668,11 @@ function changeLanguage(){
     document.getElementById(
         "printQrButton"
     ).textContent = t.print;
+
+
+    document.getElementById(
+        "backButton"
+    ).textContent = t.back;
 
 
     document.getElementById(
@@ -1885,6 +1978,107 @@ function showQRCode(pet){
         }
 
     );
+
+}
+
+
+/* =========================
+   NEW BACK TO MENU
+========================= */
+
+function backToMenu(){
+
+    /* Show registration */
+
+    document.getElementById(
+        "registrationSection"
+    ).style.display = "block";
+
+
+    /* Show search again */
+
+    document.getElementById(
+        "searchSection"
+    ).style.display = "block";
+
+
+    /* Hide QR */
+
+    document.getElementById(
+        "qrSection"
+    ).style.display = "none";
+
+
+    /* Hide found pet */
+
+    document.getElementById(
+        "foundSection"
+    ).style.display = "none";
+
+
+    /* Clear old registration form */
+
+    document.getElementById(
+        "petType"
+    ).value = "";
+
+
+    document.getElementById(
+        "petName"
+    ).value = "";
+
+
+    document.getElementById(
+        "ownerName"
+    ).value = "";
+
+
+    document.getElementById(
+        "callNumber"
+    ).value = "";
+
+
+    document.getElementById(
+        "whatsappNumber"
+    ).value = "";
+
+
+    document.getElementById(
+        "color"
+    ).value = "";
+
+
+    /* Clear QR */
+
+    document.getElementById(
+        "qrcode"
+    ).innerHTML = "";
+
+
+    /* Remove QR pet URL from browser */
+
+    if(
+        window.history &&
+        window.history.replaceState
+    ){
+
+        window.history.replaceState(
+            {},
+            document.title,
+            window.location.pathname
+        );
+
+    }
+
+
+    /* Scroll to registration */
+
+    document.getElementById(
+        "registrationSection"
+    ).scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+    });
 
 }
 
