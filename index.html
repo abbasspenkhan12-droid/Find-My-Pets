@@ -1,6 +1,7 @@
-<!DOCTYPE html>
+=<!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -35,7 +36,9 @@ body{
 }
 
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 .header{
     text-align:center;
@@ -61,11 +64,12 @@ body{
 }
 
 
-/* BROWN PAW - NO BOX */
+/* BROWN PAW ONLY */
 
 .logo{
     width:82px;
     height:82px;
+
     margin:27px auto 12px;
 
     display:flex;
@@ -87,23 +91,29 @@ h1{
     font-size:32px;
     font-weight:900;
     letter-spacing:-1.2px;
+
     color:#2b211b;
 }
 
 .hero-subtitle{
     margin-top:7px;
+
     text-align:center;
 
     font-size:14px;
     line-height:1.55;
+
     color:#75685f;
 }
 
 
-/* INSTRUCTION */
+/* =========================
+   INSTRUCTION
+========================= */
 
 .instruction{
     max-width:600px;
+
     margin:16px auto 0;
 
     display:flex;
@@ -114,6 +124,7 @@ h1{
 
     font-size:11px;
     line-height:1.55;
+
     font-weight:700;
 
     color:#b65d1d;
@@ -136,7 +147,9 @@ h1{
 }
 
 
-/* CARDS */
+/* =========================
+   CARDS
+========================= */
 
 .card{
     margin-top:22px;
@@ -157,13 +170,18 @@ h1{
 
 .card h2{
     font-size:21px;
+
     font-weight:850;
+
     color:#2d241f;
+
     margin-bottom:18px;
 }
 
 
-/* FORM */
+/* =========================
+   FORM
+========================= */
 
 label{
     display:block;
@@ -171,6 +189,7 @@ label{
     margin:14px 0 7px;
 
     font-size:13px;
+
     font-weight:750;
 
     color:#45372f;
@@ -180,7 +199,7 @@ input,
 select{
     width:100%;
 
-    padding:14px 14px;
+    padding:14px;
 
     border:1px solid #ddd1c7;
 
@@ -225,7 +244,9 @@ select:focus{
 }
 
 
-/* OPTIONAL NOTE */
+/* =========================
+   CONTACT NOTE
+========================= */
 
 .contact-note{
     margin-top:10px;
@@ -246,7 +267,9 @@ select:focus{
 }
 
 
-/* BUTTONS */
+/* =========================
+   BUTTONS
+========================= */
 
 button{
     width:100%;
@@ -306,24 +329,33 @@ button:active{
 }
 
 
-/* QR */
+/* =========================
+   QR SECTION
+========================= */
 
 #qrSection{
     display:none;
+
     text-align:center;
 }
 
 .pet-name-display{
     font-size:25px;
+
     font-weight:900;
+
     color:#30251f;
+
     margin-top:5px;
 }
 
 .pet-id{
     margin-top:7px;
+
     font-size:14px;
+
     font-weight:800;
+
     color:#8b7567;
 }
 
@@ -344,18 +376,24 @@ button:active{
 
 #qrcode{
     display:flex;
+
     justify-content:center;
 }
 
 .note{
     color:#81736a;
+
     font-size:12px;
+
     line-height:1.55;
+
     margin-top:7px;
 }
 
 
-/* SEARCH */
+/* =========================
+   SEARCH
+========================= */
 
 #searchSection{
     margin-top:22px;
@@ -366,7 +404,9 @@ button:active{
     height:48px;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
     border-radius:15px;
@@ -379,7 +419,9 @@ button:active{
 }
 
 
-/* FOUND */
+/* =========================
+   FOUND
+========================= */
 
 #foundSection{
     display:none;
@@ -399,7 +441,9 @@ button:active{
 
 .info-row{
     display:flex;
+
     justify-content:space-between;
+
     gap:15px;
 
     padding:11px 0;
@@ -413,7 +457,9 @@ button:active{
 
 .info-label{
     font-size:13px;
+
     font-weight:800;
+
     color:#4a392f;
 }
 
@@ -428,7 +474,9 @@ button:active{
 }
 
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 .watermark{
     text-align:center;
@@ -438,6 +486,7 @@ button:active{
 
 .watermark-line{
     width:65px;
+
     height:2px;
 
     margin:0 auto 12px;
@@ -449,12 +498,15 @@ button:active{
 
 .watermark-brand{
     display:flex;
+
     justify-content:center;
+
     align-items:center;
 
     gap:7px;
 
     font-size:17px;
+
     font-weight:900;
 
     color:#4b3426;
@@ -462,6 +514,7 @@ button:active{
 
 .watermark-paw{
     font-size:19px;
+
     color:#7b4728;
 }
 
@@ -476,7 +529,9 @@ button:active{
 }
 
 
-/* RTL */
+/* =========================
+   RTL
+========================= */
 
 [dir="rtl"]{
     text-align:right;
@@ -501,7 +556,9 @@ button:active{
 }
 
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:480px){
 
@@ -511,22 +568,26 @@ button:active{
 
     .card{
         padding:19px;
+
         border-radius:22px;
     }
 
     .logo{
         width:72px;
         height:72px;
+
         font-size:47px;
     }
 
     h1{
         font-size:29px;
+
         text-align:center;
     }
 
     .hero-subtitle{
         font-size:13px;
+
         text-align:center;
     }
 
@@ -545,7 +606,9 @@ button:active{
 <div class="container">
 
 
-<!-- HEADER -->
+<!-- =========================
+     HEADER
+========================= -->
 
 <header class="header">
 
@@ -556,9 +619,13 @@ button:active{
             onchange="changeLanguage()">
 
             <option value="en">English</option>
+
             <option value="ur">اردو</option>
+
             <option value="ar">العربية</option>
+
             <option value="ru">Русский</option>
+
             <option value="ky">Кыргызча</option>
 
         </select>
@@ -566,14 +633,10 @@ button:active{
     </div>
 
 
-    <!-- ONLY BROWN PAW -->
-
     <div class="logo">
         🐾
     </div>
 
-
-    <!-- CENTER HEADING -->
 
     <h1>
         Find My Pet
@@ -607,7 +670,9 @@ button:active{
 
 
 
-<!-- REGISTRATION -->
+<!-- =========================
+     REGISTRATION
+========================= -->
 
 <section
     id="registrationSection"
@@ -625,10 +690,12 @@ button:active{
 
     <select id="petType">
 
-        <!-- ALWAYS FIRST -->
+        <option
+            value=""
+            selected>
 
-        <option value="" selected>
             Select Pet Type
+
         </option>
 
         <option value="Cat">
@@ -658,6 +725,7 @@ button:active{
         Pet Name
     </label>
 
+
     <input
         type="text"
         id="petName"
@@ -668,6 +736,7 @@ button:active{
     <label id="ownerNameLabel">
         Owner Name
     </label>
+
 
     <input
         type="text"
@@ -680,6 +749,7 @@ button:active{
         📞 Normal SIM / Call Number
     </label>
 
+
     <input
         type="tel"
         id="callNumber"
@@ -690,6 +760,7 @@ button:active{
     <label id="whatsappNumberLabel">
         💬 WhatsApp Number
     </label>
+
 
     <input
         type="tel"
@@ -711,6 +782,7 @@ button:active{
         Pet Color
     </label>
 
+
     <input
         type="text"
         id="color"
@@ -731,7 +803,9 @@ button:active{
 
 
 
-<!-- QR -->
+<!-- =========================
+     QR SECTION
+========================= -->
 
 <section
     id="qrSection"
@@ -770,6 +844,18 @@ button:active{
     </p>
 
 
+    <!-- NEW SAVE INFORMATION BUTTON -->
+
+    <button
+        class="primary"
+        onclick="saveInformation()"
+        id="saveInformationButton">
+
+        💾 Save Information
+
+    </button>
+
+
     <button
         class="primary"
         onclick="saveQRToGallery()"
@@ -793,7 +879,9 @@ button:active{
 
 
 
-<!-- SEARCH -->
+<!-- =========================
+     SEARCH
+========================= -->
 
 <section
     id="searchSection"
@@ -834,7 +922,9 @@ button:active{
 
 
 
-<!-- FOUND PET -->
+<!-- =========================
+     FOUND PET
+========================= -->
 
 <section
     id="foundSection"
@@ -877,6 +967,7 @@ button:active{
 
     <div class="watermark-line"></div>
 
+
     <div class="watermark-brand">
 
         <span class="watermark-paw">
@@ -891,7 +982,9 @@ button:active{
 
 
     <small id="watermarkText">
+
         Helping lost pets find their way home
+
     </small>
 
 </footer>
@@ -904,9 +997,12 @@ button:active{
 <script>
 
 
-/* TRANSLATIONS */
+/* =========================
+   TRANSLATIONS
+========================= */
 
 const translations = {
+
 
 en:{
 
@@ -948,6 +1044,9 @@ qrTitle:
 
 qrNote:
 "Save or print this QR code and attach it safely to your pet's collar.",
+
+saveInformation:
+"💾 Save Information",
 
 save:
 "Save QR to Gallery",
@@ -1041,6 +1140,9 @@ qrTitle:
 qrNote:
 "QR Code محفوظ یا پرنٹ کریں اور جانور کے کالر پر لگائیں۔",
 
+saveInformation:
+"💾 معلومات محفوظ کریں",
+
 save:
 "QR گیلری میں محفوظ کریں",
 
@@ -1132,6 +1234,9 @@ qrTitle:
 
 qrNote:
 "احفظ أو اطبع رمز QR وأرفقه بطوق الحيوان.",
+
+saveInformation:
+"💾 حفظ المعلومات",
 
 save:
 "حفظ QR",
@@ -1225,6 +1330,9 @@ qrTitle:
 qrNote:
 "Сохраните или распечатайте QR-код и прикрепите его к ошейнику.",
 
+saveInformation:
+"💾 Сохранить информацию",
+
 save:
 "Сохранить QR",
 
@@ -1317,6 +1425,9 @@ qrTitle:
 qrNote:
 "QR кодду сактап же басып чыгарып, жаныбардын жакасына тагыңыз.",
 
+saveInformation:
+"💾 Маалыматты сактоо",
+
 save:
 "QR сактоо",
 
@@ -1370,12 +1481,16 @@ selectPet:
 };
 
 
-/* LANGUAGE */
+/* =========================
+   LANGUAGE
+========================= */
 
 function changeLanguage(){
 
     const lang =
-        document.getElementById("languageSelect").value;
+        document.getElementById(
+            "languageSelect"
+        ).value;
 
     const t =
         translations[lang];
@@ -1387,134 +1502,231 @@ function changeLanguage(){
         : "ltr";
 
 
-    document.getElementById("heroSubtitle").textContent =
-        t.hero;
-
-    document.getElementById("instructionText").textContent =
-        t.instruction;
-
-    document.getElementById("registrationTitle").textContent =
-        t.registration;
-
-    document.getElementById("petTypeLabel").textContent =
-        t.petType;
-
-    document.getElementById("petNameLabel").textContent =
-        t.petName;
-
-    document.getElementById("ownerNameLabel").textContent =
-        t.ownerName;
-
-    document.getElementById("callNumberLabel").textContent =
-        t.callNumber;
-
-    document.getElementById("whatsappNumberLabel").textContent =
-        t.whatsappNumber;
-
-    document.getElementById("contactNote").textContent =
-        t.contactNote;
-
-    document.getElementById("colorLabel").textContent =
-        t.color;
-
-    document.getElementById("registerButton").textContent =
-        t.register;
-
-    document.getElementById("qrTitle").textContent =
-        t.qrTitle;
-
-    document.getElementById("qrNote").textContent =
-        t.qrNote;
-
-    document.getElementById("saveQrButton").textContent =
-        t.save;
-
-    document.getElementById("printQrButton").textContent =
-        t.print;
-
-    document.getElementById("searchTitle").textContent =
-        t.searchTitle;
-
-    document.getElementById("petIdLabel").textContent =
-        t.petId;
-
-    document.getElementById("searchButton").textContent =
-        t.search;
-
-    document.getElementById("foundTitle").textContent =
-        t.found;
-
-    document.getElementById("callButton").textContent =
-        t.call;
-
-    document.getElementById("whatsappButton").textContent =
-        t.whatsapp;
-
-    document.getElementById("watermarkText").textContent =
-        t.watermark;
+    document.getElementById(
+        "heroSubtitle"
+    ).textContent = t.hero;
 
 
-    document.getElementById("petName").placeholder =
-        t.petPlaceholder;
+    document.getElementById(
+        "instructionText"
+    ).textContent = t.instruction;
 
-    document.getElementById("ownerName").placeholder =
-        t.ownerPlaceholder;
 
-    document.getElementById("callNumber").placeholder =
-        t.callPlaceholder;
+    document.getElementById(
+        "registrationTitle"
+    ).textContent = t.registration;
 
-    document.getElementById("whatsappNumber").placeholder =
-        t.whatsappPlaceholder;
 
-    document.getElementById("color").placeholder =
-        t.colorPlaceholder;
+    document.getElementById(
+        "petTypeLabel"
+    ).textContent = t.petType;
 
-    document.getElementById("searchPetId").placeholder =
-        t.idPlaceholder;
+
+    document.getElementById(
+        "petNameLabel"
+    ).textContent = t.petName;
+
+
+    document.getElementById(
+        "ownerNameLabel"
+    ).textContent = t.ownerName;
+
+
+    document.getElementById(
+        "callNumberLabel"
+    ).textContent = t.callNumber;
+
+
+    document.getElementById(
+        "whatsappNumberLabel"
+    ).textContent = t.whatsappNumber;
+
+
+    document.getElementById(
+        "contactNote"
+    ).textContent = t.contactNote;
+
+
+    document.getElementById(
+        "colorLabel"
+    ).textContent = t.color;
+
+
+    document.getElementById(
+        "registerButton"
+    ).textContent = t.register;
+
+
+    document.getElementById(
+        "qrTitle"
+    ).textContent = t.qrTitle;
+
+
+    document.getElementById(
+        "qrNote"
+    ).textContent = t.qrNote;
+
+
+    document.getElementById(
+        "saveInformationButton"
+    ).textContent = t.saveInformation;
+
+
+    document.getElementById(
+        "saveQrButton"
+    ).textContent = t.save;
+
+
+    document.getElementById(
+        "printQrButton"
+    ).textContent = t.print;
+
+
+    document.getElementById(
+        "searchTitle"
+    ).textContent = t.searchTitle;
+
+
+    document.getElementById(
+        "petIdLabel"
+    ).textContent = t.petId;
+
+
+    document.getElementById(
+        "searchButton"
+    ).textContent = t.search;
+
+
+    document.getElementById(
+        "foundTitle"
+    ).textContent = t.found;
+
+
+    document.getElementById(
+        "callButton"
+    ).textContent = t.call;
+
+
+    document.getElementById(
+        "whatsappButton"
+    ).textContent = t.whatsapp;
+
+
+    document.getElementById(
+        "watermarkText"
+    ).textContent = t.watermark;
+
+
+    document.getElementById(
+        "petName"
+    ).placeholder = t.petPlaceholder;
+
+
+    document.getElementById(
+        "ownerName"
+    ).placeholder = t.ownerPlaceholder;
+
+
+    document.getElementById(
+        "callNumber"
+    ).placeholder = t.callPlaceholder;
+
+
+    document.getElementById(
+        "whatsappNumber"
+    ).placeholder = t.whatsappPlaceholder;
+
+
+    document.getElementById(
+        "color"
+    ).placeholder = t.colorPlaceholder;
+
+
+    document.getElementById(
+        "searchPetId"
+    ).placeholder = t.idPlaceholder;
 
 
     document.querySelector(
         '#petType option[value=""]'
-    ).textContent =
-        t.selectPet;
+    ).textContent = t.selectPet;
 
 }
 
 
-/* PET ID */
+/* =========================
+   EASY PET ID
+   FMP-001
+   FMP-002
+   FMP-003
+========================= */
 
 function generatePetId(){
 
-    return "FMP-" +
-        Math.floor(
-            100000 +
-            Math.random() * 900000
+    let number =
+        parseInt(
+            localStorage.getItem(
+                "findMyPetNextNumber"
+            ) || "1"
         );
+
+
+    const petId =
+        "FMP-" +
+        String(number).padStart(3,"0");
+
+
+    localStorage.setItem(
+        "findMyPetNextNumber",
+        number + 1
+    );
+
+
+    return petId;
 
 }
 
 
-/* REGISTER */
+/* =========================
+   REGISTER PET
+========================= */
 
 function registerPet(){
 
     const petType =
-        document.getElementById("petType").value;
+        document.getElementById(
+            "petType"
+        ).value;
+
 
     const petName =
-        document.getElementById("petName").value.trim();
+        document.getElementById(
+            "petName"
+        ).value.trim();
+
 
     const ownerName =
-        document.getElementById("ownerName").value.trim();
+        document.getElementById(
+            "ownerName"
+        ).value.trim();
+
 
     const callNumber =
-        document.getElementById("callNumber").value.trim();
+        document.getElementById(
+            "callNumber"
+        ).value.trim();
+
 
     const whatsappNumber =
-        document.getElementById("whatsappNumber").value.trim();
+        document.getElementById(
+            "whatsappNumber"
+        ).value.trim();
+
 
     const color =
-        document.getElementById("color").value.trim();
+        document.getElementById(
+            "color"
+        ).value.trim();
 
 
     const petId =
@@ -1557,37 +1769,39 @@ function registerPet(){
     );
 
 
+    window.currentRegisteredPet =
+        pet;
+
+
     showQRCode(pet);
 
 }
 
 
-/* SHOW QR */
+/* =========================
+   SHOW QR
+========================= */
 
 function showQRCode(pet){
 
     document.getElementById(
         "registrationSection"
-    ).style.display =
-        "none";
+    ).style.display = "none";
 
 
     document.getElementById(
         "searchSection"
-    ).style.display =
-        "none";
+    ).style.display = "none";
 
 
     document.getElementById(
         "foundSection"
-    ).style.display =
-        "none";
+    ).style.display = "none";
 
 
     document.getElementById(
         "qrSection"
-    ).style.display =
-        "block";
+    ).style.display = "block";
 
 
     document.getElementById(
@@ -1599,7 +1813,7 @@ function showQRCode(pet){
     document.getElementById(
         "registeredPetId"
     ).textContent =
-        pet.petId;
+        "Pet ID: " + pet.petId;
 
 
     const qrContainer =
@@ -1675,7 +1889,271 @@ function showQRCode(pet){
 }
 
 
-/* SEARCH */
+/* =========================
+   SAVE INFORMATION
+========================= */
+
+function saveInformation(){
+
+    const pet =
+        window.currentRegisteredPet;
+
+
+    if(!pet){
+
+        alert(
+            "Pet information is not available."
+        );
+
+        return;
+    }
+
+
+    const canvas =
+        document.createElement(
+            "canvas"
+        );
+
+
+    canvas.width = 900;
+
+    canvas.height = 1050;
+
+
+    const ctx =
+        canvas.getContext("2d");
+
+
+    /* BACKGROUND */
+
+    ctx.fillStyle =
+        "#fbf7f2";
+
+    ctx.fillRect(
+        0,
+        0,
+        900,
+        1050
+    );
+
+
+    /* CARD */
+
+    ctx.fillStyle =
+        "#ffffff";
+
+    ctx.roundRect(
+        45,
+        45,
+        810,
+        960,
+        35
+    );
+
+    ctx.fill();
+
+
+    /* TITLE */
+
+    ctx.textAlign =
+        "center";
+
+    ctx.fillStyle =
+        "#7b4728";
+
+    ctx.font =
+        "bold 52px Arial";
+
+    ctx.fillText(
+        "🐾 Find My Pet",
+        450,
+        125
+    );
+
+
+    /* PET NAME */
+
+    ctx.fillStyle =
+        "#2d241f";
+
+    ctx.font =
+        "bold 40px Arial";
+
+    ctx.fillText(
+        pet.petName || "My Pet",
+        450,
+        205
+    );
+
+
+    /* PET ID */
+
+    ctx.fillStyle =
+        "#8b7567";
+
+    ctx.font =
+        "bold 27px Arial";
+
+    ctx.fillText(
+        "Pet ID: " + pet.petId,
+        450,
+        255
+    );
+
+
+    /* INFORMATION TITLE */
+
+    ctx.textAlign =
+        "left";
+
+    ctx.fillStyle =
+        "#4b3426";
+
+    ctx.font =
+        "bold 28px Arial";
+
+    ctx.fillText(
+        "Pet Information",
+        100,
+        330
+    );
+
+
+    let y = 390;
+
+
+    function drawInfo(label,value){
+
+        if(!value)
+            return;
+
+
+        ctx.fillStyle =
+            "#4a392f";
+
+        ctx.font =
+            "bold 23px Arial";
+
+        ctx.fillText(
+            label,
+            100,
+            y
+        );
+
+
+        ctx.fillStyle =
+            "#66564b";
+
+        ctx.font =
+            "23px Arial";
+
+        ctx.fillText(
+            value,
+            350,
+            y
+        );
+
+
+        y += 70;
+
+    }
+
+
+    drawInfo(
+        "Pet Type",
+        pet.petType
+    );
+
+
+    drawInfo(
+        "Pet Name",
+        pet.petName
+    );
+
+
+    drawInfo(
+        "Owner Name",
+        pet.ownerName
+    );
+
+
+    drawInfo(
+        "Call Number",
+        pet.callNumber
+    );
+
+
+    drawInfo(
+        "WhatsApp",
+        pet.whatsappNumber
+    );
+
+
+    drawInfo(
+        "Pet Color",
+        pet.color
+    );
+
+
+    /* FOOTER */
+
+    ctx.textAlign =
+        "center";
+
+    ctx.fillStyle =
+        "#7b4728";
+
+    ctx.font =
+        "bold 27px Arial";
+
+    ctx.fillText(
+        "Find My Pet",
+        450,
+        900
+    );
+
+
+    ctx.fillStyle =
+        "#9b8b7f";
+
+    ctx.font =
+        "18px Arial";
+
+    ctx.fillText(
+        "Helping lost pets find their way home",
+        450,
+        940
+    );
+
+
+    /* SAVE IMAGE */
+
+    const link =
+        document.createElement(
+            "a"
+        );
+
+
+    link.download =
+        "Find-My-Pet-" +
+        pet.petId +
+        "-Information.png";
+
+
+    link.href =
+        canvas.toDataURL(
+            "image/png"
+        );
+
+
+    link.click();
+
+}
+
+
+/* =========================
+   SEARCH PET
+========================= */
 
 function findPet(){
 
@@ -1732,32 +2210,30 @@ function findPet(){
 }
 
 
-/* FOUND PET */
+/* =========================
+   FOUND PET
+========================= */
 
 function showFoundPet(pet){
 
     document.getElementById(
         "registrationSection"
-    ).style.display =
-        "none";
+    ).style.display = "none";
 
 
     document.getElementById(
         "qrSection"
-    ).style.display =
-        "none";
+    ).style.display = "none";
 
 
     document.getElementById(
         "searchSection"
-    ).style.display =
-        "none";
+    ).style.display = "none";
 
 
     document.getElementById(
         "foundSection"
-    ).style.display =
-        "block";
+    ).style.display = "block";
 
 
     window.currentFoundPet =
@@ -1788,7 +2264,9 @@ function showFoundPet(pet){
 }
 
 
-/* PET INFO */
+/* =========================
+   PET INFORMATION
+========================= */
 
 function createPetInfo(pet){
 
@@ -1916,22 +2394,30 @@ function createPetInfo(pet){
 }
 
 
-/* SECURITY */
+/* =========================
+   SECURITY
+========================= */
 
 function escapeHTML(value){
 
     return String(value)
 
         .replace(/&/g,"&amp;")
+
         .replace(/</g,"&lt;")
+
         .replace(/>/g,"&gt;")
+
         .replace(/"/g,"&quot;")
+
         .replace(/'/g,"&#039;");
 
 }
 
 
-/* CALL */
+/* =========================
+   CALL OWNER
+========================= */
 
 function callOwner(){
 
@@ -1949,7 +2435,9 @@ function callOwner(){
 }
 
 
-/* WHATSAPP */
+/* =========================
+   WHATSAPP OWNER
+========================= */
 
 function whatsappOwner(){
 
@@ -1962,7 +2450,10 @@ function whatsappOwner(){
 
     const phone =
         window.currentFoundPet.whatsappNumber
-        .replace(/\D/g,"");
+        .replace(
+            /\D/g,
+            ""
+        );
 
 
     if(!phone){
@@ -1976,14 +2467,17 @@ function whatsappOwner(){
 
 
     window.open(
-        "https://wa.me/" + phone,
+        "https://wa.me/" +
+        phone,
         "_blank"
     );
 
 }
 
 
-/* QR SCANNED */
+/* =========================
+   QR SCANNED
+========================= */
 
 function showFoundPetFromQR(){
 
@@ -2031,7 +2525,9 @@ function showFoundPetFromQR(){
 }
 
 
-/* SAVE QR */
+/* =========================
+   SAVE QR
+========================= */
 
 function saveQRToGallery(){
 
@@ -2070,6 +2566,7 @@ function saveQRToGallery(){
 
 
     canvas.width = 800;
+
     canvas.height = 950;
 
 
@@ -2199,7 +2696,9 @@ function saveQRToGallery(){
 }
 
 
-/* PRINT QR */
+/* =========================
+   PRINT QR
+========================= */
 
 function printQR(){
 
@@ -2315,6 +2814,7 @@ function printQR(){
 
             <\/script>
 
+
         </body>
 
         </html>
@@ -2327,7 +2827,9 @@ function printQR(){
 }
 
 
-/* PAGE LOAD */
+/* =========================
+   PAGE LOAD
+========================= */
 
 window.onload=function(){
 
