@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -36,9 +35,7 @@ body{
 }
 
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 .header{
     text-align:center;
@@ -64,31 +61,29 @@ body{
 }
 
 
-/* LOGO */
+/* BROWN PAW - NO BOX */
 
 .logo{
     width:82px;
     height:82px;
-
     margin:27px auto 12px;
-
-    border-radius:28px;
 
     display:flex;
     justify-content:center;
     align-items:center;
 
-    font-size:42px;
+    font-size:52px;
 
-    background:
-        linear-gradient(145deg,#5d351f,#8a522d);
+    background:transparent;
+    color:#7b4728;
 
-    box-shadow:
-        0 12px 28px rgba(92,51,29,.22),
-        inset 0 1px 0 rgba(255,255,255,.18);
+    box-shadow:none;
 }
 
 h1{
+    width:100%;
+    text-align:center;
+
     font-size:32px;
     font-weight:900;
     letter-spacing:-1.2px;
@@ -97,15 +92,15 @@ h1{
 
 .hero-subtitle{
     margin-top:7px;
+    text-align:center;
+
     font-size:14px;
     line-height:1.55;
     color:#75685f;
 }
 
 
-/* =========================
-   INSTRUCTION
-========================= */
+/* INSTRUCTION */
 
 .instruction{
     max-width:600px;
@@ -127,31 +122,21 @@ h1{
 }
 
 .instruction-paw{
-    width:25px;
-    height:25px;
-
     flex-shrink:0;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    font-size:18px;
 
-    border-radius:50%;
+    background:transparent;
+    color:#7b4728;
 
-    background:#8b5738;
+    width:auto;
+    height:auto;
 
-    color:#fff;
-
-    font-size:14px;
-
-    box-shadow:
-        0 5px 12px rgba(96,54,31,.18);
+    box-shadow:none;
 }
 
 
-/* =========================
-   CARDS
-========================= */
+/* CARDS */
 
 .card{
     margin-top:22px;
@@ -178,9 +163,7 @@ h1{
 }
 
 
-/* =========================
-   FORM
-========================= */
+/* FORM */
 
 label{
     display:block;
@@ -230,20 +213,19 @@ select:focus{
 }
 
 
-/* PET TYPE */
+/* SELECT PET TYPE */
 
 #petType{
-    color:#222;
+    color:#111;
 }
 
 #petType option{
-    color:#222;
+    color:#111;
+    background:#fff;
 }
 
 
-/* =========================
-   OPTIONAL NOTE
-========================= */
+/* OPTIONAL NOTE */
 
 .contact-note{
     margin-top:10px;
@@ -264,9 +246,7 @@ select:focus{
 }
 
 
-/* =========================
-   BUTTONS
-========================= */
+/* BUTTONS */
 
 button{
     width:100%;
@@ -326,9 +306,7 @@ button:active{
 }
 
 
-/* =========================
-   QR
-========================= */
+/* QR */
 
 #qrSection{
     display:none;
@@ -377,9 +355,7 @@ button:active{
 }
 
 
-/* =========================
-   SEARCH
-========================= */
+/* SEARCH */
 
 #searchSection{
     margin-top:22px;
@@ -403,9 +379,7 @@ button:active{
 }
 
 
-/* =========================
-   FOUND
-========================= */
+/* FOUND */
 
 #foundSection{
     display:none;
@@ -454,9 +428,7 @@ button:active{
 }
 
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 .watermark{
     text-align:center;
@@ -490,6 +462,7 @@ button:active{
 
 .watermark-paw{
     font-size:19px;
+    color:#7b4728;
 }
 
 .watermark small{
@@ -503,9 +476,7 @@ button:active{
 }
 
 
-/* =========================
-   RTL
-========================= */
+/* RTL */
 
 [dir="rtl"]{
     text-align:right;
@@ -516,14 +487,21 @@ button:active{
     left:0;
 }
 
+[dir="rtl"] .header{
+    text-align:center;
+}
+
+[dir="rtl"] h1,
+[dir="rtl"] .hero-subtitle{
+    text-align:center;
+}
+
 [dir="rtl"] .info-value{
     text-align:left;
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:480px){
 
@@ -539,15 +517,17 @@ button:active{
     .logo{
         width:72px;
         height:72px;
-        font-size:37px;
+        font-size:47px;
     }
 
     h1{
         font-size:29px;
+        text-align:center;
     }
 
     .hero-subtitle{
         font-size:13px;
+        text-align:center;
     }
 
     .instruction{
@@ -562,16 +542,12 @@ button:active{
 
 <body>
 
-
 <div class="container">
 
 
-<!-- =========================
-     HEADER
-========================= -->
+<!-- HEADER -->
 
 <header class="header">
-
 
     <div class="language">
 
@@ -580,13 +556,9 @@ button:active{
             onchange="changeLanguage()">
 
             <option value="en">English</option>
-
             <option value="ur">اردو</option>
-
             <option value="ar">العربية</option>
-
             <option value="ru">Русский</option>
-
             <option value="ky">Кыргызча</option>
 
         </select>
@@ -594,10 +566,14 @@ button:active{
     </div>
 
 
+    <!-- ONLY BROWN PAW -->
+
     <div class="logo">
         🐾
     </div>
 
+
+    <!-- CENTER HEADING -->
 
     <h1>
         Find My Pet
@@ -627,19 +603,15 @@ button:active{
 
     </div>
 
-
 </header>
 
 
 
-<!-- =========================
-     REGISTRATION
-========================= -->
+<!-- REGISTRATION -->
 
 <section
     id="registrationSection"
     class="card">
-
 
     <h2 id="registrationTitle">
         Register Your Pet
@@ -653,12 +625,10 @@ button:active{
 
     <select id="petType">
 
-        <option
-            value=""
-            selected>
+        <!-- ALWAYS FIRST -->
 
+        <option value="" selected>
             Select Pet Type
-
         </option>
 
         <option value="Cat">
@@ -688,7 +658,6 @@ button:active{
         Pet Name
     </label>
 
-
     <input
         type="text"
         id="petName"
@@ -699,7 +668,6 @@ button:active{
     <label id="ownerNameLabel">
         Owner Name
     </label>
-
 
     <input
         type="text"
@@ -712,7 +680,6 @@ button:active{
         📞 Normal SIM / Call Number
     </label>
 
-
     <input
         type="tel"
         id="callNumber"
@@ -723,7 +690,6 @@ button:active{
     <label id="whatsappNumberLabel">
         💬 WhatsApp Number
     </label>
-
 
     <input
         type="tel"
@@ -745,7 +711,6 @@ button:active{
         Pet Color
     </label>
 
-
     <input
         type="text"
         id="color"
@@ -762,19 +727,15 @@ button:active{
 
     </button>
 
-
 </section>
 
 
 
-<!-- =========================
-     QR SECTION
-========================= -->
+<!-- QR -->
 
 <section
     id="qrSection"
     class="card">
-
 
     <h2 id="qrTitle">
         Your Pet QR Code
@@ -828,19 +789,15 @@ button:active{
 
     </button>
 
-
 </section>
 
 
 
-<!-- =========================
-     SEARCH
-========================= -->
+<!-- SEARCH -->
 
 <section
     id="searchSection"
     class="card">
-
 
     <div class="search-icon">
         🔎
@@ -873,19 +830,15 @@ button:active{
 
     </button>
 
-
 </section>
 
 
 
-<!-- =========================
-     FOUND PET
-========================= -->
+<!-- FOUND PET -->
 
 <section
     id="foundSection"
     class="card">
-
 
     <h2 id="foundTitle">
         Pet Found
@@ -914,20 +867,15 @@ button:active{
 
     </button>
 
-
 </section>
 
 
 
-<!-- =========================
-     FOOTER
-========================= -->
+<!-- FOOTER -->
 
 <footer class="watermark">
 
-
     <div class="watermark-line"></div>
-
 
     <div class="watermark-brand">
 
@@ -943,11 +891,8 @@ button:active{
 
 
     <small id="watermarkText">
-
         Helping lost pets find their way home
-
     </small>
-
 
 </footer>
 
@@ -959,478 +904,473 @@ button:active{
 <script>
 
 
-/* =========================
-   TRANSLATIONS
-========================= */
+/* TRANSLATIONS */
 
 const translations = {
 
-
 en:{
 
-    hero:
-    "Register your pet and help bring lost pets safely home.",
+hero:
+"Register your pet and help bring lost pets safely home.",
 
-    instruction:
-    "Enter your pet's data, get a QR Code, print it and attach it to your pet's collar. If your pet gets lost, anyone can scan it and contact you.",
+instruction:
+"Enter your pet's data, get a QR Code, print it and attach it to your pet's collar. If your pet gets lost, anyone can scan it and contact you.",
 
-    registration:
-    "Register Your Pet",
+registration:
+"Register Your Pet",
 
-    petType:
-    "Pet Type",
+petType:
+"Pet Type",
 
-    petName:
-    "Pet Name",
+petName:
+"Pet Name",
 
-    ownerName:
-    "Owner Name",
+ownerName:
+"Owner Name",
 
-    callNumber:
-    "📞 Normal SIM / Call Number",
+callNumber:
+"📞 Normal SIM / Call Number",
 
-    whatsappNumber:
-    "💬 WhatsApp Number",
+whatsappNumber:
+"💬 WhatsApp Number",
 
-    contactNote:
-    "All fields are optional. The Call and WhatsApp numbers can be the same.",
+contactNote:
+"All fields are optional. The Call and WhatsApp numbers can be the same.",
 
-    color:
-    "Pet Color",
+color:
+"Pet Color",
 
-    register:
-    "Register Pet & Generate QR",
+register:
+"Register Pet & Generate QR",
 
-    qrTitle:
-    "Your Pet QR Code",
+qrTitle:
+"Your Pet QR Code",
 
-    qrNote:
-    "Save or print this QR code and attach it safely to your pet's collar.",
+qrNote:
+"Save or print this QR code and attach it safely to your pet's collar.",
 
-    save:
-    "Save QR to Gallery",
+save:
+"Save QR to Gallery",
 
-    print:
-    "Print QR",
+print:
+"Print QR",
 
-    searchTitle:
-    "Search Registered Pet",
+searchTitle:
+"Search Registered Pet",
 
-    petId:
-    "Pet ID",
+petId:
+"Pet ID",
 
-    search:
-    "Search",
+search:
+"Search",
 
-    found:
-    "Pet Found",
+found:
+"Pet Found",
 
-    call:
-    "📞 Call Owner",
+call:
+"📞 Call Owner",
 
-    whatsapp:
-    "💬 WhatsApp Owner",
+whatsapp:
+"💬 WhatsApp Owner",
 
-    watermark:
-    "Helping lost pets find their way home",
+watermark:
+"Helping lost pets find their way home",
 
-    petPlaceholder:
-    "Enter pet name",
+petPlaceholder:
+"Enter pet name",
 
-    ownerPlaceholder:
-    "Enter owner name",
+ownerPlaceholder:
+"Enter owner name",
 
-    callPlaceholder:
-    "Enter number for normal calls",
+callPlaceholder:
+"Enter number for normal calls",
 
-    whatsappPlaceholder:
-    "Enter WhatsApp number",
+whatsappPlaceholder:
+"Enter WhatsApp number",
 
-    colorPlaceholder:
-    "Enter pet color",
+colorPlaceholder:
+"Enter pet color",
 
-    idPlaceholder:
-    "Enter Pet ID",
+idPlaceholder:
+"Enter Pet ID",
 
-    selectPet:
-    "Select Pet Type"
+selectPet:
+"Select Pet Type"
 
 },
 
 
 ur:{
 
-    hero:
-    "اپنے پالتو جانور کو رجسٹر کریں اور گمشدہ جانور کو محفوظ طریقے سے گھر پہنچانے میں مدد کریں۔",
+hero:
+"اپنے پالتو جانور کو رجسٹر کریں اور گمشدہ جانور کو محفوظ طریقے سے گھر پہنچانے میں مدد کریں۔",
 
-    instruction:
-    "اپنے پالتو جانور کی معلومات درج کریں، QR Code حاصل کریں، اسے پرنٹ کرکے جانور کے کالر پر لگائیں۔ جانور گم ہونے کی صورت میں کوئی بھی اسے اسکین کرکے آپ سے رابطہ کر سکتا ہے۔",
+instruction:
+"اپنے پالتو جانور کی معلومات درج کریں، QR Code حاصل کریں، اسے پرنٹ کرکے جانور کے کالر پر لگائیں۔ جانور گم ہونے کی صورت میں کوئی بھی اسے اسکین کرکے آپ سے رابطہ کر سکتا ہے۔",
 
-    registration:
-    "اپنے پالتو جانور کو رجسٹر کریں",
+registration:
+"اپنے پالتو جانور کو رجسٹر کریں",
 
-    petType:
-    "جانور کی قسم",
+petType:
+"جانور کی قسم",
 
-    petName:
-    "جانور کا نام",
+petName:
+"جانور کا نام",
 
-    ownerName:
-    "مالک کا نام",
+ownerName:
+"مالک کا نام",
 
-    callNumber:
-    "📞 عام SIM / کال نمبر",
+callNumber:
+"📞 عام SIM / کال نمبر",
 
-    whatsappNumber:
-    "💬 WhatsApp نمبر",
+whatsappNumber:
+"💬 WhatsApp نمبر",
 
-    contactNote:
-    "تمام فیلڈز بھرنا لازمی نہیں۔ Call اور WhatsApp نمبر ایک جیسے بھی ہو سکتے ہیں۔",
+contactNote:
+"تمام فیلڈز بھرنا لازمی نہیں۔ Call اور WhatsApp نمبر ایک جیسے بھی ہو سکتے ہیں۔",
 
-    color:
-    "جانور کا رنگ",
+color:
+"جانور کا رنگ",
 
-    register:
-    "رجسٹر کریں اور QR بنائیں",
+register:
+"رجسٹر کریں اور QR بنائیں",
 
-    qrTitle:
-    "آپ کے پالتو جانور کا QR Code",
+qrTitle:
+"آپ کے پالتو جانور کا QR Code",
 
-    qrNote:
-    "QR Code محفوظ یا پرنٹ کریں اور جانور کے کالر پر لگائیں۔",
+qrNote:
+"QR Code محفوظ یا پرنٹ کریں اور جانور کے کالر پر لگائیں۔",
 
-    save:
-    "QR گیلری میں محفوظ کریں",
+save:
+"QR گیلری میں محفوظ کریں",
 
-    print:
-    "QR پرنٹ کریں",
+print:
+"QR پرنٹ کریں",
 
-    searchTitle:
-    "رجسٹرڈ پالتو جانور تلاش کریں",
+searchTitle:
+"رجسٹرڈ پالتو جانور تلاش کریں",
 
-    petId:
-    "Pet ID",
+petId:
+"Pet ID",
 
-    search:
-    "تلاش کریں",
+search:
+"تلاش کریں",
 
-    found:
-    "جانور مل گیا",
+found:
+"جانور مل گیا",
 
-    call:
-    "📞 مالک کو کال کریں",
+call:
+"📞 مالک کو کال کریں",
 
-    whatsapp:
-    "💬 WhatsApp مالک",
+whatsapp:
+"💬 WhatsApp مالک",
 
-    watermark:
-    "گمشدہ پالتو جانوروں کو گھر پہنچانے میں مدد",
+watermark:
+"گمشدہ پالتو جانوروں کو گھر پہنچانے میں مدد",
 
-    petPlaceholder:
-    "جانور کا نام لکھیں",
+petPlaceholder:
+"جانور کا نام لکھیں",
 
-    ownerPlaceholder:
-    "مالک کا نام لکھیں",
+ownerPlaceholder:
+"مالک کا نام لکھیں",
 
-    callPlaceholder:
-    "عام کال کے لیے نمبر لکھیں",
+callPlaceholder:
+"عام کال کے لیے نمبر لکھیں",
 
-    whatsappPlaceholder:
-    "WhatsApp نمبر لکھیں",
+whatsappPlaceholder:
+"WhatsApp نمبر لکھیں",
 
-    colorPlaceholder:
-    "جانور کا رنگ لکھیں",
+colorPlaceholder:
+"جانور کا رنگ لکھیں",
 
-    idPlaceholder:
-    "Pet ID لکھیں",
+idPlaceholder:
+"Pet ID لکھیں",
 
-    selectPet:
-    "جانور کی قسم منتخب کریں"
+selectPet:
+"جانور کی قسم منتخب کریں"
 
 },
 
 
 ar:{
 
-    hero:
-    "سجّل حيوانك الأليف وساعد في إعادة الحيوانات المفقودة إلى المنزل بأمان.",
+hero:
+"سجّل حيوانك الأليف وساعد في إعادة الحيوانات المفقودة إلى المنزل بأمان.",
 
-    instruction:
-    "أدخل بيانات حيوانك الأليف، واحصل على رمز QR، واطبعه وثبته على طوق الحيوان. إذا فقد الحيوان، يمكن لأي شخص مسح الرمز والتواصل معك.",
+instruction:
+"أدخل بيانات حيوانك الأليف، واحصل على رمز QR، واطبعه وثبته على طوق الحيوان. إذا فقد الحيوان، يمكن لأي شخص مسح الرمز والتواصل معك.",
 
-    registration:
-    "تسجيل الحيوان الأليف",
+registration:
+"تسجيل الحيوان الأليف",
 
-    petType:
-    "نوع الحيوان",
+petType:
+"نوع الحيوان",
 
-    petName:
-    "اسم الحيوان",
+petName:
+"اسم الحيوان",
 
-    ownerName:
-    "اسم المالك",
+ownerName:
+"اسم المالك",
 
-    callNumber:
-    "📞 رقم المكالمات العادي",
+callNumber:
+"📞 رقم المكالمات العادي",
 
-    whatsappNumber:
-    "💬 رقم WhatsApp",
+whatsappNumber:
+"💬 رقم WhatsApp",
 
-    contactNote:
-    "جميع الحقول اختيارية. يمكن أن يكون رقم الاتصال وWhatsApp متطابقين.",
+contactNote:
+"جميع الحقول اختيارية. يمكن أن يكون رقم الاتصال وWhatsApp متطابقين.",
 
-    color:
-    "لون الحيوان",
+color:
+"لون الحيوان",
 
-    register:
-    "تسجيل وإنشاء QR",
+register:
+"تسجيل وإنشاء QR",
 
-    qrTitle:
-    "رمز QR لحيوانك",
+qrTitle:
+"رمز QR لحيوانك",
 
-    qrNote:
-    "احفظ أو اطبع رمز QR وأرفقه بطوق الحيوان.",
+qrNote:
+"احفظ أو اطبع رمز QR وأرفقه بطوق الحيوان.",
 
-    save:
-    "حفظ QR",
+save:
+"حفظ QR",
 
-    print:
-    "طباعة QR",
+print:
+"طباعة QR",
 
-    searchTitle:
-    "البحث عن حيوان مسجل",
+searchTitle:
+"البحث عن حيوان مسجل",
 
-    petId:
-    "معرف الحيوان",
+petId:
+"معرف الحيوان",
 
-    search:
-    "بحث",
+search:
+"بحث",
 
-    found:
-    "تم العثور على الحيوان",
+found:
+"تم العثور على الحيوان",
 
-    call:
-    "📞 الاتصال بالمالك",
+call:
+"📞 الاتصال بالمالك",
 
-    whatsapp:
-    "💬 واتساب المالك",
+whatsapp:
+"💬 واتساب المالك",
 
-    watermark:
-    "مساعدة الحيوانات المفقودة على العودة إلى المنزل",
+watermark:
+"مساعدة الحيوانات المفقودة على العودة إلى المنزل",
 
-    petPlaceholder:
-    "أدخل اسم الحيوان",
+petPlaceholder:
+"أدخل اسم الحيوان",
 
-    ownerPlaceholder:
-    "أدخل اسم المالك",
+ownerPlaceholder:
+"أدخل اسم المالك",
 
-    callPlaceholder:
-    "أدخل رقم المكالمات",
+callPlaceholder:
+"أدخل رقم المكالمات",
 
-    whatsappPlaceholder:
-    "أدخل رقم WhatsApp",
+whatsappPlaceholder:
+"أدخل رقم WhatsApp",
 
-    colorPlaceholder:
-    "أدخل لون الحيوان",
+colorPlaceholder:
+"أدخل لون الحيوان",
 
-    idPlaceholder:
-    "أدخل معرف الحيوان",
+idPlaceholder:
+"أدخل معرف الحيوان",
 
-    selectPet:
-    "اختر نوع الحيوان"
+selectPet:
+"اختر نوع الحيوان"
 
 },
 
 
 ru:{
 
-    hero:
-    "Зарегистрируйте питомца и помогите безопасно вернуть потерявшихся животных домой.",
+hero:
+"Зарегистрируйте питомца и помогите безопасно вернуть потерявшихся животных домой.",
 
-    instruction:
-    "Введите данные питомца, получите QR-код, распечатайте его и прикрепите к ошейнику. Если питомец потеряется, любой человек сможет отсканировать код и связаться с вами.",
+instruction:
+"Введите данные питомца, получите QR-код, распечатайте его и прикрепите к ошейнику. Если питомец потеряется, любой человек сможет отсканировать код и связаться с вами.",
 
-    registration:
-    "Регистрация питомца",
+registration:
+"Регистрация питомца",
 
-    petType:
-    "Тип животного",
+petType:
+"Тип животного",
 
-    petName:
-    "Имя питомца",
+petName:
+"Имя питомца",
 
-    ownerName:
-    "Имя владельца",
+ownerName:
+"Имя владельца",
 
-    callNumber:
-    "📞 Обычный номер для звонков",
+callNumber:
+"📞 Обычный номер для звонков",
 
-    whatsappNumber:
-    "💬 Номер WhatsApp",
+whatsappNumber:
+"💬 Номер WhatsApp",
 
-    contactNote:
-    "Все поля необязательны. Номер для звонков и WhatsApp может быть одинаковым.",
+contactNote:
+"Все поля необязательны. Номер для звонков и WhatsApp может быть одинаковым.",
 
-    color:
-    "Цвет питомца",
+color:
+"Цвет питомца",
 
-    register:
-    "Зарегистрировать и создать QR",
+register:
+"Зарегистрировать и создать QR",
 
-    qrTitle:
-    "QR-код вашего питомца",
+qrTitle:
+"QR-код вашего питомца",
 
-    qrNote:
-    "Сохраните или распечатайте QR-код и прикрепите его к ошейнику.",
+qrNote:
+"Сохраните или распечатайте QR-код и прикрепите его к ошейнику.",
 
-    save:
-    "Сохранить QR",
+save:
+"Сохранить QR",
 
-    print:
-    "Печать QR",
+print:
+"Печать QR",
 
-    searchTitle:
-    "Поиск зарегистрированного питомца",
+searchTitle:
+"Поиск зарегистрированного питомца",
 
-    petId:
-    "ID питомца",
+petId:
+"ID питомца",
 
-    search:
-    "Поиск",
+search:
+"Поиск",
 
-    found:
-    "Питомец найден",
+found:
+"Питомец найден",
 
-    call:
-    "📞 Позвонить владельцу",
+call:
+"📞 Позвонить владельцу",
 
-    whatsapp:
-    "💬 WhatsApp владельца",
+whatsapp:
+"💬 WhatsApp владельца",
 
-    watermark:
-    "Помогаем потерявшимся питомцам вернуться домой",
+watermark:
+"Помогаем потерявшимся питомцам вернуться домой",
 
-    petPlaceholder:
-    "Введите имя питомца",
+petPlaceholder:
+"Введите имя питомца",
 
-    ownerPlaceholder:
-    "Введите имя владельца",
+ownerPlaceholder:
+"Введите имя владельца",
 
-    callPlaceholder:
-    "Введите номер для звонков",
+callPlaceholder:
+"Введите номер для звонков",
 
-    whatsappPlaceholder:
-    "Введите номер WhatsApp",
+whatsappPlaceholder:
+"Введите номер WhatsApp",
 
-    colorPlaceholder:
-    "Введите цвет питомца",
+colorPlaceholder:
+"Введите цвет питомца",
 
-    idPlaceholder:
-    "Введите ID питомца",
+idPlaceholder:
+"Введите ID питомца",
 
-    selectPet:
-    "Выберите тип животного"
+selectPet:
+"Выберите тип животного"
 
 },
 
 
 ky:{
 
-    hero:
-    "Үй жаныбарыңызды каттап, жоголгон жаныбарларды үйүнө коопсуз кайтарууга жардам бериңиз.",
+hero:
+"Үй жаныбарыңызды каттап, жоголгон жаныбарларды үйүнө коопсуз кайтарууга жардам бериңиз.",
 
-    instruction:
-    "Үй жаныбарыңыздын маалыматтарын киргизип, QR код алыңыз. Аны басып чыгарып, жаныбардын жакасына тагыңыз. Эгер жаныбар жоголсо, каалаган адам кодду сканерлеп сиз менен байланыша алат.",
+instruction:
+"Үй жаныбарыңыздын маалыматтарын киргизип, QR код алыңыз. Аны басып чыгарып, жаныбардын жакасына тагыңыз. Эгер жаныбар жоголсо, каалаган адам кодду сканерлеп сиз менен байланыша алат.",
 
-    registration:
-    "Үй жаныбарын каттоо",
+registration:
+"Үй жаныбарын каттоо",
 
-    petType:
-    "Жаныбардын түрү",
+petType:
+"Жаныбардын түрү",
 
-    petName:
-    "Жаныбардын аты",
+petName:
+"Жаныбардын аты",
 
-    ownerName:
-    "Ээсинин аты",
+ownerName:
+"Ээсинин аты",
 
-    callNumber:
-    "📞 Кадимки чалуу номери",
+callNumber:
+"📞 Кадимки чалуу номери",
 
-    whatsappNumber:
-    "💬 WhatsApp номери",
+whatsappNumber:
+"💬 WhatsApp номери",
 
-    contactNote:
-    "Бардык талааларды толтуруу милдеттүү эмес. Call жана WhatsApp номерлери бирдей болушу мүмкүн.",
+contactNote:
+"Бардык талааларды толтуруу милдеттүү эмес. Call жана WhatsApp номерлери бирдей болушу мүмкүн.",
 
-    color:
-    "Жаныбардын түсү",
+color:
+"Жаныбардын түсү",
 
-    register:
-    "Каттоо жана QR түзүү",
+register:
+"Каттоо жана QR түзүү",
 
-    qrTitle:
-    "Үй жаныбарыңыздын QR коду",
+qrTitle:
+"Үй жаныбарыңыздын QR коду",
 
-    qrNote:
-    "QR кодду сактап же басып чыгарып, жаныбардын жакасына тагыңыз.",
+qrNote:
+"QR кодду сактап же басып чыгарып, жаныбардын жакасына тагыңыз.",
 
-    save:
-    "QR сактоо",
+save:
+"QR сактоо",
 
-    print:
-    "QR басып чыгаруу",
+print:
+"QR басып чыгаруу",
 
-    searchTitle:
-    "Катталган жаныбарды издөө",
+searchTitle:
+"Катталган жаныбарды издөө",
 
-    petId:
-    "Pet ID",
+petId:
+"Pet ID",
 
-    search:
-    "Издөө",
+search:
+"Издөө",
 
-    found:
-    "Жаныбар табылды",
+found:
+"Жаныбар табылды",
 
-    call:
-    "📞 Ээсине чалуу",
+call:
+"📞 Ээсине чалуу",
 
-    whatsapp:
-    "💬 Ээсине WhatsApp",
+whatsapp:
+"💬 Ээсине WhatsApp",
 
-    watermark:
-    "Жоголгон жаныбарларды үйүнө кайтарууга жардам беребиз",
+watermark:
+"Жоголгон жаныбарларды үйүнө кайтарууга жардам беребиз",
 
-    petPlaceholder:
-    "Жаныбардын атын жазыңыз",
+petPlaceholder:
+"Жаныбардын атын жазыңыз",
 
-    ownerPlaceholder:
-    "Ээсинин атын жазыңыз",
+ownerPlaceholder:
+"Ээсинин атын жазыңыз",
 
-    callPlaceholder:
-    "Чалуу үчүн номерди жазыңыз",
+callPlaceholder:
+"Чалуу үчүн номерди жазыңыз",
 
-    whatsappPlaceholder:
-    "WhatsApp номерин жазыңыз",
+whatsappPlaceholder:
+"WhatsApp номерин жазыңыз",
 
-    colorPlaceholder:
-    "Жаныбардын түсүн жазыңыз",
+colorPlaceholder:
+"Жаныбардын түсүн жазыңыз",
 
-    idPlaceholder:
-    "Pet ID жазыңыз",
+idPlaceholder:
+"Pet ID жазыңыз",
 
-    selectPet:
-    "Жаныбардын түрүн тандаңыз"
+selectPet:
+"Жаныбардын түрүн тандаңыз"
 
 }
 
 };
 
 
-/* =========================
-   LANGUAGE
-========================= */
+/* LANGUAGE */
 
 function changeLanguage(){
 
@@ -1541,9 +1481,7 @@ function changeLanguage(){
 }
 
 
-/* =========================
-   PET ID
-========================= */
+/* PET ID */
 
 function generatePetId(){
 
@@ -1556,9 +1494,7 @@ function generatePetId(){
 }
 
 
-/* =========================
-   REGISTER PET
-========================= */
+/* REGISTER */
 
 function registerPet(){
 
@@ -1579,13 +1515,6 @@ function registerPet(){
 
     const color =
         document.getElementById("color").value.trim();
-
-
-    /*
-       No field is compulsory.
-       User can register even if
-       some information is empty.
-    */
 
 
     const petId =
@@ -1633,9 +1562,7 @@ function registerPet(){
 }
 
 
-/* =========================
-   SHOW QR
-========================= */
+/* SHOW QR */
 
 function showQRCode(pet){
 
@@ -1748,9 +1675,7 @@ function showQRCode(pet){
 }
 
 
-/* =========================
-   SEARCH PET
-========================= */
+/* SEARCH */
 
 function findPet(){
 
@@ -1807,9 +1732,7 @@ function findPet(){
 }
 
 
-/* =========================
-   FOUND PET
-========================= */
+/* FOUND PET */
 
 function showFoundPet(pet){
 
@@ -1847,11 +1770,6 @@ function showFoundPet(pet){
         createPetInfo(pet);
 
 
-    /*
-       Hide contact buttons if
-       no number was provided.
-    */
-
     document.getElementById(
         "callButton"
     ).style.display =
@@ -1870,9 +1788,7 @@ function showFoundPet(pet){
 }
 
 
-/* =========================
-   PET INFORMATION
-========================= */
+/* PET INFO */
 
 function createPetInfo(pet){
 
@@ -2000,45 +1916,22 @@ function createPetInfo(pet){
 }
 
 
-/* =========================
-   SECURITY
-========================= */
+/* SECURITY */
 
 function escapeHTML(value){
 
     return String(value)
 
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-
-        .replace(
-            /</g,
-            "&lt;"
-        )
-
-        .replace(
-            />/g,
-            "&gt;"
-        )
-
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-
-        .replace(
-            /'/g,
-            "&#039;"
-        );
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 
 }
 
 
-/* =========================
-   CALL OWNER
-========================= */
+/* CALL */
 
 function callOwner(){
 
@@ -2056,9 +1949,7 @@ function callOwner(){
 }
 
 
-/* =========================
-   WHATSAPP OWNER
-========================= */
+/* WHATSAPP */
 
 function whatsappOwner(){
 
@@ -2071,10 +1962,7 @@ function whatsappOwner(){
 
     const phone =
         window.currentFoundPet.whatsappNumber
-        .replace(
-            /\D/g,
-            ""
-        );
+        .replace(/\D/g,"");
 
 
     if(!phone){
@@ -2095,9 +1983,7 @@ function whatsappOwner(){
 }
 
 
-/* =========================
-   QR SCANNED
-========================= */
+/* QR SCANNED */
 
 function showFoundPetFromQR(){
 
@@ -2145,9 +2031,7 @@ function showFoundPetFromQR(){
 }
 
 
-/* =========================
-   SAVE QR
-========================= */
+/* SAVE QR */
 
 function saveQRToGallery(){
 
@@ -2186,7 +2070,6 @@ function saveQRToGallery(){
 
 
     canvas.width = 800;
-
     canvas.height = 950;
 
 
@@ -2316,9 +2199,7 @@ function saveQRToGallery(){
 }
 
 
-/* =========================
-   PRINT QR
-========================= */
+/* PRINT QR */
 
 function printQR(){
 
@@ -2434,7 +2315,6 @@ function printQR(){
 
             <\/script>
 
-
         </body>
 
         </html>
@@ -2447,9 +2327,7 @@ function printQR(){
 }
 
 
-/* =========================
-   PAGE LOAD
-========================= */
+/* PAGE LOAD */
 
 window.onload=function(){
 
