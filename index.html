@@ -16,34 +16,21 @@
 
 body{
     margin:0;
-    padding:20px;
     font-family:Arial,sans-serif;
-    background:#f7f3ef;
+    background:#f7f1eb;
     color:#332a24;
 }
 
 .container{
     max-width:500px;
     margin:auto;
+    padding:18px;
 }
 
-.header{
-    text-align:center;
-    margin-bottom:20px;
-}
 
-.header h1{
-    margin:0;
-    font-size:30px;
-}
-
-.header p{
-    margin-top:8px;
-    color:#666;
-    font-size:14px;
-}
-
-/* TOP BAR */
+/* =========================
+   TOP BAR
+========================= */
 
 .top-bar{
     width:100%;
@@ -68,6 +55,7 @@ body{
     color:#222;
     font-size:13px;
     font-weight:bold;
+    box-shadow:0 3px 10px rgba(0,0,0,.05);
 }
 
 .back-button{
@@ -77,27 +65,57 @@ body{
 
 .language-select{
     width:auto;
+    outline:none;
     cursor:pointer;
 }
 
-/* CARD */
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.header h1{
+    margin:5px 0;
+    font-size:30px;
+}
+
+.header p{
+    margin:0;
+    font-size:14px;
+    color:#75685e;
+}
+
+
+/* =========================
+   CARD
+========================= */
 
 .card{
     background:white;
+    border-radius:20px;
     padding:20px;
-    border-radius:18px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    box-shadow:0 8px 25px rgba(76,48,29,.08);
     margin-bottom:18px;
 }
 
-h2{
+.card h2{
     margin-top:0;
-    font-size:20px;
+    font-size:21px;
 }
+
+
+/* =========================
+   FORM
+========================= */
 
 label{
     display:block;
-    margin-top:13px;
+    margin-top:14px;
     margin-bottom:6px;
     font-size:14px;
     font-weight:bold;
@@ -107,62 +125,70 @@ input,
 select{
     width:100%;
     padding:12px;
-    border:1px solid #ddd;
+    border:1px solid #ddd0c5;
     border-radius:10px;
+    font-size:15px;
     background:white;
     color:#222;
-    font-size:14px;
+    outline:none;
 }
 
 select{
     color:#222 !important;
 }
 
+input:focus,
+select:focus{
+    border-color:#8d6e58;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
 button{
     width:100%;
-    border:none;
-    border-radius:10px;
+    border:0;
     padding:13px;
-    margin-top:15px;
+    border-radius:11px;
     font-size:15px;
     font-weight:bold;
     cursor:pointer;
+    margin-top:14px;
 }
 
-.register-btn{
+.primary{
     background:#332a24;
     color:white;
 }
 
-.action-btn{
-    background:#f0e8e1;
+.secondary{
+    background:#eee5dd;
     color:#332a24;
 }
 
 .call-btn{
-    background:#e9f7e9;
-    color:#237523;
+    background:#e9f5e9;
+    color:#205c28;
 }
 
 .whatsapp-btn{
-    background:#e8f7ee;
-    color:#16833b;
+    background:#e4f6e8;
+    color:#176b2a;
 }
 
 .hidden{
     display:none !important;
 }
 
-.pet-info{
-    line-height:1.8;
-    font-size:15px;
-}
 
-.pet-id{
+/* =========================
+   QR
+========================= */
+
+.qr-area{
     text-align:center;
-    font-size:22px;
-    font-weight:bold;
-    margin-bottom:15px;
 }
 
 #qrcode{
@@ -171,47 +197,102 @@ button{
     margin:20px 0;
 }
 
-#qrcode img{
-    border:10px solid white;
+.pet-info{
+    background:#faf7f4;
+    border-radius:14px;
+    padding:15px;
+    text-align:left;
 }
 
-.success{
-    text-align:center;
-    font-weight:bold;
-    margin-bottom:10px;
+.pet-info p{
+    margin:8px 0;
 }
 
-.small-note{
+
+/* =========================
+   FOUND PET
+========================= */
+
+.found-title{
     text-align:center;
-    color:#777;
-    font-size:12px;
+    font-size:23px;
+    margin-bottom:15px;
+}
+
+.info-row{
+    padding:9px 0;
+    border-bottom:1px solid #eee5df;
+}
+
+.info-row:last-child{
+    border-bottom:0;
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message{
+    text-align:center;
+    font-size:14px;
     margin-top:10px;
+    color:#76695f;
+}
+
+
+/* =========================
+   RTL
+========================= */
+
+[dir="rtl"]{
+    text-align:right;
+}
+
+[dir="rtl"] .pet-info{
+    text-align:right;
+}
+
+
+/*
+IMPORTANT:
+Back hamesha LEFT
+Language hamesha RIGHT
+Dono bilkul same line par.
+*/
+
+[dir="rtl"] .top-bar{
+    direction:ltr;
 }
 
 </style>
 </head>
 
+
 <body>
 
 <div class="container">
 
-    <div class="header">
-        <h1>Find My Pet</h1>
-        <p id="mainDescription">
-            Register your pet and get a QR code to help find them.
-        </p>
-    </div>
 
+    <!-- =========================
+         TOP BAR
+    ========================= -->
 
-    <!-- TOP BAR -->
     <div class="top-bar">
+
+        <!-- BACK - ALWAYS LEFT -->
 
         <button
             class="back-button"
             id="backButton"
             onclick="backToMenu()">
+
             ← Back
+
         </button>
+
+
+        <!-- LANGUAGE - ALWAYS RIGHT -->
 
         <select
             class="language-select"
@@ -219,9 +300,13 @@ button{
             onchange="changeLanguage()">
 
             <option value="en">English</option>
+
             <option value="ur">اردو</option>
+
             <option value="ar">العربية</option>
+
             <option value="ru">Русский</option>
+
             <option value="ky">Кыргызча</option>
 
         </select>
@@ -229,18 +314,39 @@ button{
     </div>
 
 
-    <!-- REGISTRATION SCREEN -->
 
-    <div id="registrationScreen" class="card">
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <div class="header">
+
+        <h1>
+            🐾 Find My Pet
+        </h1>
+
+        <p id="subtitle">
+            Register your pet and attach the QR code to its collar.
+        </p>
+
+    </div>
+
+
+
+    <!-- =========================
+         REGISTRATION
+    ========================= -->
+
+    <div
+        class="card"
+        id="registrationSection">
 
         <h2 id="registerTitle">
             Register Your Pet
         </h2>
 
-        <p id="registerText">
-            Enter your pet information below.
-        </p>
 
+        <!-- PET TYPE -->
 
         <label id="petTypeLabel">
             Pet Type
@@ -248,8 +354,15 @@ button{
 
         <select id="petType">
 
-            <option value="" selected disabled>
+            <!-- NO PET SELECTED BY DEFAULT -->
+
+            <option
+                value=""
+                selected
+                disabled>
+
                 Select Pet Type
+
             </option>
 
             <option value="Cat">
@@ -275,6 +388,9 @@ button{
         </select>
 
 
+
+        <!-- PET NAME -->
+
         <label id="petNameLabel">
             Pet Name
         </label>
@@ -284,6 +400,9 @@ button{
             id="petName"
             placeholder="Enter pet name">
 
+
+
+        <!-- OWNER NAME -->
 
         <label id="ownerNameLabel">
             Owner Name
@@ -295,6 +414,9 @@ button{
             placeholder="Enter owner name">
 
 
+
+        <!-- CALL NUMBER -->
+
         <label id="callNumberLabel">
             Normal SIM / Call Number
         </label>
@@ -304,6 +426,9 @@ button{
             id="callNumber"
             placeholder="Enter number for calls">
 
+
+
+        <!-- WHATSAPP -->
 
         <label id="whatsappNumberLabel">
             WhatsApp Number
@@ -315,7 +440,10 @@ button{
             placeholder="Enter WhatsApp number">
 
 
-        <label id="petColorLabel">
+
+        <!-- COLOR -->
+
+        <label id="colorLabel">
             Pet Color
         </label>
 
@@ -325,104 +453,219 @@ button{
             placeholder="Enter pet color">
 
 
+
+        <!-- REGISTER -->
+
         <button
-            class="register-btn"
+            class="primary"
             onclick="registerPet()"
             id="registerButton">
-            Register Pet & Generate QR
+
+            Register Pet
+
         </button>
 
-        <p class="small-note" id="optionalText">
-            All information is optional.
+        <p
+            class="message"
+            id="registerMessage">
+
         </p>
 
     </div>
 
 
-    <!-- QR SCREEN -->
 
-    <div id="qrScreen" class="card hidden">
+    <!-- =========================
+         SEARCH
+    ========================= -->
 
-        <div class="success" id="successText">
-            Pet Registered Successfully!
-        </div>
+    <div
+        class="card"
+        id="searchSection">
 
-        <div class="pet-id">
-            <span id="petIdLabel">Pet ID:</span>
-            <span id="petId"></span>
-        </div>
-
-        <div id="qrcode"></div>
-
-        <div class="pet-info" id="petInfo"></div>
+        <h2 id="searchTitle">
+            Find a Pet
+        </h2>
 
 
-        <button
-            class="call-btn"
-            id="callButton"
-            onclick="callOwner()">
-            📞 Call Owner
-        </button>
+        <label id="searchIdLabel">
+            Enter Pet ID
+        </label>
 
 
-        <button
-            class="whatsapp-btn"
-            id="whatsappButton"
-            onclick="whatsappOwner()">
-            💬 WhatsApp Owner
-        </button>
+        <input
+            type="text"
+            id="searchId"
+            placeholder="Example: FMP-001">
 
 
         <button
-            class="action-btn"
-            onclick="saveInformation()"
-            id="saveInfoButton">
-            💾 Save Information
+            class="secondary"
+            onclick="findPet()"
+            id="searchButton">
+
+            Search Pet
+
         </button>
 
 
-        <button
-            class="action-btn"
-            onclick="saveQRToGallery()"
-            id="saveQRButton">
-            🖼️ Save QR to Gallery
-        </button>
+        <p
+            class="message"
+            id="searchMessage">
 
-
-        <button
-            class="action-btn"
-            onclick="printQR()"
-            id="printButton">
-            🖨️ Print QR
-        </button>
+        </p>
 
     </div>
 
 
-    <!-- FOUND PET SCREEN -->
 
-    <div id="foundPetScreen" class="card hidden">
+    <!-- =========================
+         QR SCREEN
+    ========================= -->
 
-        <h2 id="foundTitle">
-            Pet Found
+    <div
+        class="card hidden"
+        id="qrSection">
+
+        <div class="qr-area">
+
+
+            <h2 id="qrTitle">
+                Pet Registered Successfully!
+            </h2>
+
+
+            <p id="petIdDisplay"></p>
+
+
+            <div id="qrcode"></div>
+
+
+            <div
+                class="pet-info"
+                id="registeredInfo">
+
+            </div>
+
+
+
+            <!-- SAVE INFORMATION -->
+
+            <button
+                class="primary"
+                onclick="saveInformation()"
+                id="saveInfoButton">
+
+                💾 Save Information
+
+            </button>
+
+
+
+            <!-- SAVE QR -->
+
+            <button
+                class="secondary"
+                onclick="saveQRToGallery()"
+                id="saveQRButton">
+
+                🖼️ Save QR to Gallery
+
+            </button>
+
+
+
+            <!-- PRINT -->
+
+            <button
+                class="secondary"
+                onclick="printQR()"
+                id="printQRButton">
+
+                🖨️ Print QR
+
+            </button>
+
+
+
+            <!-- REGISTER ANOTHER -->
+
+            <button
+                class="primary"
+                onclick="backToMenu()"
+                id="registerAnotherButton">
+
+                + Register Another Pet
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         FOUND PET
+    ========================= -->
+
+    <div
+        class="card hidden"
+        id="foundSection">
+
+
+        <h2
+            class="found-title"
+            id="foundTitle">
+
+            🐾 Pet Found
+
         </h2>
 
-        <div class="pet-info" id="foundPetInfo"></div>
 
+        <div
+            class="pet-info"
+            id="foundInfo">
+
+        </div>
+
+
+
+        <!-- CALL -->
 
         <button
             class="call-btn"
-            onclick="foundCallOwner()"
-            id="foundCallButton">
+            onclick="callOwner()"
+            id="callOwnerButton">
+
             📞 Call Owner
+
         </button>
 
 
+
+        <!-- WHATSAPP -->
+
         <button
             class="whatsapp-btn"
-            onclick="foundWhatsappOwner()"
-            id="foundWhatsappButton">
+            onclick="whatsappOwner()"
+            id="whatsappOwnerButton">
+
             💬 WhatsApp Owner
+
+        </button>
+
+
+
+        <!-- BACK -->
+
+        <button
+            class="secondary"
+            onclick="backToMenu()"
+            id="backFoundButton">
+
+            ← Back
+
         </button>
 
     </div>
@@ -430,59 +673,729 @@ button{
 </div>
 
 
+
 <script>
 
-/* =========================
-   PET ID
-========================= */
+
+/* =====================================================
+   LANGUAGE DATA
+===================================================== */
+
+const translations = {
+
+
+    /* ================= ENGLISH ================= */
+
+    en:{
+
+        back:"← Back",
+
+        subtitle:
+        "Register your pet and attach the QR code to its collar.",
+
+        registerTitle:
+        "Register Your Pet",
+
+        petType:
+        "Pet Type",
+
+        selectPet:
+        "Select Pet Type",
+
+        petName:
+        "Pet Name",
+
+        ownerName:
+        "Owner Name",
+
+        callNumber:
+        "Normal SIM / Call Number",
+
+        whatsappNumber:
+        "WhatsApp Number",
+
+        color:
+        "Pet Color",
+
+        register:
+        "Register Pet",
+
+        searchTitle:
+        "Find a Pet",
+
+        searchId:
+        "Enter Pet ID",
+
+        search:
+        "Search Pet",
+
+        qrTitle:
+        "Pet Registered Successfully!",
+
+        saveInfo:
+        "💾 Save Information",
+
+        saveQR:
+        "🖼️ Save QR to Gallery",
+
+        printQR:
+        "🖨️ Print QR",
+
+        registerAnother:
+        "+ Register Another Pet",
+
+        found:
+        "🐾 Pet Found",
+
+        callOwner:
+        "📞 Call Owner",
+
+        whatsappOwner:
+        "💬 WhatsApp Owner",
+
+        cat:"Cat",
+
+        dog:"Dog",
+
+        rabbit:"Rabbit",
+
+        bird:"Bird",
+
+        other:"Other Pet",
+
+        petID:"Pet ID",
+
+        notFound:
+        "Pet not found."
+
+    },
+
+
+    /* ================= URDU ================= */
+
+    ur:{
+
+        back:"← واپس",
+
+        subtitle:
+        "اپنے پالتو جانور کی معلومات درج کریں اور QR کوڈ اس کے کالر پر لگائیں۔",
+
+        registerTitle:
+        "اپنے پالتو جانور کو رجسٹر کریں",
+
+        petType:
+        "جانور کی قسم",
+
+        selectPet:
+        "جانور کی قسم منتخب کریں",
+
+        petName:
+        "جانور کا نام",
+
+        ownerName:
+        "مالک کا نام",
+
+        callNumber:
+        "عام SIM / کال نمبر",
+
+        whatsappNumber:
+        "WhatsApp نمبر",
+
+        color:
+        "جانور کا رنگ",
+
+        register:
+        "جانور رجسٹر کریں",
+
+        searchTitle:
+        "جانور تلاش کریں",
+
+        searchId:
+        "Pet ID درج کریں",
+
+        search:
+        "جانور تلاش کریں",
+
+        qrTitle:
+        "جانور کامیابی سے رجسٹر ہو گیا!",
+
+        saveInfo:
+        "💾 معلومات محفوظ کریں",
+
+        saveQR:
+        "🖼️ QR گیلری میں محفوظ کریں",
+
+        printQR:
+        "🖨️ QR پرنٹ کریں",
+
+        registerAnother:
+        "+ دوسرا جانور رجسٹر کریں",
+
+        found:
+        "🐾 جانور مل گیا",
+
+        callOwner:
+        "📞 مالک کو کال کریں",
+
+        whatsappOwner:
+        "💬 مالک کو WhatsApp کریں",
+
+        cat:"بلی",
+
+        dog:"کتا",
+
+        rabbit:"خرگوش",
+
+        bird:"پرندہ",
+
+        other:"دوسرا جانور",
+
+        petID:"Pet ID",
+
+        notFound:
+        "جانور نہیں ملا۔"
+
+    },
+
+
+    /* ================= ARABIC ================= */
+
+    ar:{
+
+        back:"← رجوع",
+
+        subtitle:
+        "سجل حيوانك الأليف وضع رمز QR على طوقه.",
+
+        registerTitle:
+        "تسجيل الحيوان الأليف",
+
+        petType:
+        "نوع الحيوان",
+
+        selectPet:
+        "اختر نوع الحيوان",
+
+        petName:
+        "اسم الحيوان",
+
+        ownerName:
+        "اسم المالك",
+
+        callNumber:
+        "رقم SIM / الاتصال",
+
+        whatsappNumber:
+        "رقم WhatsApp",
+
+        color:
+        "لون الحيوان",
+
+        register:
+        "تسجيل الحيوان",
+
+        searchTitle:
+        "العثور على حيوان",
+
+        searchId:
+        "أدخل Pet ID",
+
+        search:
+        "بحث",
+
+        qrTitle:
+        "تم تسجيل الحيوان بنجاح!",
+
+        saveInfo:
+        "💾 حفظ المعلومات",
+
+        saveQR:
+        "🖼️ حفظ QR في المعرض",
+
+        printQR:
+        "🖨️ طباعة QR",
+
+        registerAnother:
+        "+ تسجيل حيوان آخر",
+
+        found:
+        "🐾 تم العثور على الحيوان",
+
+        callOwner:
+        "📞 الاتصال بالمالك",
+
+        whatsappOwner:
+        "💬 WhatsApp للمالك",
+
+        cat:"قطة",
+
+        dog:"كلب",
+
+        rabbit:"أرنب",
+
+        bird:"طائر",
+
+        other:"حيوان آخر",
+
+        petID:"Pet ID",
+
+        notFound:
+        "لم يتم العثور على الحيوان."
+
+    },
+
+
+    /* ================= RUSSIAN ================= */
+
+    ru:{
+
+        back:"← Назад",
+
+        subtitle:
+        "Зарегистрируйте питомца и прикрепите QR-код к его ошейнику.",
+
+        registerTitle:
+        "Регистрация питомца",
+
+        petType:
+        "Тип питомца",
+
+        selectPet:
+        "Выберите тип питомца",
+
+        petName:
+        "Имя питомца",
+
+        ownerName:
+        "Имя владельца",
+
+        callNumber:
+        "Обычный SIM / номер для звонков",
+
+        whatsappNumber:
+        "Номер WhatsApp",
+
+        color:
+        "Цвет питомца",
+
+        register:
+        "Зарегистрировать",
+
+        searchTitle:
+        "Найти питомца",
+
+        searchId:
+        "Введите Pet ID",
+
+        search:
+        "Найти",
+
+        qrTitle:
+        "Питомец успешно зарегистрирован!",
+
+        saveInfo:
+        "💾 Сохранить информацию",
+
+        saveQR:
+        "🖼️ Сохранить QR в галерею",
+
+        printQR:
+        "🖨️ Печать QR",
+
+        registerAnother:
+        "+ Зарегистрировать другого питомца",
+
+        found:
+        "🐾 Питомец найден",
+
+        callOwner:
+        "📞 Позвонить владельцу",
+
+        whatsappOwner:
+        "💬 WhatsApp владельцу",
+
+        cat:"Кошка",
+
+        dog:"Собака",
+
+        rabbit:"Кролик",
+
+        bird:"Птица",
+
+        other:"Другое животное",
+
+        petID:"Pet ID",
+
+        notFound:
+        "Питомец не найден."
+
+    },
+
+
+    /* ================= KYRGYZ ================= */
+
+    ky:{
+
+        back:"← Артка",
+
+        subtitle:
+        "Үй жаныбарыңызды каттап, QR кодду анын жакасына тагыңыз.",
+
+        registerTitle:
+        "Үй жаныбарын каттоо",
+
+        petType:
+        "Жаныбардын түрү",
+
+        selectPet:
+        "Жаныбардын түрүн тандаңыз",
+
+        petName:
+        "Жаныбардын аты",
+
+        ownerName:
+        "Ээсинин аты",
+
+        callNumber:
+        "Кадимки SIM / чалуу номери",
+
+        whatsappNumber:
+        "WhatsApp номери",
+
+        color:
+        "Жаныбардын түсү",
+
+        register:
+        "Каттоо",
+
+        searchTitle:
+        "Жаныбарды табуу",
+
+        searchId:
+        "Pet ID киргизиңиз",
+
+        search:
+        "Издөө",
+
+        qrTitle:
+        "Жаныбар ийгиликтүү катталды!",
+
+        saveInfo:
+        "💾 Маалыматты сактоо",
+
+        saveQR:
+        "🖼️ QR галереяга сактоо",
+
+        printQR:
+        "🖨️ QR басып чыгаруу",
+
+        registerAnother:
+        "+ Башка жаныбарды каттоо",
+
+        found:
+        "🐾 Жаныбар табылды",
+
+        callOwner:
+        "📞 Ээсине чалуу",
+
+        whatsappOwner:
+        "💬 Ээсине WhatsApp",
+
+        cat:"Мышык",
+
+        dog:"Ит",
+
+        rabbit:"Коён",
+
+        bird:"Куш",
+
+        other:"Башка жаныбар",
+
+        petID:"Pet ID",
+
+        notFound:
+        "Жаныбар табылган жок."
+
+    }
+
+};
+
+
+/* =====================================================
+   CHANGE LANGUAGE
+===================================================== */
+
+function changeLanguage(){
+
+    const lang =
+        document.getElementById(
+            "languageSelect"
+        ).value;
+
+    const t =
+        translations[lang];
+
+
+    document.documentElement.lang =
+        lang;
+
+
+    if(
+        lang === "ur" ||
+        lang === "ar"
+    ){
+
+        document.documentElement.dir =
+            "rtl";
+
+    }else{
+
+        document.documentElement.dir =
+            "ltr";
+
+    }
+
+
+    document.getElementById(
+        "backButton"
+    ).textContent =
+        t.back;
+
+
+    document.getElementById(
+        "subtitle"
+    ).textContent =
+        t.subtitle;
+
+
+    document.getElementById(
+        "registerTitle"
+    ).textContent =
+        t.registerTitle;
+
+
+    document.getElementById(
+        "petTypeLabel"
+    ).textContent =
+        t.petType;
+
+
+    document.getElementById(
+        "petNameLabel"
+    ).textContent =
+        t.petName;
+
+
+    document.getElementById(
+        "ownerNameLabel"
+    ).textContent =
+        t.ownerName;
+
+
+    document.getElementById(
+        "callNumberLabel"
+    ).textContent =
+        t.callNumber;
+
+
+    document.getElementById(
+        "whatsappNumberLabel"
+    ).textContent =
+        t.whatsappNumber;
+
+
+    document.getElementById(
+        "colorLabel"
+    ).textContent =
+        t.color;
+
+
+    document.getElementById(
+        "registerButton"
+    ).textContent =
+        t.register;
+
+
+    document.getElementById(
+        "searchTitle"
+    ).textContent =
+        t.searchTitle;
+
+
+    document.getElementById(
+        "searchIdLabel"
+    ).textContent =
+        t.searchId;
+
+
+    document.getElementById(
+        "searchButton"
+    ).textContent =
+        t.search;
+
+
+    document.getElementById(
+        "qrTitle"
+    ).textContent =
+        t.qrTitle;
+
+
+    document.getElementById(
+        "saveInfoButton"
+    ).textContent =
+        t.saveInfo;
+
+
+    document.getElementById(
+        "saveQRButton"
+    ).textContent =
+        t.saveQR;
+
+
+    document.getElementById(
+        "printQRButton"
+    ).textContent =
+        t.printQR;
+
+
+    document.getElementById(
+        "registerAnotherButton"
+    ).textContent =
+        t.registerAnother;
+
+
+    document.getElementById(
+        "foundTitle"
+    ).textContent =
+        t.found;
+
+
+    document.getElementById(
+        "callOwnerButton"
+    ).textContent =
+        t.callOwner;
+
+
+    document.getElementById(
+        "whatsappOwnerButton"
+    ).textContent =
+        t.whatsappOwner;
+
+
+    document.getElementById(
+        "backFoundButton"
+    ).textContent =
+        t.back;
+
+
+    /* PET TYPE OPTIONS */
+
+    const petType =
+        document.getElementById(
+            "petType"
+        );
+
+
+    petType.options[0].text =
+        t.selectPet;
+
+    petType.options[1].text =
+        t.cat;
+
+    petType.options[2].text =
+        t.dog;
+
+    petType.options[3].text =
+        t.rabbit;
+
+    petType.options[4].text =
+        t.bird;
+
+    petType.options[5].text =
+        t.other;
+}
+
+
+/* =====================================================
+   GENERATE EASY PET ID
+===================================================== */
 
 function generatePetID(){
 
     let number =
         parseInt(
-            localStorage.getItem("fmpLastID") || "0"
+            localStorage.getItem(
+                "fmpLastID"
+            ) || "0"
         ) + 1;
+
 
     localStorage.setItem(
         "fmpLastID",
         number
     );
 
+
     return "FMP-" +
-        String(number).padStart(3,"0");
+        String(number).padStart(
+            3,
+            "0"
+        );
 }
 
 
-/* =========================
+/* =====================================================
    REGISTER PET
-========================= */
+===================================================== */
 
 function registerPet(){
 
+    /*
+       ALL INFORMATION IS OPTIONAL.
+       Registration works even if
+       some or all fields are empty.
+    */
+
     const petType =
-        document.getElementById("petType").value ||
+        document.getElementById(
+            "petType"
+        ).value ||
         "Not specified";
 
+
     const petName =
-        document.getElementById("petName")
-        .value.trim();
+        document.getElementById(
+            "petName"
+        ).value.trim();
+
 
     const ownerName =
-        document.getElementById("ownerName")
-        .value.trim();
+        document.getElementById(
+            "ownerName"
+        ).value.trim();
+
 
     const callNumber =
-        document.getElementById("callNumber")
-        .value.trim();
+        document.getElementById(
+            "callNumber"
+        ).value.trim();
+
 
     const whatsappNumber =
-        document.getElementById("whatsappNumber")
-        .value.trim();
+        document.getElementById(
+            "whatsappNumber"
+        ).value.trim();
+
 
     const color =
-        document.getElementById("petColor")
-        .value.trim();
+        document.getElementById(
+            "petColor"
+        ).value.trim();
 
+
+    /*
+       EASY PET ID
+    */
 
     const petId =
         generatePetID();
@@ -490,22 +1403,26 @@ function registerPet(){
 
     const pet = {
 
-        petId: petId,
+        petId:petId,
 
-        petType: petType,
+        petType:petType,
 
-        petName: petName,
+        petName:petName,
 
-        ownerName: ownerName,
+        ownerName:ownerName,
 
-        callNumber: callNumber,
+        callNumber:callNumber,
 
-        whatsappNumber: whatsappNumber,
+        whatsappNumber:whatsappNumber,
 
-        color: color
+        color:color
 
     };
 
+
+    /*
+       SAVE PET
+    */
 
     localStorage.setItem(
         "pet_" + petId,
@@ -513,817 +1430,216 @@ function registerPet(){
     );
 
 
+    /*
+       SHOW QR
+    */
+
     showQR(pet);
 }
 
 
-/* =========================
+/* =====================================================
    SHOW QR
-========================= */
+===================================================== */
 
 function showQR(pet){
 
     document.getElementById(
-        "registrationScreen"
+        "registrationSection"
     ).classList.add("hidden");
 
-    document.getElementById(
-        "foundPetScreen"
-    ).classList.add("hidden");
 
     document.getElementById(
-        "qrScreen"
+        "searchSection"
+    ).classList.add("hidden");
+
+
+    document.getElementById(
+        "foundSection"
+    ).classList.add("hidden");
+
+
+    document.getElementById(
+        "qrSection"
     ).classList.remove("hidden");
 
 
     document.getElementById(
-        "petId"
-    ).textContent = pet.petId;
+        "petIdDisplay"
+    ).innerHTML =
+        "<strong>Pet ID: " +
+        escapeHTML(pet.petId) +
+        "</strong>";
 
 
     const qrBox =
-        document.getElementById("qrcode");
+        document.getElementById(
+            "qrcode"
+        );
+
 
     qrBox.innerHTML = "";
 
 
-    const baseURL =
+    const currentUrl =
+
         window.location.origin +
-        window.location.pathname;
 
+        window.location.pathname +
 
-    const qrURL =
-        baseURL +
         "?pet=" +
-        encodeURIComponent(pet.petId) +
+        encodeURIComponent(
+            pet.petId
+        ) +
 
         "&type=" +
-        encodeURIComponent(pet.petType) +
+        encodeURIComponent(
+            pet.petType
+        ) +
 
         "&name=" +
-        encodeURIComponent(pet.petName) +
+        encodeURIComponent(
+            pet.petName
+        ) +
 
         "&owner=" +
-        encodeURIComponent(pet.ownerName) +
+        encodeURIComponent(
+            pet.ownerName
+        ) +
 
         "&call=" +
-        encodeURIComponent(pet.callNumber) +
+        encodeURIComponent(
+            pet.callNumber
+        ) +
 
         "&wa=" +
-        encodeURIComponent(pet.whatsappNumber) +
+        encodeURIComponent(
+            pet.whatsappNumber
+        ) +
 
         "&color=" +
-        encodeURIComponent(pet.color);
+        encodeURIComponent(
+            pet.color
+        );
 
 
     new QRCode(
         qrBox,
         {
-            text: qrURL,
+
+            text:currentUrl,
+
             width:220,
+
             height:220,
-            correctLevel:QRCode.CorrectLevel.H
+
+            correctLevel:
+                QRCode.CorrectLevel.H
+
         }
     );
 
 
     document.getElementById(
-        "petInfo"
-    ).innerHTML = createPetInfoHTML(pet);
-
-
-    document.getElementById(
-        "callButton"
-    ).style.display =
-        pet.callNumber ? "block" : "none";
-
-
-    document.getElementById(
-        "whatsappButton"
-    ).style.display =
-        pet.whatsappNumber ? "block" : "none";
-}
-
-
-/* =========================
-   PET INFORMATION
-========================= */
-
-function createPetInfoHTML(pet){
-
-    return `
-
-        <strong>Pet Type:</strong>
-        ${escapeHTML(pet.petType || "Not specified")}
-        <br>
-
-        <strong>Pet Name:</strong>
-        ${escapeHTML(pet.petName || "Not specified")}
-        <br>
-
-        <strong>Owner Name:</strong>
-        ${escapeHTML(pet.ownerName || "Not specified")}
-        <br>
-
-        <strong>Call Number:</strong>
-        ${escapeHTML(pet.callNumber || "Not specified")}
-        <br>
-
-        <strong>WhatsApp:</strong>
-        ${escapeHTML(pet.whatsappNumber || "Not specified")}
-        <br>
-
-        <strong>Pet Color:</strong>
-        ${escapeHTML(pet.color || "Not specified")}
-
-    `;
-}
-
-
-function escapeHTML(text){
-
-    const div =
-        document.createElement("div");
-
-    div.textContent =
-        text || "";
-
-    return div.innerHTML;
-}
-
-
-/* =========================
-   CALL OWNER
-========================= */
-
-function callOwner(){
-
-    const petId =
-        document.getElementById(
-            "petId"
-        ).textContent;
-
-    const data =
-        localStorage.getItem(
-            "pet_" + petId
-        );
-
-    if(!data){
-        alert("Phone number not available.");
-        return;
-    }
-
-    const pet =
-        JSON.parse(data);
-
-    if(!pet.callNumber){
-        alert("Phone number not available.");
-        return;
-    }
-
-    window.location.href =
-        "tel:" + pet.callNumber;
-}
-
-
-/* =========================
-   WHATSAPP OWNER
-========================= */
-
-function whatsappOwner(){
-
-    const petId =
-        document.getElementById(
-            "petId"
-        ).textContent;
-
-    const data =
-        localStorage.getItem(
-            "pet_" + petId
-        );
-
-    if(!data){
-        alert("WhatsApp number not available.");
-        return;
-    }
-
-    const pet =
-        JSON.parse(data);
-
-    if(!pet.whatsappNumber){
-        alert("WhatsApp number not available.");
-        return;
-    }
-
-
-    let number =
-        pet.whatsappNumber
-        .replace(/\D/g,"");
-
-
-    if(
-        number.startsWith("0")
-    ){
-        number =
-            "92" +
-            number.substring(1);
-    }
-
-
-    window.open(
-        "https://wa.me/" + number,
-        "_blank"
-    );
-}
-
-
-/* =========================
-   QR SCAN DETECTION
-========================= */
-
-function showFoundPetFromQR(){
-
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
-
-
-    const petId =
-        params.get("pet");
-
-
-    if(!petId){
-        return;
-    }
-
-
-    const pet = {
-
-        petId: petId,
-
-        petType:
-            params.get("type") ||
-            "Not specified",
-
-        petName:
-            params.get("name") ||
-            "",
-
-        ownerName:
-            params.get("owner") ||
-            "",
-
-        callNumber:
-            params.get("call") ||
-            "",
-
-        whatsappNumber:
-            params.get("wa") ||
-            "",
-
-        color:
-            params.get("color") ||
-            ""
-
-    };
-
-
-    document.getElementById(
-        "registrationScreen"
-    ).classList.add("hidden");
-
-
-    document.getElementById(
-        "qrScreen"
-    ).classList.add("hidden");
-
-
-    document.getElementById(
-        "foundPetScreen"
-    ).classList.remove("hidden");
-
-
-    document.getElementById(
-        "foundPetInfo"
+        "registeredInfo"
     ).innerHTML = `
 
-        <div class="pet-id">
-            Pet ID: ${escapeHTML(pet.petId)}
-        </div>
+        <p>
+            <strong>Pet ID:</strong>
+            ${escapeHTML(pet.petId)}
+        </p>
 
-        ${createPetInfoHTML(pet)}
+        <p>
+            <strong>Pet Type:</strong>
+            ${escapeHTML(pet.petType)}
+        </p>
+
+        <p>
+            <strong>Pet Name:</strong>
+            ${escapeHTML(
+                pet.petName ||
+                "Not specified"
+            )}
+        </p>
+
+        <p>
+            <strong>Owner:</strong>
+            ${escapeHTML(
+                pet.ownerName ||
+                "Not specified"
+            )}
+        </p>
+
+        <p>
+            <strong>Color:</strong>
+            ${escapeHTML(
+                pet.color ||
+                "Not specified"
+            )}
+        </p>
 
     `;
 
 
-    window.currentFoundPet =
-        pet;
+    window.scrollTo({
 
+        top:0,
 
-    document.getElementById(
-        "foundCallButton"
-    ).style.display =
-        pet.callNumber ? "block" : "none";
+        behavior:"smooth"
 
-
-    document.getElementById(
-        "foundWhatsappButton"
-    ).style.display =
-        pet.whatsappNumber ? "block" : "none";
+    });
 }
 
 
-/* =========================
-   FOUND PET CALL
-========================= */
-
-function foundCallOwner(){
-
-    const pet =
-        window.currentFoundPet;
-
-    if(
-        !pet ||
-        !pet.callNumber
-    ){
-        alert("Phone number not available.");
-        return;
-    }
-
-    window.location.href =
-        "tel:" + pet.callNumber;
-}
-
-
-/* =========================
-   FOUND PET WHATSAPP
-========================= */
-
-function foundWhatsappOwner(){
-
-    const pet =
-        window.currentFoundPet;
-
-    if(
-        !pet ||
-        !pet.whatsappNumber
-    ){
-        alert("WhatsApp number not available.");
-        return;
-    }
-
-
-    let number =
-        pet.whatsappNumber
-        .replace(/\D/g,"");
-
-
-    if(
-        number.startsWith("0")
-    ){
-        number =
-            "92" +
-            number.substring(1);
-    }
-
-
-    window.open(
-        "https://wa.me/" + number,
-        "_blank"
-    );
-}
-
-
-/* =========================
-   SAVE INFORMATION
-========================= */
-
-async function saveInformation(){
-
-    const petId =
-        document.getElementById(
-            "petId"
-        ).textContent;
-
-    const data =
-        localStorage.getItem(
-            "pet_" + petId
-        );
-
-    if(!data){
-        alert("Information not found.");
-        return;
-    }
-
-    const pet =
-        JSON.parse(data);
-
-
-    const canvas =
-        document.createElement("canvas");
-
-    canvas.width = 900;
-    canvas.height = 700;
-
-
-    const ctx =
-        canvas.getContext("2d");
-
-
-    ctx.fillStyle =
-        "#ffffff";
-
-    ctx.fillRect(
-        0,0,
-        canvas.width,
-        canvas.height
-    );
-
-
-    ctx.fillStyle =
-        "#332a24";
-
-    ctx.font =
-        "bold 42px Arial";
-
-    ctx.fillText(
-        "Find My Pet",
-        50,70
-    );
-
-
-    ctx.font =
-        "bold 28px Arial";
-
-    ctx.fillText(
-        "Pet ID: " + pet.petId,
-        50,130
-    );
-
-
-    ctx.font =
-        "24px Arial";
-
-
-    const lines = [
-
-        "Pet Type: " +
-        (pet.petType || "Not specified"),
-
-        "Pet Name: " +
-        (pet.petName || "Not specified"),
-
-        "Owner Name: " +
-        (pet.ownerName || "Not specified"),
-
-        "Call Number: " +
-        (pet.callNumber || "Not specified"),
-
-        "WhatsApp: " +
-        (pet.whatsappNumber || "Not specified"),
-
-        "Pet Color: " +
-        (pet.color || "Not specified")
-
-    ];
-
-
-    lines.forEach(
-        (line,index)=>{
-
-            ctx.fillText(
-                line,
-                50,
-                190 + index*55
-            );
-
-        }
-    );
-
-
-    const blob =
-        await new Promise(
-            resolve =>
-                canvas.toBlob(resolve,"image/png")
-        );
-
-
-    const file =
-        new File(
-            [blob],
-            "Find-My-Pet-" +
-            pet.petId +
-            ".png",
-            {
-                type:"image/png"
-            }
-        );
-
-
-    if(
-        navigator.share &&
-        navigator.canShare &&
-        navigator.canShare({files:[file]})
-    ){
-
-        try{
-
-            await navigator.share({
-                files:[file],
-                title:"Find My Pet"
-            });
-
-            return;
-
-        }catch(e){}
-
-    }
-
-
-    const link =
-        document.createElement("a");
-
-    link.href =
-        URL.createObjectURL(blob);
-
-    link.download =
-        "Find-My-Pet-" +
-        pet.petId +
-        ".png";
-
-    link.click();
-
-}
-
-
-/* =========================
-   SAVE QR
-========================= */
-
-async function saveQRToGallery(){
-
-    const qrCanvas =
-        document.querySelector(
-            "#qrcode canvas"
-        );
-
-
-    const qrImage =
-        document.querySelector(
-            "#qrcode img"
-        );
-
-
-    let source =
-        qrCanvas || qrImage;
-
-
-    if(!source){
-        alert("QR code not ready.");
-        return;
-    }
-
-
-    const canvas =
-        document.createElement("canvas");
-
-    canvas.width = 700;
-    canvas.height = 800;
-
-
-    const ctx =
-        canvas.getContext("2d");
-
-
-    ctx.fillStyle =
-        "#ffffff";
-
-    ctx.fillRect(
-        0,0,
-        canvas.width,
-        canvas.height
-    );
-
-
-    ctx.fillStyle =
-        "#332a24";
-
-    ctx.font =
-        "bold 42px Arial";
-
-    ctx.textAlign =
-        "center";
-
-
-    ctx.fillText(
-        "Find My Pet",
-        350,
-        70
-    );
-
-
-    ctx.font =
-        "bold 30px Arial";
-
-
-    ctx.fillText(
-        "Pet ID: " +
-        document.getElementById(
-            "petId"
-        ).textContent,
-        350,
-        120
-    );
-
-
-    ctx.drawImage(
-        source,
-        150,
-        170,
-        400,
-        400
-    );
-
-
-    ctx.font =
-        "22px Arial";
-
-
-    ctx.fillText(
-        "Scan this QR code to find the pet owner",
-        350,
-        630
-    );
-
-
-    const blob =
-        await new Promise(
-            resolve =>
-                canvas.toBlob(resolve,"image/png")
-        );
-
-
-    const petId =
-        document.getElementById(
-            "petId"
-        ).textContent;
-
-
-    const file =
-        new File(
-            [blob],
-            "Find-My-Pet-QR-" +
-            petId +
-            ".png",
-            {
-                type:"image/png"
-            }
-        );
-
-
-    if(
-        navigator.share &&
-        navigator.canShare &&
-        navigator.canShare({files:[file]})
-    ){
-
-        try{
-
-            await navigator.share({
-                files:[file],
-                title:"Find My Pet QR"
-            });
-
-            return;
-
-        }catch(e){}
-
-    }
-
-
-    const link =
-        document.createElement("a");
-
-    link.href =
-        URL.createObjectURL(blob);
-
-    link.download =
-        "Find-My-Pet-QR-" +
-        petId +
-        ".png";
-
-    link.click();
-}
-
-
-/* =========================
-   PRINT QR
-========================= */
-
-function printQR(){
-
-    const qr =
-        document.getElementById(
-            "qrcode"
-        ).innerHTML;
-
-
-    const petId =
-        document.getElementById(
-            "petId"
-        ).textContent;
-
-
-    const win =
-        window.open(
-            "",
-            "_blank"
-        );
-
-
-    win.document.write(`
-
-        <html>
-
-        <head>
-
-            <title>
-                Find My Pet - ${petId}
-            </title>
-
-            <style>
-
-                body{
-                    text-align:center;
-                    font-family:Arial;
-                    padding:30px;
-                }
-
-                img{
-                    width:300px;
-                    height:300px;
-                }
-
-                h1{
-                    margin-bottom:10px;
-                }
-
-            </style>
-
-        </head>
-
-        <body>
-
-            <h1>Find My Pet</h1>
-
-            <h2>Pet ID: ${petId}</h2>
-
-            ${qr}
-
-            <p>
-                Scan this QR code to find the pet owner.
-            </p>
-
-            <script>
-
-                window.onload=function(){
-                    window.print();
-                };
-
-            <\/script>
-
-        </body>
-
-        </html>
-
-    `);
-
-
-    win.document.close();
-}
-
-
-/* =========================
-   BACK BUTTON
-========================= */
+/* =====================================================
+   BACK
+===================================================== */
 
 function backToMenu(){
 
     document.getElementById(
-        "qrScreen"
+        "qrSection"
     ).classList.add("hidden");
 
 
     document.getElementById(
-        "foundPetScreen"
+        "foundSection"
     ).classList.add("hidden");
 
 
     document.getElementById(
-        "registrationScreen"
+        "registrationSection"
     ).classList.remove("hidden");
 
+
+    document.getElementById(
+        "searchSection"
+    ).classList.remove("hidden");
+
+
+    document.getElementById(
+        "qrcode"
+    ).innerHTML = "";
+
+
+    document.getElementById(
+        "registeredInfo"
+    ).innerHTML = "";
+
+
+    document.getElementById(
+        "searchMessage"
+    ).textContent = "";
+
+
+    document.getElementById(
+        "registerMessage"
+    ).textContent = "";
+
+
+    /*
+       CLEAR FORM
+    */
 
     document.getElementById(
         "petType"
@@ -1355,737 +1671,1038 @@ function backToMenu(){
     ).value = "";
 
 
-    document.getElementById(
-        "qrcode"
-    ).innerHTML = "";
+    history.replaceState(
 
-
-    window.history.replaceState(
         {},
+
         document.title,
+
         window.location.pathname
+
+    );
+
+
+    window.currentFoundPet =
+        null;
+
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+}
+
+
+/* =====================================================
+   SEARCH PET
+===================================================== */
+
+function findPet(){
+
+    const id =
+        document.getElementById(
+            "searchId"
+        ).value
+        .trim()
+        .toUpperCase();
+
+
+    if(!id){
+
+        const lang =
+            document.getElementById(
+                "languageSelect"
+            ).value;
+
+
+        document.getElementById(
+            "searchMessage"
+        ).textContent =
+            translations[lang].notFound;
+
+
+        return;
+    }
+
+
+    const data =
+        localStorage.getItem(
+            "pet_" + id
+        );
+
+
+    if(!data){
+
+        const lang =
+            document.getElementById(
+                "languageSelect"
+            ).value;
+
+
+        document.getElementById(
+            "searchMessage"
+        ).textContent =
+            translations[lang].notFound;
+
+
+        return;
+    }
+
+
+    const pet =
+        JSON.parse(data);
+
+
+    showFoundPet(pet);
+}
+
+
+/* =====================================================
+   SHOW FOUND PET
+===================================================== */
+
+function showFoundPet(pet){
+
+    document.getElementById(
+        "registrationSection"
+    ).classList.add("hidden");
+
+
+    document.getElementById(
+        "searchSection"
+    ).classList.add("hidden");
+
+
+    document.getElementById(
+        "qrSection"
+    ).classList.add("hidden");
+
+
+    document.getElementById(
+        "foundSection"
+    ).classList.remove("hidden");
+
+
+    document.getElementById(
+        "foundInfo"
+    ).innerHTML = `
+
+        <div class="info-row">
+
+            <strong>Pet ID:</strong>
+
+            ${escapeHTML(pet.petId)}
+
+        </div>
+
+
+        <div class="info-row">
+
+            <strong>Pet Type:</strong>
+
+            ${escapeHTML(pet.petType)}
+
+        </div>
+
+
+        <div class="info-row">
+
+            <strong>Pet Name:</strong>
+
+            ${escapeHTML(
+                pet.petName ||
+                "Not specified"
+            )}
+
+        </div>
+
+
+        <div class="info-row">
+
+            <strong>Owner:</strong>
+
+            ${escapeHTML(
+                pet.ownerName ||
+                "Not specified"
+            )}
+
+        </div>
+
+
+        <div class="info-row">
+
+            <strong>Color:</strong>
+
+            ${escapeHTML(
+                pet.color ||
+                "Not specified"
+            )}
+
+        </div>
+
+    `;
+
+
+    window.currentFoundPet =
+        pet;
+
+
+    document.getElementById(
+        "callOwnerButton"
+    ).style.display =
+        pet.callNumber
+        ? "block"
+        : "none";
+
+
+    document.getElementById(
+        "whatsappOwnerButton"
+    ).style.display =
+        pet.whatsappNumber
+        ? "block"
+        : "none";
+
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+}
+
+
+/* =====================================================
+   QR SCAN
+===================================================== */
+
+function showFoundPetFromQR(){
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    const petId =
+        params.get("pet");
+
+
+    if(!petId){
+
+        return;
+
+    }
+
+
+    const pet = {
+
+        petId:petId,
+
+        petType:
+            params.get("type") ||
+            "Not specified",
+
+        petName:
+            params.get("name") ||
+            "",
+
+        ownerName:
+            params.get("owner") ||
+            "",
+
+        callNumber:
+            params.get("call") ||
+            "",
+
+        whatsappNumber:
+            params.get("wa") ||
+            "",
+
+        color:
+            params.get("color") ||
+            ""
+
+    };
+
+
+    showFoundPet(pet);
+}
+
+
+/* =====================================================
+   CALL OWNER
+===================================================== */
+
+function callOwner(){
+
+    if(
+        !window.currentFoundPet
+    ){
+
+        return;
+
+    }
+
+
+    const number =
+        window.currentFoundPet
+        .callNumber;
+
+
+    if(!number){
+
+        return;
+
+    }
+
+
+    window.location.href =
+        "tel:" + number;
+}
+
+
+/* =====================================================
+   WHATSAPP OWNER
+===================================================== */
+
+function whatsappOwner(){
+
+    if(
+        !window.currentFoundPet
+    ){
+
+        return;
+
+    }
+
+
+    let number =
+        window.currentFoundPet
+        .whatsappNumber;
+
+
+    if(!number){
+
+        return;
+
+    }
+
+
+    number =
+        number.replace(
+            /\D/g,
+            ""
+        );
+
+
+    if(
+        number.startsWith("0")
+    ){
+
+        number =
+            "92" +
+            number.substring(1);
+
+    }
+
+
+    window.open(
+
+        "https://wa.me/" +
+        number,
+
+        "_blank"
+
     );
 }
 
 
-/* =========================
-   LANGUAGES
-========================= */
+/* =====================================================
+   SAVE INFORMATION
+===================================================== */
 
-const translations = {
+async function saveInformation(){
 
-    en:{
-
-        back:"← Back",
-
-        description:
-        "Register your pet and get a QR code to help find them.",
-
-        registerTitle:
-        "Register Your Pet",
-
-        registerText:
-        "Enter your pet information below.",
-
-        petType:
-        "Pet Type",
-
-        selectPet:
-        "Select Pet Type",
-
-        cat:
-        "Cat",
-
-        dog:
-        "Dog",
-
-        rabbit:
-        "Rabbit",
-
-        bird:
-        "Bird",
-
-        other:
-        "Other Pet",
-
-        petName:
-        "Pet Name",
-
-        ownerName:
-        "Owner Name",
-
-        callNumber:
-        "Normal SIM / Call Number",
-
-        whatsappNumber:
-        "WhatsApp Number",
-
-        color:
-        "Pet Color",
-
-        petNamePlaceholder:
-        "Enter pet name",
-
-        ownerPlaceholder:
-        "Enter owner name",
-
-        callPlaceholder:
-        "Enter number for calls",
-
-        whatsappPlaceholder:
-        "Enter WhatsApp number",
-
-        colorPlaceholder:
-        "Enter pet color",
-
-        register:
-        "Register Pet & Generate QR",
-
-        optional:
-        "All information is optional.",
-
-        success:
-        "Pet Registered Successfully!",
-
-        petId:
-        "Pet ID:",
-
-        call:
-        "📞 Call Owner",
-
-        whatsapp:
-        "💬 WhatsApp Owner",
-
-        saveInfo:
-        "💾 Save Information",
-
-        saveQR:
-        "🖼️ Save QR to Gallery",
-
-        print:
-        "🖨️ Print QR",
-
-        found:
-        "Pet Found"
-
-    },
-
-
-    ur:{
-
-        back:"← واپس",
-
-        description:
-        "اپنے پالتو جانور کا اندراج کریں اور QR کوڈ حاصل کریں۔",
-
-        registerTitle:
-        "اپنے پالتو جانور کا اندراج کریں",
-
-        registerText:
-        "اپنے پالتو جانور کی معلومات درج کریں۔",
-
-        petType:
-        "جانور کی قسم",
-
-        selectPet:
-        "جانور کی قسم منتخب کریں",
-
-        cat:
-        "بلی",
-
-        dog:
-        "کتا",
-
-        rabbit:
-        "خرگوش",
-
-        bird:
-        "پرندہ",
-
-        other:
-        "دوسرا جانور",
-
-        petName:
-        "جانور کا نام",
-
-        ownerName:
-        "مالک کا نام",
-
-        callNumber:
-        "عام SIM / کال نمبر",
-
-        whatsappNumber:
-        "WhatsApp نمبر",
-
-        color:
-        "جانور کا رنگ",
-
-        petNamePlaceholder:
-        "جانور کا نام درج کریں",
-
-        ownerPlaceholder:
-        "مالک کا نام درج کریں",
-
-        callPlaceholder:
-        "کال کے لیے نمبر درج کریں",
-
-        whatsappPlaceholder:
-        "WhatsApp نمبر درج کریں",
-
-        colorPlaceholder:
-        "جانور کا رنگ درج کریں",
-
-        register:
-        "جانور رجسٹر کریں اور QR بنائیں",
-
-        optional:
-        "تمام معلومات اختیاری ہیں۔",
-
-        success:
-        "جانور کامیابی سے رجسٹر ہو گیا!",
-
-        petId:
-        "جانور کی ID:",
-
-        call:
-        "📞 مالک کو کال کریں",
-
-        whatsapp:
-        "💬 مالک کو WhatsApp کریں",
-
-        saveInfo:
-        "💾 معلومات محفوظ کریں",
-
-        saveQR:
-        "🖼️ QR گیلری میں محفوظ کریں",
-
-        print:
-        "🖨️ QR پرنٹ کریں",
-
-        found:
-        "جانور مل گیا"
-
-    },
-
-
-    ar:{
-
-        back:"← رجوع",
-
-        description:
-        "سجل حيوانك الأليف واحصل على رمز QR للمساعدة في العثور عليه.",
-
-        registerTitle:
-        "تسجيل الحيوان الأليف",
-
-        registerText:
-        "أدخل معلومات الحيوان الأليف.",
-
-        petType:
-        "نوع الحيوان",
-
-        selectPet:
-        "اختر نوع الحيوان",
-
-        cat:
-        "قطة",
-
-        dog:
-        "كلب",
-
-        rabbit:
-        "أرنب",
-
-        bird:
-        "طائر",
-
-        other:
-        "حيوان آخر",
-
-        petName:
-        "اسم الحيوان",
-
-        ownerName:
-        "اسم المالك",
-
-        callNumber:
-        "رقم الاتصال",
-
-        whatsappNumber:
-        "رقم WhatsApp",
-
-        color:
-        "لون الحيوان",
-
-        petNamePlaceholder:
-        "أدخل اسم الحيوان",
-
-        ownerPlaceholder:
-        "أدخل اسم المالك",
-
-        callPlaceholder:
-        "أدخل رقم الاتصال",
-
-        whatsappPlaceholder:
-        "أدخل رقم WhatsApp",
-
-        colorPlaceholder:
-        "أدخل لون الحيوان",
-
-        register:
-        "تسجيل الحيوان وإنشاء QR",
-
-        optional:
-        "جميع المعلومات اختيارية.",
-
-        success:
-        "تم تسجيل الحيوان بنجاح!",
-
-        petId:
-        "معرف الحيوان:",
-
-        call:
-        "📞 اتصل بالمالك",
-
-        whatsapp:
-        "💬 WhatsApp المالك",
-
-        saveInfo:
-        "💾 حفظ المعلومات",
-
-        saveQR:
-        "🖼️ حفظ QR في المعرض",
-
-        print:
-        "🖨️ طباعة QR",
-
-        found:
-        "تم العثور على الحيوان"
-
-    },
-
-
-    ru:{
-
-        back:"← Назад",
-
-        description:
-        "Зарегистрируйте питомца и получите QR-код для его поиска.",
-
-        registerTitle:
-        "Регистрация питомца",
-
-        registerText:
-        "Введите информацию о питомце.",
-
-        petType:
-        "Тип питомца",
-
-        selectPet:
-        "Выберите тип питомца",
-
-        cat:
-        "Кошка",
-
-        dog:
-        "Собака",
-
-        rabbit:
-        "Кролик",
-
-        bird:
-        "Птица",
-
-        other:
-        "Другое животное",
-
-        petName:
-        "Имя питомца",
-
-        ownerName:
-        "Имя владельца",
-
-        callNumber:
-        "Номер для звонка",
-
-        whatsappNumber:
-        "Номер WhatsApp",
-
-        color:
-        "Цвет питомца",
-
-        petNamePlaceholder:
-        "Введите имя питомца",
-
-        ownerPlaceholder:
-        "Введите имя владельца",
-
-        callPlaceholder:
-        "Введите номер для звонка",
-
-        whatsappPlaceholder:
-        "Введите номер WhatsApp",
-
-        colorPlaceholder:
-        "Введите цвет питомца",
-
-        register:
-        "Зарегистрировать и создать QR",
-
-        optional:
-        "Вся информация необязательна.",
-
-        success:
-        "Питомец успешно зарегистрирован!",
-
-        petId:
-        "ID питомца:",
-
-        call:
-        "📞 Позвонить владельцу",
-
-        whatsapp:
-        "💬 WhatsApp владельца",
-
-        saveInfo:
-        "💾 Сохранить информацию",
-
-        saveQR:
-        "🖼️ Сохранить QR",
-
-        print:
-        "🖨️ Печать QR",
-
-        found:
-        "Питомец найден"
-
-    },
-
-
-    ky:{
-
-        back:"← Артка",
-
-        description:
-        "Үй жаныбарыңызды каттап, аны табууга жардам бере турган QR код алыңыз.",
-
-        registerTitle:
-        "Үй жаныбарын каттоо",
-
-        registerText:
-        "Үй жаныбары тууралуу маалыматты киргизиңиз.",
-
-        petType:
-        "Жаныбардын түрү",
-
-        selectPet:
-        "Жаныбардын түрүн тандаңыз",
-
-        cat:
-        "Мышык",
-
-        dog:
-        "Ит",
-
-        rabbit:
-        "Коён",
-
-        bird:
-        "Куш",
-
-        other:
-        "Башка жаныбар",
-
-        petName:
-        "Жаныбардын аты",
-
-        ownerName:
-        "Ээсинин аты",
-
-        callNumber:
-        "Чалуу номери",
-
-        whatsappNumber:
-        "WhatsApp номери",
-
-        color:
-        "Жаныбардын түсү",
-
-        petNamePlaceholder:
-        "Жаныбардын атын киргизиңиз",
-
-        ownerPlaceholder:
-        "Ээсинин атын киргизиңиз",
-
-        callPlaceholder:
-        "Чалуу номерин киргизиңиз",
-
-        whatsappPlaceholder:
-        "WhatsApp номерин киргизиңиз",
-
-        colorPlaceholder:
-        "Жаныбардын түсүн киргизиңиз",
-
-        register:
-        "Каттоо жана QR түзүү",
-
-        optional:
-        "Бардык маалыматтар милдеттүү эмес.",
-
-        success:
-        "Жаныбар ийгиликтүү катталды!",
-
-        petId:
-        "Жаныбар ID:",
-
-        call:
-        "📞 Ээсине чалуу",
-
-        whatsapp:
-        "💬 Ээсине WhatsApp",
-
-        saveInfo:
-        "💾 Маалыматты сактоо",
-
-        saveQR:
-        "🖼️ QR сактоо",
-
-        print:
-        "🖨️ QR басып чыгаруу",
-
-        found:
-        "Жаныбар табылды"
-
-    }
-
-};
-
-
-/* =========================
-   CHANGE LANGUAGE
-========================= */
-
-function changeLanguage(){
-
-    const lang =
+    const petId =
         document.getElementById(
-            "languageSelect"
-        ).value;
-
-    const t =
-        translations[lang];
-
-
-    document.getElementById(
-        "backButton"
-    ).textContent =
-        t.back;
+            "petIdDisplay"
+        ).textContent
+        .replace(
+            "Pet ID:",
+            ""
+        )
+        .trim();
 
 
-    document.getElementById(
-        "mainDescription"
-    ).textContent =
-        t.description;
-
-
-    document.getElementById(
-        "registerTitle"
-    ).textContent =
-        t.registerTitle;
-
-
-    document.getElementById(
-        "registerText"
-    ).textContent =
-        t.registerText;
-
-
-    document.getElementById(
-        "petTypeLabel"
-    ).textContent =
-        t.petType;
-
-
-    const select =
-        document.getElementById(
-            "petType"
+    const data =
+        localStorage.getItem(
+            "pet_" + petId
         );
 
 
-    select.options[0].text =
-        t.selectPet;
+    if(!data){
 
-    select.options[1].text =
-        t.cat;
-
-    select.options[2].text =
-        t.dog;
-
-    select.options[3].text =
-        t.rabbit;
-
-    select.options[4].text =
-        t.bird;
-
-    select.options[5].text =
-        t.other;
-
-
-    document.getElementById(
-        "petNameLabel"
-    ).textContent =
-        t.petName;
-
-
-    document.getElementById(
-        "ownerNameLabel"
-    ).textContent =
-        t.ownerName;
-
-
-    document.getElementById(
-        "callNumberLabel"
-    ).textContent =
-        t.callNumber;
-
-
-    document.getElementById(
-        "whatsappNumberLabel"
-    ).textContent =
-        t.whatsappNumber;
-
-
-    document.getElementById(
-        "petColorLabel"
-    ).textContent =
-        t.color;
-
-
-    document.getElementById(
-        "petName"
-    ).placeholder =
-        t.petNamePlaceholder;
-
-
-    document.getElementById(
-        "ownerName"
-    ).placeholder =
-        t.ownerPlaceholder;
-
-
-    document.getElementById(
-        "callNumber"
-    ).placeholder =
-        t.callPlaceholder;
-
-
-    document.getElementById(
-        "whatsappNumber"
-    ).placeholder =
-        t.whatsappPlaceholder;
-
-
-    document.getElementById(
-        "petColor"
-    ).placeholder =
-        t.colorPlaceholder;
-
-
-    document.getElementById(
-        "registerButton"
-    ).textContent =
-        t.register;
-
-
-    document.getElementById(
-        "optionalText"
-    ).textContent =
-        t.optional;
-
-
-    document.getElementById(
-        "successText"
-    ).textContent =
-        t.success;
-
-
-    document.getElementById(
-        "petIdLabel"
-    ).textContent =
-        t.petId;
-
-
-    document.getElementById(
-        "callButton"
-    ).textContent =
-        t.call;
-
-
-    document.getElementById(
-        "whatsappButton"
-    ).textContent =
-        t.whatsapp;
-
-
-    document.getElementById(
-        "saveInfoButton"
-    ).textContent =
-        t.saveInfo;
-
-
-    document.getElementById(
-        "saveQRButton"
-    ).textContent =
-        t.saveQR;
-
-
-    document.getElementById(
-        "printButton"
-    ).textContent =
-        t.print;
-
-
-    document.getElementById(
-        "foundTitle"
-    ).textContent =
-        t.found;
-
-
-    if(
-        lang === "ur" ||
-        lang === "ar"
-    ){
-
-        document.documentElement
-            .setAttribute(
-                "dir",
-                "rtl"
-            );
-
-    }else{
-
-        document.documentElement
-            .setAttribute(
-                "dir",
-                "ltr"
-            );
+        return;
 
     }
+
+
+    const pet =
+        JSON.parse(data);
+
+
+    const canvas =
+        document.createElement(
+            "canvas"
+        );
+
+
+    canvas.width = 900;
+
+    canvas.height = 1050;
+
+
+    const ctx =
+        canvas.getContext(
+            "2d"
+        );
+
+
+    ctx.fillStyle =
+        "#ffffff";
+
+
+    ctx.fillRect(
+        0,
+        0,
+        900,
+        1050
+    );
+
+
+    ctx.fillStyle =
+        "#332a24";
+
+
+    ctx.textAlign =
+        "center";
+
+
+    ctx.font =
+        "bold 48px Arial";
+
+
+    ctx.fillText(
+        "🐾 Find My Pet",
+        450,
+        80
+    );
+
+
+    ctx.font =
+        "bold 34px Arial";
+
+
+    ctx.fillText(
+        "Pet Information",
+        450,
+        135
+    );
+
+
+    ctx.textAlign =
+        "left";
+
+
+    let y = 230;
+
+
+    const lines = [
+
+        [
+            "Pet ID",
+            pet.petId
+        ],
+
+        [
+            "Pet Type",
+            pet.petType
+        ],
+
+        [
+            "Pet Name",
+            pet.petName ||
+            "Not specified"
+        ],
+
+        [
+            "Owner Name",
+            pet.ownerName ||
+            "Not specified"
+        ],
+
+        [
+            "Call Number",
+            pet.callNumber ||
+            "Not specified"
+        ],
+
+        [
+            "WhatsApp",
+            pet.whatsappNumber ||
+            "Not specified"
+        ],
+
+        [
+            "Pet Color",
+            pet.color ||
+            "Not specified"
+        ]
+
+    ];
+
+
+    lines.forEach(
+        item=>{
+
+            ctx.fillStyle =
+                "#332a24";
+
+
+            ctx.font =
+                "bold 30px Arial";
+
+
+            ctx.fillText(
+                item[0] + ":",
+                80,
+                y
+            );
+
+
+            ctx.font =
+                "28px Arial";
+
+
+            ctx.fillText(
+                String(item[1]),
+                80,
+                y + 42
+            );
+
+
+            y += 110;
+
+        }
+    );
+
+
+    ctx.textAlign =
+        "center";
+
+
+    ctx.font =
+        "22px Arial";
+
+
+    ctx.fillText(
+        "Scan the QR code to contact the owner.",
+        450,
+        980
+    );
+
+
+    const blob =
+        await canvasToBlob(
+            canvas
+        );
+
+
+    const file =
+        new File(
+
+            [blob],
+
+            pet.petId +
+            "-information.png",
+
+            {
+                type:"image/png"
+            }
+
+        );
+
+
+    await shareOrDownload(
+
+        file,
+
+        blob,
+
+        pet.petId +
+        "-information.png",
+
+        "Find My Pet Information"
+
+    );
 }
 
 
-/* =========================
-   PAGE START
-========================= */
+/* =====================================================
+   SAVE QR TO GALLERY
+===================================================== */
 
-window.onload =
-function(){
+async function saveQRToGallery(){
 
-    changeLanguage();
+    const qrCanvas =
+        document.querySelector(
+            "#qrcode canvas"
+        );
 
-    showFoundPetFromQR();
 
-};
+    if(!qrCanvas){
+
+        alert(
+            "QR code is not ready."
+        );
+
+        return;
+
+    }
+
+
+    const canvas =
+        document.createElement(
+            "canvas"
+        );
+
+
+    canvas.width = 800;
+
+    canvas.height = 900;
+
+
+    const ctx =
+        canvas.getContext(
+            "2d"
+        );
+
+
+    ctx.fillStyle =
+        "#ffffff";
+
+
+    ctx.fillRect(
+        0,
+        0,
+        800,
+        900
+    );
+
+
+    ctx.fillStyle =
+        "#332a24";
+
+
+    ctx.textAlign =
+        "center";
+
+
+    ctx.font =
+        "bold 42px Arial";
+
+
+    ctx.fillText(
+        "🐾 Find My Pet",
+        400,
+        70
+    );
+
+
+    ctx.font =
+        "bold 28px Arial";
+
+
+    ctx.fillText(
+
+        document.getElementById(
+            "petIdDisplay"
+        ).textContent,
+
+        400,
+
+        120
+
+    );
+
+
+    ctx.drawImage(
+
+        qrCanvas,
+
+        150,
+
+        180,
+
+        500,
+
+        500
+
+    );
+
+
+    ctx.font =
+        "22px Arial";
+
+
+    ctx.fillText(
+        "Scan to contact the owner",
+        400,
+        750
+    );
+
+
+    const blob =
+        await canvasToBlob(
+            canvas
+        );
+
+
+    const file =
+        new File(
+
+            [blob],
+
+            "Find-My-Pet-QR.png",
+
+            {
+                type:"image/png"
+            }
+
+        );
+
+
+    await shareOrDownload(
+
+        file,
+
+        blob,
+
+        "Find-My-Pet-QR.png",
+
+        "Find My Pet QR Code"
+
+    );
+}
+
+
+/* =====================================================
+   SHARE OR DOWNLOAD
+===================================================== */
+
+async function shareOrDownload(
+
+    file,
+    blob,
+    filename,
+    title
+
+){
+
+    try{
+
+        if(
+
+            navigator.share &&
+
+            navigator.canShare &&
+
+            navigator.canShare({
+
+                files:[file]
+
+            })
+
+        ){
+
+            await navigator.share({
+
+                files:[file],
+
+                title:title,
+
+                text:title
+
+            });
+
+
+            return;
+
+        }
+
+    }catch(error){
+
+        console.log(error);
+
+    }
+
+
+    const url =
+        URL.createObjectURL(
+            blob
+        );
+
+
+    const link =
+        document.createElement(
+            "a"
+        );
+
+
+    link.href =
+        url;
+
+
+    link.download =
+        filename;
+
+
+    document.body.appendChild(
+        link
+    );
+
+
+    link.click();
+
+
+    document.body.removeChild(
+        link
+    );
+
+
+    setTimeout(
+
+        ()=>{
+
+            URL.revokeObjectURL(
+                url
+            );
+
+        },
+
+        1000
+
+    );
+
+}
+
+
+/* =====================================================
+   CANVAS TO BLOB
+===================================================== */
+
+function canvasToBlob(canvas){
+
+    return new Promise(
+
+        resolve=>{
+
+            canvas.toBlob(
+
+                blob=>resolve(blob),
+
+                "image/png"
+
+            );
+
+        }
+
+    );
+
+}
+
+
+/* =====================================================
+   PRINT QR
+===================================================== */
+
+function printQR(){
+
+    const qrCanvas =
+        document.querySelector(
+            "#qrcode canvas"
+        );
+
+
+    if(!qrCanvas){
+
+        return;
+
+    }
+
+
+    const image =
+        qrCanvas.toDataURL(
+            "image/png"
+        );
+
+
+    const petId =
+        document.getElementById(
+            "petIdDisplay"
+        ).textContent;
+
+
+    const printWindow =
+        window.open(
+            "",
+            "_blank"
+        );
+
+
+    printWindow.document.write(`
+
+        <html>
+
+        <head>
+
+            <title>
+                Find My Pet QR
+            </title>
+
+            <style>
+
+                body{
+
+                    text-align:center;
+
+                    font-family:Arial;
+
+                    padding:40px;
+
+                }
+
+                img{
+
+                    width:300px;
+
+                    height:300px;
+
+                }
+
+                h1{
+
+                    margin-bottom:10px;
+
+                }
+
+            </style>
+
+        </head>
+
+
+        <body>
+
+            <h1>
+                🐾 Find My Pet
+            </h1>
+
+            <h2>
+                ${escapeHTML(petId)}
+            </h2>
+
+            <img src="${image}">
+
+            <p>
+                Scan this QR code to contact the owner.
+            </p>
+
+        </body>
+
+        </html>
+
+    `);
+
+
+    printWindow.document.close();
+
+
+    printWindow.focus();
+
+
+    setTimeout(
+
+        ()=>{
+
+            printWindow.print();
+
+        },
+
+        500
+
+    );
+
+}
+
+
+/* =====================================================
+   SECURITY
+===================================================== */
+
+function escapeHTML(value){
+
+    return String(value || "")
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+window.currentFoundPet =
+    null;
+
+
+document.getElementById(
+    "languageSelect"
+).value = "en";
+
+
+changeLanguage();
+
+
+showFoundPetFromQR();
 
 </script>
 
