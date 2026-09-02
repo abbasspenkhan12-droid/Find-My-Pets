@@ -1548,15 +1548,54 @@ function saveQRToGallery(){
         880
     );
 
+    canvas.toBlob(async function(blob){
+
+    if(!blob){
+        alert("Image could not be created.");
+        return;
+    }
+
+    const file = new File(
+        [blob],
+        "Find-My-Pet-"+pet.petId+"-Information.png",
+        {type:"image/png"}
+    );
+
+    if(
+        navigator.share &&
+        navigator.canShare &&
+        navigator.canShare({files:[file]})
+    ){
+        try{
+            await navigator.share({
+                files:[file],
+                title:"Find My Pet"
+            });
+            return;
+        }catch(error){
+            if(error.name === "AbortError"){
+                return;
+            }
+        }
+    }
+
+    const url=URL.createObjectURL(blob);
     const link=document.createElement("a");
 
+    link.href=url;
     link.download=
-        "Find-My-Pet-"+petId+".png";
+        "Find-My-Pet-"+pet.petId+"-Information.png";
 
-    link.href=
-        canvas.toDataURL("image/png");
-
+    document.body.appendChild(link);
     link.click();
+    link.remove();
+
+    setTimeout(function(){
+        URL.revokeObjectURL(url);
+    },1000);
+
+},"image/png");
+    l
 }
 
 function printQR(){
