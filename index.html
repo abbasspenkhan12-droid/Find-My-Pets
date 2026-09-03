@@ -1330,26 +1330,7 @@ async function saveInformation(){
             return;
         }
 
-        const file =
-            new File(
-                [blob],
-                "Find-My-Pet-" +
-                pet.petId +
-                "-Information.png",
-                {
-                    type:"image/png"
-                }
-            );
-
-        /* iPhone / Mobile Save */
-
-        if(
-            navigator.share &&
-            navigator.canShare &&
-            navigator.canShare({
-                files:[file]
-            })
-        ){
+      
 
             try{
 
