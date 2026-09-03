@@ -1108,24 +1108,37 @@ function backToMenu(){
     });
 }
 
-function saveInformation(){
+/* =========================
+   SAVE INFORMATION
+========================= */
 
-    const pet=window.currentRegisteredPet;
+async function saveInformation(){
+
+    const pet =
+        window.currentRegisteredPet;
 
     if(!pet){
 
-        alert("Pet information is not available.");
+        alert(
+            "Pet information is not available."
+        );
+
         return;
     }
 
-    const canvas=document.createElement("canvas");
+    const canvas =
+        document.createElement("canvas");
 
-    canvas.width=900;
-    canvas.height=1050;
+    canvas.width = 900;
+    canvas.height = 1050;
 
-    const ctx=canvas.getContext("2d");
+    const ctx =
+        canvas.getContext("2d");
 
-    ctx.fillStyle="#fbf7f2";
+    /* BACKGROUND */
+
+    ctx.fillStyle =
+        "#fbf7f2";
 
     ctx.fillRect(
         0,
@@ -1134,7 +1147,10 @@ function saveInformation(){
         1050
     );
 
-    ctx.fillStyle="#ffffff";
+    /* CARD */
+
+    ctx.fillStyle =
+        "#ffffff";
 
     ctx.roundRect(
         45,
@@ -1146,11 +1162,16 @@ function saveInformation(){
 
     ctx.fill();
 
-    ctx.textAlign="center";
+    /* TITLE */
 
-    ctx.fillStyle="#7b4728";
+    ctx.textAlign =
+        "center";
 
-    ctx.font="bold 52px Arial";
+    ctx.fillStyle =
+        "#7b4728";
+
+    ctx.font =
+        "bold 52px Arial";
 
     ctx.fillText(
         "🐾 Find My Pet",
@@ -1158,9 +1179,13 @@ function saveInformation(){
         125
     );
 
-    ctx.fillStyle="#2d241f";
+    /* PET NAME */
 
-    ctx.font="bold 40px Arial";
+    ctx.fillStyle =
+        "#2d241f";
+
+    ctx.font =
+        "bold 40px Arial";
 
     ctx.fillText(
         pet.petName || "My Pet",
@@ -1168,21 +1193,30 @@ function saveInformation(){
         205
     );
 
-    ctx.fillStyle="#8b7567";
+    /* PET ID */
 
-    ctx.font="bold 27px Arial";
+    ctx.fillStyle =
+        "#8b7567";
+
+    ctx.font =
+        "bold 27px Arial";
 
     ctx.fillText(
-        "Pet ID: "+pet.petId,
+        "Pet ID: " + pet.petId,
         450,
         255
     );
 
-    ctx.textAlign="left";
+    /* INFORMATION TITLE */
 
-    ctx.fillStyle="#4b3426";
+    ctx.textAlign =
+        "left";
 
-    ctx.font="bold 28px Arial";
+    ctx.fillStyle =
+        "#4b3426";
+
+    ctx.font =
+        "bold 28px Arial";
 
     ctx.fillText(
         "Pet Information",
@@ -1190,16 +1224,18 @@ function saveInformation(){
         330
     );
 
-    let y=390;
+    let y = 390;
 
     function drawInfo(label,value){
 
         if(!value)
             return;
 
-        ctx.fillStyle="#4a392f";
+        ctx.fillStyle =
+            "#4a392f";
 
-        ctx.font="bold 23px Arial";
+        ctx.font =
+            "bold 23px Arial";
 
         ctx.fillText(
             label,
@@ -1207,9 +1243,11 @@ function saveInformation(){
             y
         );
 
-        ctx.fillStyle="#66564b";
+        ctx.fillStyle =
+            "#66564b";
 
-        ctx.font="23px Arial";
+        ctx.font =
+            "23px Arial";
 
         ctx.fillText(
             value,
@@ -1217,21 +1255,49 @@ function saveInformation(){
             y
         );
 
-        y+=70;
+        y += 70;
     }
 
-    drawInfo("Pet Type",pet.petType);
-    drawInfo("Pet Name",pet.petName);
-    drawInfo("Owner Name",pet.ownerName);
-    drawInfo("Call Number",pet.callNumber);
-    drawInfo("WhatsApp",pet.whatsappNumber);
-    drawInfo("Pet Color",pet.color);
+    drawInfo(
+        "Pet Type",
+        pet.petType
+    );
 
-    ctx.textAlign="center";
+    drawInfo(
+        "Pet Name",
+        pet.petName
+    );
 
-    ctx.fillStyle="#7b4728";
+    drawInfo(
+        "Owner Name",
+        pet.ownerName
+    );
 
-    ctx.font="bold 27px Arial";
+    drawInfo(
+        "Call Number",
+        pet.callNumber
+    );
+
+    drawInfo(
+        "WhatsApp",
+        pet.whatsappNumber
+    );
+
+    drawInfo(
+        "Pet Color",
+        pet.color
+    );
+
+    /* FOOTER */
+
+    ctx.textAlign =
+        "center";
+
+    ctx.fillStyle =
+        "#7b4728";
+
+    ctx.font =
+        "bold 27px Arial";
 
     ctx.fillText(
         "Find My Pet",
@@ -1239,9 +1305,11 @@ function saveInformation(){
         900
     );
 
-    ctx.fillStyle="#9b8b7f";
+    ctx.fillStyle =
+        "#9b8b7f";
 
-    ctx.font="18px Arial";
+    ctx.font =
+        "18px Arial";
 
     ctx.fillText(
         "Helping lost pets find their way home",
@@ -1249,14 +1317,98 @@ function saveInformation(){
         940
     );
 
-    const link=document.createElement("a");
+    /* SAVE */
 
-    link.download=
-        "Find-My-Pet-"+pet.petId+"-Information.png";
+    canvas.toBlob(async function(blob){
 
-    link.href=canvas.toDataURL("image/png");
+        if(!blob){
 
-    link.click();
+            alert(
+                "Image could not be created."
+            );
+
+            return;
+        }
+
+        const file =
+            new File(
+                [blob],
+                "Find-My-Pet-" +
+                pet.petId +
+                "-Information.png",
+                {
+                    type:"image/png"
+                }
+            );
+
+        /* iPhone / Mobile Save */
+
+        if(
+            navigator.share &&
+            navigator.canShare &&
+            navigator.canShare({
+                files:[file]
+            })
+        ){
+
+            try{
+
+                await navigator.share({
+
+                    files:[file],
+
+                    title:
+                        "Find My Pet Information"
+
+                });
+
+                return;
+
+            }catch(error){
+
+                if(
+                    error.name ===
+                    "AbortError"
+                ){
+
+                    return;
+
+                }
+
+            }
+
+        }
+
+        /* FALLBACK */
+
+        const url =
+            URL.createObjectURL(blob);
+
+        const link =
+            document.createElement("a");
+
+        link.href = url;
+
+        link.download =
+            "Find-My-Pet-" +
+            pet.petId +
+            "-Information.png";
+
+        document.body.appendChild(link);
+
+        link.click();
+
+        link.remove();
+
+        setTimeout(function(){
+
+            URL.revokeObjectURL(url);
+
+        },2000);
+
+    },"image/png");
+
+}
 }
 
 function findPet(){
@@ -1453,31 +1605,47 @@ function showFoundPetFromQR(){
     showFoundPet(pet);
 }
 
-function saveQRToGallery(){
+/* =========================
+   SAVE QR
+========================= */
 
-    const qrCanvas=
-        document.querySelector("#qrcode canvas");
+async function saveQRToGallery(){
+
+    const qrCanvas =
+        document.querySelector(
+            "#qrcode canvas"
+        );
 
     if(!qrCanvas){
 
-        alert("QR code is not ready.");
+        alert(
+            "QR code is not ready."
+        );
+
         return;
     }
 
-    const petName=
-        document.getElementById("registeredPetName").textContent;
+    const petName =
+        document.getElementById(
+            "registeredPetName"
+        ).textContent;
 
-    const petId=
-        document.getElementById("registeredPetId").textContent;
+    const petId =
+        document.getElementById(
+            "registeredPetId"
+        ).textContent;
 
-    const canvas=document.createElement("canvas");
+    const canvas =
+        document.createElement("canvas");
 
-    canvas.width=800;
-    canvas.height=950;
+    canvas.width = 800;
+    canvas.height = 950;
 
-    const ctx=canvas.getContext("2d");
+    const ctx =
+        canvas.getContext("2d");
 
-    ctx.fillStyle="#ffffff";
+    ctx.fillStyle =
+        "#ffffff";
 
     ctx.fillRect(
         0,
@@ -1486,11 +1654,14 @@ function saveQRToGallery(){
         950
     );
 
-    ctx.fillStyle="#3f2c20";
+    ctx.fillStyle =
+        "#3f2c20";
 
-    ctx.textAlign="center";
+    ctx.textAlign =
+        "center";
 
-    ctx.font="bold 38px Arial";
+    ctx.font =
+        "bold 38px Arial";
 
     ctx.fillText(
         "🐾 Find My Pet",
@@ -1498,7 +1669,8 @@ function saveQRToGallery(){
         75
     );
 
-    ctx.font="bold 30px Arial";
+    ctx.font =
+        "bold 30px Arial";
 
     ctx.fillText(
         petName,
@@ -1506,7 +1678,8 @@ function saveQRToGallery(){
         145
     );
 
-    ctx.font="bold 24px Arial";
+    ctx.font =
+        "bold 24px Arial";
 
     ctx.fillText(
         petId,
@@ -1522,7 +1695,8 @@ function saveQRToGallery(){
         400
     );
 
-    ctx.font="22px Arial";
+    ctx.font =
+        "22px Arial";
 
     ctx.fillText(
         "Scan this QR code to help return this pet home.",
@@ -1530,7 +1704,8 @@ function saveQRToGallery(){
         680
     );
 
-    ctx.font="bold 26px Arial";
+    ctx.font =
+        "bold 26px Arial";
 
     ctx.fillText(
         "Find My Pet",
@@ -1538,9 +1713,11 @@ function saveQRToGallery(){
         845
     );
 
-    ctx.font="18px Arial";
+    ctx.font =
+        "18px Arial";
 
-    ctx.fillStyle="#8b7567";
+    ctx.fillStyle =
+        "#8b7567";
 
     ctx.fillText(
         "Helping lost pets find their way home",
@@ -1548,12 +1725,104 @@ function saveQRToGallery(){
         880
     );
 
+    /* SAVE */
+
     canvas.toBlob(async function(blob){
 
-    if(!blob){
-        alert("Image could not be created.");
-        return;
-    }
+        if(!blob){
+
+            alert(
+                "QR image could not be created."
+            );
+
+            return;
+        }
+
+        const file =
+            new File(
+                [blob],
+                "Find-My-Pet-" +
+                petId.replace(
+                    "Pet ID: ",
+                    ""
+                ) +
+                ".png",
+                {
+                    type:"image/png"
+                }
+            );
+
+        /* iPhone / Mobile Save */
+
+        if(
+            navigator.share &&
+            navigator.canShare &&
+            navigator.canShare({
+                files:[file]
+            })
+        ){
+
+            try{
+
+                await navigator.share({
+
+                    files:[file],
+
+                    title:
+                        "Find My Pet QR Code"
+
+                });
+
+                return;
+
+            }catch(error){
+
+                if(
+                    error.name ===
+                    "AbortError"
+                ){
+
+                    return;
+
+                }
+
+            }
+
+        }
+
+        /* FALLBACK */
+
+        const url =
+            URL.createObjectURL(blob);
+
+        const link =
+            document.createElement("a");
+
+        link.href = url;
+
+        link.download =
+            "Find-My-Pet-" +
+            petId.replace(
+                "Pet ID: ",
+                ""
+            ) +
+            ".png";
+
+        document.body.appendChild(link);
+
+        link.click();
+
+        link.remove();
+
+        setTimeout(function(){
+
+            URL.revokeObjectURL(url);
+
+        },2000);
+
+    },"image/png");
+
+}
 
     const file = new File(
         [blob],
