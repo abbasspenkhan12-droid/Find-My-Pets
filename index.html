@@ -719,9 +719,7 @@ button:active{
     id="foundSection"
     class="card">
 
-    <h2 id="foundTitle">
-        Pet Found
-    </h2>
+    <h2 id="foundTitle"></h2>
 
     <div id="foundPetInfo"></div>
 
@@ -998,7 +996,6 @@ function changeLanguage(){
     document.getElementById("searchTitle").textContent=t.searchTitle;
     document.getElementById("petIdLabel").textContent=t.petId;
     document.getElementById("searchButton").textContent=t.search;
-    document.getElementById("foundTitle").textContent=t.found;
     document.getElementById("callButton").textContent=t.call;
     document.getElementById("whatsappButton").textContent=t.whatsapp;
     document.getElementById("watermarkText").textContent=t.watermark;
@@ -1410,6 +1407,16 @@ function showFoundPet(pet){
 
 
     document.getElementById(
+        "foundTitle"
+    ).textContent =
+        translations[
+            document.getElementById(
+                "languageSelect"
+            ).value
+        ].found;
+
+
+    document.getElementById(
         "foundPetInfo"
     ).innerHTML =
         createPetInfo(pet);
@@ -1654,11 +1661,6 @@ async function showFoundPetFromQR(){
         return;
 
 
-    /* =========================
-       QR SCAN PAGE
-       Hide registration immediately
-    ========================= */
-
     document.getElementById(
         "registrationSection"
     ).style.display="none";
@@ -1676,17 +1678,23 @@ async function showFoundPetFromQR(){
     ).style.display="block";
 
 
+    /* EXACT QR SCAN SENTENCE */
+
     document.getElementById(
         "foundTitle"
     ).textContent =
         "Please help me get back to my owner. 🥺";
 
 
+    /* QR SCAN PAR KOI PET INFORMATION NAHI */
+
     document.getElementById(
         "foundPetInfo"
     ).innerHTML="";
 
 
+    /* BUTTONS PEHLE HIDE */
+
     document.getElementById(
         "callButton"
     ).style.display="none";
@@ -1697,63 +1705,109 @@ async function showFoundPetFromQR(){
     ).style.display="none";
 
 
-    const {
-        data,
-        error
-    } = await supabaseClient
-        .from("pets")
-        .select(`
-            call_number,
-            whatsapp_number
-        `)
-        .eq(
-            "pet_id",
-            petId
-        )
-        .maybeSingle();
+    try{
+
+        const {
+            data,
+            error
+        } = await supabaseClient
+            .from("pets")
+            .select(
+                "call_number, whatsapp_number"
+            )
+            .eq(
+                "pet_id",
+                petId
+            )
+            .limit(1);
 
 
-    if(error){
+        if(error){
 
-        console.error(error);
+            console.error(
+                "QR Supabase error:",
+                error
+            );
 
-        return;
+            return;
+        }
+
+
+        if(
+            !data ||
+            data.length === 0
+        ){
+
+            console.log(
+                "Pet not found:",
+                petId
+            );
+
+            return;
+        }
+
+
+        const row =
+            data[0];
+
+
+        const callNumber =
+            row.call_number
+            ? String(
+                row.call_number
+            ).trim()
+            : "";
+
+
+        const whatsappNumber =
+            row.whatsapp_number
+            ? String(
+                row.whatsapp_number
+            ).trim()
+            : "";
+
+
+        window.currentFoundPet = {
+
+            callNumber:
+                callNumber,
+
+            whatsappNumber:
+                whatsappNumber
+
+        };
+
+
+        /* ONLY SIM NUMBER EXISTS */
+
+        if(callNumber){
+
+            document.getElementById(
+                "callButton"
+            ).style.display="block";
+
+        }
+
+
+        /* ONLY WHATSAPP NUMBER EXISTS */
+
+        if(whatsappNumber){
+
+            document.getElementById(
+                "whatsappButton"
+            ).style.display="block";
+
+        }
+
+    }catch(error){
+
+        console.error(
+            "QR scan error:",
+            error
+        );
+
     }
 
-
-    if(!data){
-
-        return;
-    }
-
-
-    const pet = {
-
-        callNumber:data.call_number || "",
-
-        whatsappNumber:data.whatsapp_number || ""
-
-    };
-
-
-    window.currentFoundPet =
-        pet;
-
-
-    document.getElementById(
-        "callButton"
-    ).style.display =
-        pet.callNumber
-        ? "block"
-        : "none";
-
-
-    document.getElementById(
-        "whatsappButton"
-    ).style.display =
-        pet.whatsappNumber
-        ? "block"
-        : "none";
 }
 
 
