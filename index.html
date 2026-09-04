@@ -1654,6 +1654,49 @@ async function showFoundPetFromQR(){
         return;
 
 
+    /* =========================
+       QR SCAN PAGE
+       Hide registration immediately
+    ========================= */
+
+    document.getElementById(
+        "registrationSection"
+    ).style.display="none";
+
+    document.getElementById(
+        "qrSection"
+    ).style.display="none";
+
+    document.getElementById(
+        "searchSection"
+    ).style.display="none";
+
+    document.getElementById(
+        "foundSection"
+    ).style.display="block";
+
+
+    document.getElementById(
+        "foundTitle"
+    ).textContent =
+        "Please help me get back to my owner. 🥺";
+
+
+    document.getElementById(
+        "foundPetInfo"
+    ).innerHTML="";
+
+
+    document.getElementById(
+        "callButton"
+    ).style.display="none";
+
+
+    document.getElementById(
+        "whatsappButton"
+    ).style.display="none";
+
+
     const {
         data,
         error
@@ -1674,19 +1717,11 @@ async function showFoundPetFromQR(){
 
         console.error(error);
 
-        alert(
-            "Unable to load pet information."
-        );
-
         return;
     }
 
 
     if(!data){
-
-        alert(
-            "Pet not found."
-        );
 
         return;
     }
@@ -1701,36 +1736,8 @@ async function showFoundPetFromQR(){
     };
 
 
-    document.getElementById(
-        "registrationSection"
-    ).style.display="none";
-
-    document.getElementById(
-        "qrSection"
-    ).style.display="none";
-
-    document.getElementById(
-        "searchSection"
-    ).style.display="none";
-
-    document.getElementById(
-        "foundSection"
-    ).style.display="block";
-
-
     window.currentFoundPet =
         pet;
-
-
-    document.getElementById(
-        "foundTitle"
-    ).textContent =
-        "Please help me get back to my owner. 🥺";
-
-
-    document.getElementById(
-        "foundPetInfo"
-    ).innerHTML="";
 
 
     document.getElementById(
