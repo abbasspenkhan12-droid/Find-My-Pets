@@ -1131,15 +1131,15 @@ async function registerPet(){
 
     if(error){
 
-    console.error(error);
+        console.error(error);
 
-    alert(
-        "Registration failed: " +
-        (error.message || "Unknown error")
-    );
+        alert(
+            "Registration failed. Please try again."
+        );
 
-    return;
-}
+        return;
+    }
+
 
     window.currentRegisteredPet = pet;
 
@@ -1670,13 +1670,8 @@ async function showFoundPetFromQR(){
     } = await supabaseClient
         .from("pets")
         .select(`
-            pet_id,
-            pet_type,
-            pet_name,
-            owner_name,
             call_number,
-            whatsapp_number,
-            pet_color
+            whatsapp_number
         `)
         .eq(
             "pet_id",
@@ -1709,24 +1704,59 @@ async function showFoundPetFromQR(){
 
     const pet = {
 
-        petId:data.pet_id,
-
-        petType:data.pet_type || "",
-
-        petName:data.pet_name || "",
-
-        ownerName:data.owner_name || "",
-
         callNumber:data.call_number || "",
 
-        whatsappNumber:data.whatsapp_number || "",
-
-        color:data.pet_color || ""
+        whatsappNumber:data.whatsapp_number || ""
 
     };
 
 
-    showFoundPet(pet);
+    document.getElementById(
+        "registrationSection"
+    ).style.display="none";
+
+    document.getElementById(
+        "qrSection"
+    ).style.display="none";
+
+    document.getElementById(
+        "searchSection"
+    ).style.display="none";
+
+    document.getElementById(
+        "foundSection"
+    ).style.display="block";
+
+
+    window.currentFoundPet =
+        pet;
+
+
+    document.getElementById(
+        "foundTitle"
+    ).textContent =
+        "Please help me get back to my owner. 🥺";
+
+
+    document.getElementById(
+        "foundPetInfo"
+    ).innerHTML="";
+
+
+    document.getElementById(
+        "callButton"
+    ).style.display =
+        pet.callNumber
+        ? "block"
+        : "none";
+
+
+    document.getElementById(
+        "whatsappButton"
+    ).style.display =
+        pet.whatsappNumber
+        ? "block"
+        : "none";
 }
 
 
