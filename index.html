@@ -730,7 +730,7 @@ button:active{
         id="callButton"
         onclick="callOwner()">
 
-        📞 Call Owner
+        📞 SIM Call
 
     </button>
 
@@ -739,7 +739,7 @@ button:active{
         id="whatsappButton"
         onclick="whatsappOwner()">
 
-        💬 WhatsApp Owner
+        💬 WhatsApp Call
 
     </button>
 
@@ -812,8 +812,8 @@ searchTitle:"Search Registered Pet",
 petId:"Pet ID",
 search:"Search",
 found:"Pet Found",
-call:"📞 Call Owner",
-whatsapp:"💬 WhatsApp Owner",
+call:"📞 SIM Call",
+whatsapp:"💬 WhatsApp Call",
 watermark:"Helping lost pets find their way home",
 petPlaceholder:"Enter pet name",
 ownerPlaceholder:"Enter owner name",
@@ -846,8 +846,8 @@ searchTitle:"رجسٹرڈ پالتو جانور تلاش کریں",
 petId:"Pet ID",
 search:"تلاش کریں",
 found:"جانور مل گیا",
-call:"📞 مالک کو کال کریں",
-whatsapp:"💬 WhatsApp مالک",
+call:"📞 SIM کال",
+whatsapp:"💬 WhatsApp کال",
 watermark:"گمشدہ پالتو جانوروں کو گھر پہنچانے میں مدد",
 petPlaceholder:"جانور کا نام لکھیں",
 ownerPlaceholder:"مالک کا نام لکھیں",
@@ -880,8 +880,8 @@ searchTitle:"البحث عن حيوان مسجل",
 petId:"معرف الحيوان",
 search:"بحث",
 found:"تم العثور على الحيوان",
-call:"📞 الاتصال بالمالك",
-whatsapp:"💬 واتساب المالك",
+call:"📞 مكالمة SIM",
+whatsapp:"💬 مكالمة WhatsApp",
 watermark:"مساعدة الحيوانات المفقودة على العودة إلى المنزل",
 petPlaceholder:"أدخل اسم الحيوان",
 ownerPlaceholder:"أدخل اسم المالك",
@@ -914,8 +914,8 @@ searchTitle:"Поиск зарегистрированного питомца",
 petId:"ID питомца",
 search:"Поиск",
 found:"Питомец найден",
-call:"📞 Позвонить владельцу",
-whatsapp:"💬 WhatsApp владельца",
+call:"📞 Звонок SIM",
+whatsapp:"💬 Звонок WhatsApp",
 watermark:"Помогаем потерявшимся питомцам вернуться домой",
 petPlaceholder:"Введите имя питомца",
 ownerPlaceholder:"Введите имя владельца",
@@ -948,8 +948,8 @@ searchTitle:"Катталган жаныбарды издөө",
 petId:"Pet ID",
 search:"Издөө",
 found:"Жаныбар табылды",
-call:"📞 Ээсине чалуу",
-whatsapp:"💬 Ээсине WhatsApp",
+call:"📞 SIM чалуу",
+whatsapp:"💬 WhatsApp чалуу",
 watermark:"Жоголгон жаныбарларды үйүнө кайтарууга жардам беребиз",
 petPlaceholder:"Жаныбардын атын жазыңыз",
 ownerPlaceholder:"Ээсинин атын жазыңыз",
@@ -1101,11 +1101,6 @@ async function registerPet(){
     };
 
 
-    /* =========================
-       FIXED SUPABASE INSERT
-       Optional fields become NULL
-    ========================= */
-
     const {
         error
     } = await supabaseClient
@@ -1189,11 +1184,6 @@ function showQRCode(pet){
 
     qrContainer.innerHTML="";
 
-
-    /*
-       QR CODE NOW CONTAINS ONLY PET ID.
-       Personal information stays in Supabase.
-    */
 
     const currentUrl =
         window.location.origin +
