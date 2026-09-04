@@ -307,6 +307,8 @@ button:active{
 
 #foundSection{
     display:none;
+    position:relative;
+    padding-top:55px;
 }
 
 .pet-info{
@@ -724,6 +726,15 @@ button:active{
 <section
     id="foundSection"
     class="card">
+
+    <button
+        class="back-button"
+        onclick="backToMenu()"
+        id="foundBackButton">
+
+        ← Back
+
+    </button>
 
     <h2 id="foundTitle"></h2>
 
@@ -1362,6 +1373,7 @@ function changeLanguage(){
     document.getElementById("saveInformationButton").textContent=t.saveInformation;
     document.getElementById("printQrButton").textContent=t.print;
     document.getElementById("backButton").textContent=t.back;
+    document.getElementById("foundBackButton").textContent=t.back;
     document.getElementById("searchTitle").textContent=t.searchTitle;
     document.getElementById("petIdLabel").textContent=t.petId;
     document.getElementById("searchButton").textContent=t.search;
