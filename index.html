@@ -1131,15 +1131,15 @@ async function registerPet(){
 
     if(error){
 
-        console.error(error);
+    console.error(error);
 
-        alert(
-            "Registration failed. Please try again."
-        );
+    alert(
+        "Registration failed: " +
+        (error.message || "Unknown error")
+    );
 
-        return;
-    }
-
+    return;
+}
 
     window.currentRegisteredPet = pet;
 
