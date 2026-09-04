@@ -1101,30 +1101,32 @@ async function registerPet(){
     };
 
 
+    /* =========================
+       FIXED SUPABASE INSERT
+       Optional fields become NULL
+    ========================= */
+
     const {
-        data,
         error
     } = await supabaseClient
         .from("pets")
         .insert([{
 
-            pet_id:pet.petId,
+            pet_id: pet.petId,
 
-            pet_type:pet.petType,
+            pet_type: pet.petType || null,
 
-            pet_name:pet.petName,
+            pet_name: pet.petName || null,
 
-            owner_name:pet.ownerName,
+            owner_name: pet.ownerName || null,
 
-            call_number:pet.callNumber,
+            call_number: pet.callNumber || null,
 
-            whatsapp_number:pet.whatsappNumber,
+            whatsapp_number: pet.whatsappNumber || null,
 
-            pet_color:pet.color
+            pet_color: pet.color || null
 
-        }])
-        .select()
-        .single();
+        }]);
 
 
     if(error){
