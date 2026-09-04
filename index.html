@@ -563,7 +563,6 @@ button:active{
         📞 Normal SIM / Call Number
     </label>
 
-    <!-- WORLDWIDE SIM COUNTRY -->
     <select id="callCountry">
     </select>
 
@@ -577,7 +576,6 @@ button:active{
         💬 WhatsApp Number
     </label>
 
-    <!-- WORLDWIDE WHATSAPP COUNTRY -->
     <select id="whatsappCountry">
     </select>
 
@@ -731,6 +729,22 @@ button:active{
 
     <div id="foundPetInfo"></div>
 
+    <div
+        id="searchResultQR"
+        style="display:none;text-align:center;margin-top:10px;">
+
+        <div class="qr-box">
+
+            <div id="searchQRCode"></div>
+
+        </div>
+
+        <p class="note">
+            Scan this QR code to contact the pet owner.
+        </p>
+
+    </div>
+
     <button
         class="call"
         id="callButton"
@@ -800,241 +814,241 @@ const supabaseClient =
 
 const countryCodes = [
 
-    ["AF","+93","Afghanistan"],
-    ["AL","+355","Albania"],
-    ["DZ","+213","Algeria"],
-    ["AD","+376","Andorra"],
-    ["AO","+244","Angola"],
-    ["AG","+1-268","Antigua and Barbuda"],
-    ["AR","+54","Argentina"],
-    ["AM","+374","Armenia"],
-    ["AU","+61","Australia"],
-    ["AT","+43","Austria"],
-    ["AZ","+994","Azerbaijan"],
-    ["BS","+1-242","Bahamas"],
-    ["BH","+973","Bahrain"],
-    ["BD","+880","Bangladesh"],
-    ["BB","+1-246","Barbados"],
-    ["BY","+375","Belarus"],
-    ["BE","+32","Belgium"],
-    ["BZ","+501","Belize"],
-    ["BJ","+229","Benin"],
-    ["BT","+975","Bhutan"],
-    ["BO","+591","Bolivia"],
-    ["BA","+387","Bosnia and Herzegovina"],
-    ["BW","+267","Botswana"],
-    ["BR","+55","Brazil"],
-    ["BN","+673","Brunei"],
-    ["BG","+359","Bulgaria"],
-    ["BF","+226","Burkina Faso"],
-    ["BI","+257","Burundi"],
-    ["CV","+238","Cabo Verde"],
-    ["KH","+855","Cambodia"],
-    ["CM","+237","Cameroon"],
-    ["CA","+1","Canada"],
-    ["CF","+236","Central African Republic"],
-    ["TD","+235","Chad"],
-    ["CL","+56","Chile"],
-    ["CN","+86","China"],
-    ["CO","+57","Colombia"],
-    ["KM","+269","Comoros"],
-    ["CG","+242","Congo"],
-    ["CD","+243","Congo, Democratic Republic"],
-    ["CR","+506","Costa Rica"],
-    ["CI","+225","Cote d'Ivoire"],
-    ["HR","+385","Croatia"],
-    ["CU","+53","Cuba"],
-    ["CY","+357","Cyprus"],
-    ["CZ","+420","Czech Republic"],
-    ["DK","+45","Denmark"],
-    ["DJ","+253","Djibouti"],
-    ["DM","+1-767","Dominica"],
-    ["DO","+1-809","Dominican Republic"],
-    ["EC","+593","Ecuador"],
-    ["EG","+20","Egypt"],
-    ["SV","+503","El Salvador"],
-    ["GQ","+240","Equatorial Guinea"],
-    ["ER","+291","Eritrea"],
-    ["EE","+372","Estonia"],
-    ["SZ","+268","Eswatini"],
-    ["ET","+251","Ethiopia"],
-    ["FJ","+679","Fiji"],
-    ["FI","+358","Finland"],
-    ["FR","+33","France"],
-    ["GA","+241","Gabon"],
-    ["GM","+220","Gambia"],
-    ["GE","+995","Georgia"],
-    ["DE","+49","Germany"],
-    ["GH","+233","Ghana"],
-    ["GR","+30","Greece"],
-    ["GD","+1-473","Grenada"],
-    ["GT","+502","Guatemala"],
-    ["GN","+224","Guinea"],
-    ["GW","+245","Guinea-Bissau"],
-    ["GY","+592","Guyana"],
-    ["HT","+509","Haiti"],
-    ["HN","+504","Honduras"],
-    ["HU","+36","Hungary"],
-    ["IS","+354","Iceland"],
-    ["IN","+91","India"],
-    ["ID","+62","Indonesia"],
-    ["IR","+98","Iran"],
-    ["IQ","+964","Iraq"],
-    ["IE","+353","Ireland"],
-    ["IL","+972","Israel"],
-    ["IT","+39","Italy"],
-    ["JM","+1-876","Jamaica"],
-    ["JP","+81","Japan"],
-    ["JO","+962","Jordan"],
-    ["KZ","+7","Kazakhstan"],
-    ["KE","+254","Kenya"],
-    ["KI","+686","Kiribati"],
-    ["KP","+850","North Korea"],
-    ["KR","+82","South Korea"],
-    ["KW","+965","Kuwait"],
-    ["KG","+996","Kyrgyzstan"],
-    ["LA","+856","Laos"],
-    ["LV","+371","Latvia"],
-    ["LB","+961","Lebanon"],
-    ["LS","+266","Lesotho"],
-    ["LR","+231","Liberia"],
-    ["LY","+218","Libya"],
-    ["LI","+423","Liechtenstein"],
-    ["LT","+370","Lithuania"],
-    ["LU","+352","Luxembourg"],
-    ["MG","+261","Madagascar"],
-    ["MW","+265","Malawi"],
-    ["MY","+60","Malaysia"],
-    ["MV","+960","Maldives"],
-    ["ML","+223","Mali"],
-    ["MT","+356","Malta"],
-    ["MH","+692","Marshall Islands"],
-    ["MR","+222","Mauritania"],
-    ["MU","+230","Mauritius"],
-    ["MX","+52","Mexico"],
-    ["FM","+691","Micronesia"],
-    ["MD","+373","Moldova"],
-    ["MC","+377","Monaco"],
-    ["MN","+976","Mongolia"],
-    ["ME","+382","Montenegro"],
-    ["MA","+212","Morocco"],
-    ["MZ","+258","Mozambique"],
-    ["MM","+95","Myanmar"],
-    ["NA","+264","Namibia"],
-    ["NR","+674","Nauru"],
-    ["NP","+977","Nepal"],
-    ["NL","+31","Netherlands"],
-    ["NZ","+64","New Zealand"],
-    ["NI","+505","Nicaragua"],
-    ["NE","+227","Niger"],
-    ["NG","+234","Nigeria"],
-    ["MK","+389","North Macedonia"],
-    ["NO","+47","Norway"],
-    ["OM","+968","Oman"],
-    ["PK","+92","Pakistan"],
-    ["PW","+680","Palau"],
-    ["PS","+970","Palestine"],
-    ["PA","+507","Panama"],
-    ["PG","+675","Papua New Guinea"],
-    ["PY","+595","Paraguay"],
-    ["PE","+51","Peru"],
-    ["PH","+63","Philippines"],
-    ["PL","+48","Poland"],
-    ["PT","+351","Portugal"],
-    ["QA","+974","Qatar"],
-    ["RO","+40","Romania"],
-    ["RU","+7","Russia"],
-    ["RW","+250","Rwanda"],
-    ["KN","+1-869","Saint Kitts and Nevis"],
-    ["LC","+1-758","Saint Lucia"],
-    ["VC","+1-784","Saint Vincent and the Grenadines"],
-    ["WS","+685","Samoa"],
-    ["SM","+378","San Marino"],
-    ["ST","+239","Sao Tome and Principe"],
-    ["SA","+966","Saudi Arabia"],
-    ["SN","+221","Senegal"],
-    ["RS","+381","Serbia"],
-    ["SC","+248","Seychelles"],
-    ["SL","+232","Sierra Leone"],
-    ["SG","+65","Singapore"],
-    ["SK","+421","Slovakia"],
-    ["SI","+386","Slovenia"],
-    ["SB","+677","Solomon Islands"],
-    ["SO","+252","Somalia"],
-    ["ZA","+27","South Africa"],
-    ["SS","+211","South Sudan"],
-    ["ES","+34","Spain"],
-    ["LK","+94","Sri Lanka"],
-    ["SD","+249","Sudan"],
-    ["SR","+597","Suriname"],
-    ["SE","+46","Sweden"],
-    ["CH","+41","Switzerland"],
-    ["SY","+963","Syria"],
-    ["TW","+886","Taiwan"],
-    ["TJ","+992","Tajikistan"],
-    ["TZ","+255","Tanzania"],
-    ["TH","+66","Thailand"],
-    ["TL","+670","Timor-Leste"],
-    ["TG","+228","Togo"],
-    ["TO","+676","Tonga"],
-    ["TT","+1-868","Trinidad and Tobago"],
-    ["TN","+216","Tunisia"],
-    ["TR","+90","Turkey"],
-    ["TM","+993","Turkmenistan"],
-    ["TV","+688","Tuvalu"],
-    ["UG","+256","Uganda"],
-    ["UA","+380","Ukraine"],
-    ["AE","+971","United Arab Emirates"],
-    ["GB","+44","United Kingdom"],
-    ["US","+1","United States"],
-    ["UY","+598","Uruguay"],
-    ["UZ","+998","Uzbekistan"],
-    ["VU","+678","Vanuatu"],
-    ["VA","+39","Vatican City"],
-    ["VE","+58","Venezuela"],
-    ["VN","+84","Vietnam"],
-    ["YE","+967","Yemen"],
-    ["ZM","+260","Zambia"],
-    ["ZW","+263","Zimbabwe"],
+["AF","+93","Afghanistan"],
+["AL","+355","Albania"],
+["DZ","+213","Algeria"],
+["AD","+376","Andorra"],
+["AO","+244","Angola"],
+["AG","+1-268","Antigua and Barbuda"],
+["AR","+54","Argentina"],
+["AM","+374","Armenia"],
+["AU","+61","Australia"],
+["AT","+43","Austria"],
+["AZ","+994","Azerbaijan"],
+["BS","+1-242","Bahamas"],
+["BH","+973","Bahrain"],
+["BD","+880","Bangladesh"],
+["BB","+1-246","Barbados"],
+["BY","+375","Belarus"],
+["BE","+32","Belgium"],
+["BZ","+501","Belize"],
+["BJ","+229","Benin"],
+["BT","+975","Bhutan"],
+["BO","+591","Bolivia"],
+["BA","+387","Bosnia and Herzegovina"],
+["BW","+267","Botswana"],
+["BR","+55","Brazil"],
+["BN","+673","Brunei"],
+["BG","+359","Bulgaria"],
+["BF","+226","Burkina Faso"],
+["BI","+257","Burundi"],
+["CV","+238","Cabo Verde"],
+["KH","+855","Cambodia"],
+["CM","+237","Cameroon"],
+["CA","+1","Canada"],
+["CF","+236","Central African Republic"],
+["TD","+235","Chad"],
+["CL","+56","Chile"],
+["CN","+86","China"],
+["CO","+57","Colombia"],
+["KM","+269","Comoros"],
+["CG","+242","Congo"],
+["CD","+243","Congo, Democratic Republic"],
+["CR","+506","Costa Rica"],
+["CI","+225","Cote d'Ivoire"],
+["HR","+385","Croatia"],
+["CU","+53","Cuba"],
+["CY","+357","Cyprus"],
+["CZ","+420","Czech Republic"],
+["DK","+45","Denmark"],
+["DJ","+253","Djibouti"],
+["DM","+1-767","Dominica"],
+["DO","+1-809","Dominican Republic"],
+["EC","+593","Ecuador"],
+["EG","+20","Egypt"],
+["SV","+503","El Salvador"],
+["GQ","+240","Equatorial Guinea"],
+["ER","+291","Eritrea"],
+["EE","+372","Estonia"],
+["SZ","+268","Eswatini"],
+["ET","+251","Ethiopia"],
+["FJ","+679","Fiji"],
+["FI","+358","Finland"],
+["FR","+33","France"],
+["GA","+241","Gabon"],
+["GM","+220","Gambia"],
+["GE","+995","Georgia"],
+["DE","+49","Germany"],
+["GH","+233","Ghana"],
+["GR","+30","Greece"],
+["GD","+1-473","Grenada"],
+["GT","+502","Guatemala"],
+["GN","+224","Guinea"],
+["GW","+245","Guinea-Bissau"],
+["GY","+592","Guyana"],
+["HT","+509","Haiti"],
+["HN","+504","Honduras"],
+["HU","+36","Hungary"],
+["IS","+354","Iceland"],
+["IN","+91","India"],
+["ID","+62","Indonesia"],
+["IR","+98","Iran"],
+["IQ","+964","Iraq"],
+["IE","+353","Ireland"],
+["IL","+972","Israel"],
+["IT","+39","Italy"],
+["JM","+1-876","Jamaica"],
+["JP","+81","Japan"],
+["JO","+962","Jordan"],
+["KZ","+7","Kazakhstan"],
+["KE","+254","Kenya"],
+["KI","+686","Kiribati"],
+["KP","+850","North Korea"],
+["KR","+82","South Korea"],
+["KW","+965","Kuwait"],
+["KG","+996","Kyrgyzstan"],
+["LA","+856","Laos"],
+["LV","+371","Latvia"],
+["LB","+961","Lebanon"],
+["LS","+266","Lesotho"],
+["LR","+231","Liberia"],
+["LY","+218","Libya"],
+["LI","+423","Liechtenstein"],
+["LT","+370","Lithuania"],
+["LU","+352","Luxembourg"],
+["MG","+261","Madagascar"],
+["MW","+265","Malawi"],
+["MY","+60","Malaysia"],
+["MV","+960","Maldives"],
+["ML","+223","Mali"],
+["MT","+356","Malta"],
+["MH","+692","Marshall Islands"],
+["MR","+222","Mauritania"],
+["MU","+230","Mauritius"],
+["MX","+52","Mexico"],
+["FM","+691","Micronesia"],
+["MD","+373","Moldova"],
+["MC","+377","Monaco"],
+["MN","+976","Mongolia"],
+["ME","+382","Montenegro"],
+["MA","+212","Morocco"],
+["MZ","+258","Mozambique"],
+["MM","+95","Myanmar"],
+["NA","+264","Namibia"],
+["NR","+674","Nauru"],
+["NP","+977","Nepal"],
+["NL","+31","Netherlands"],
+["NZ","+64","New Zealand"],
+["NI","+505","Nicaragua"],
+["NE","+227","Niger"],
+["NG","+234","Nigeria"],
+["MK","+389","North Macedonia"],
+["NO","+47","Norway"],
+["OM","+968","Oman"],
+["PK","+92","Pakistan"],
+["PW","+680","Palau"],
+["PS","+970","Palestine"],
+["PA","+507","Panama"],
+["PG","+675","Papua New Guinea"],
+["PY","+595","Paraguay"],
+["PE","+51","Peru"],
+["PH","+63","Philippines"],
+["PL","+48","Poland"],
+["PT","+351","Portugal"],
+["QA","+974","Qatar"],
+["RO","+40","Romania"],
+["RU","+7","Russia"],
+["RW","+250","Rwanda"],
+["KN","+1-869","Saint Kitts and Nevis"],
+["LC","+1-758","Saint Lucia"],
+["VC","+1-784","Saint Vincent and the Grenadines"],
+["WS","+685","Samoa"],
+["SM","+378","San Marino"],
+["ST","+239","Sao Tome and Principe"],
+["SA","+966","Saudi Arabia"],
+["SN","+221","Senegal"],
+["RS","+381","Serbia"],
+["SC","+248","Seychelles"],
+["SL","+232","Sierra Leone"],
+["SG","+65","Singapore"],
+["SK","+421","Slovakia"],
+["SI","+386","Slovenia"],
+["SB","+677","Solomon Islands"],
+["SO","+252","Somalia"],
+["ZA","+27","South Africa"],
+["SS","+211","South Sudan"],
+["ES","+34","Spain"],
+["LK","+94","Sri Lanka"],
+["SD","+249","Sudan"],
+["SR","+597","Suriname"],
+["SE","+46","Sweden"],
+["CH","+41","Switzerland"],
+["SY","+963","Syria"],
+["TW","+886","Taiwan"],
+["TJ","+992","Tajikistan"],
+["TZ","+255","Tanzania"],
+["TH","+66","Thailand"],
+["TL","+670","Timor-Leste"],
+["TG","+228","Togo"],
+["TO","+676","Tonga"],
+["TT","+1-868","Trinidad and Tobago"],
+["TN","+216","Tunisia"],
+["TR","+90","Turkey"],
+["TM","+993","Turkmenistan"],
+["TV","+688","Tuvalu"],
+["UG","+256","Uganda"],
+["UA","+380","Ukraine"],
+["AE","+971","United Arab Emirates"],
+["GB","+44","United Kingdom"],
+["US","+1","United States"],
+["UY","+598","Uruguay"],
+["UZ","+998","Uzbekistan"],
+["VU","+678","Vanuatu"],
+["VA","+39","Vatican City"],
+["VE","+58","Venezuela"],
+["VN","+84","Vietnam"],
+["YE","+967","Yemen"],
+["ZM","+260","Zambia"],
+["ZW","+263","Zimbabwe"],
 
-    ["AS","+1-684","American Samoa"],
-    ["AI","+1-264","Anguilla"],
-    ["AW","+297","Aruba"],
-    ["BM","+1-441","Bermuda"],
-    ["BQ","+599","Bonaire, Sint Eustatius and Saba"],
-    ["VG","+1-284","British Virgin Islands"],
-    ["KY","+1-345","Cayman Islands"],
-    ["CW","+599","Curacao"],
-    ["FK","+500","Falkland Islands"],
-    ["FO","+298","Faroe Islands"],
-    ["GF","+594","French Guiana"],
-    ["PF","+689","French Polynesia"],
-    ["GI","+350","Gibraltar"],
-    ["GL","+299","Greenland"],
-    ["GP","+590","Guadeloupe"],
-    ["GU","+1-671","Guam"],
-    ["HK","+852","Hong Kong"],
-    ["IM","+44-1624","Isle of Man"],
-    ["JE","+44-1534","Jersey"],
-    ["MO","+853","Macau"],
-    ["MQ","+596","Martinique"],
-    ["MS","+1-664","Montserrat"],
-    ["NC","+687","New Caledonia"],
-    ["NU","+683","Niue"],
-    ["NF","+672","Norfolk Island"],
-    ["MP","+1-670","Northern Mariana Islands"],
-    ["PR","+1-787","Puerto Rico"],
-    ["RE","+262","Reunion"],
-    ["SH","+290","Saint Helena"],
-    ["MF","+590","Saint Martin"],
-    ["PM","+508","Saint Pierre and Miquelon"],
-    ["SX","+1-721","Sint Maarten"],
-    ["SJ","+47","Svalbard and Jan Mayen"],
-    ["TK","+690","Tokelau"],
-    ["TC","+1-649","Turks and Caicos Islands"],
-    ["VI","+1-340","U.S. Virgin Islands"],
-    ["WF","+681","Wallis and Futuna"],
-    ["EH","+212","Western Sahara"]
+["AS","+1-684","American Samoa"],
+["AI","+1-264","Anguilla"],
+["AW","+297","Aruba"],
+["BM","+1-441","Bermuda"],
+["BQ","+599","Bonaire, Sint Eustatius and Saba"],
+["VG","+1-284","British Virgin Islands"],
+["KY","+1-345","Cayman Islands"],
+["CW","+599","Curacao"],
+["FK","+500","Falkland Islands"],
+["FO","+298","Faroe Islands"],
+["GF","+594","French Guiana"],
+["PF","+689","French Polynesia"],
+["GI","+350","Gibraltar"],
+["GL","+299","Greenland"],
+["GP","+590","Guadeloupe"],
+["GU","+1-671","Guam"],
+["HK","+852","Hong Kong"],
+["IM","+44-1624","Isle of Man"],
+["JE","+44-1534","Jersey"],
+["MO","+853","Macau"],
+["MQ","+596","Martinique"],
+["MS","+1-664","Montserrat"],
+["NC","+687","New Caledonia"],
+["NU","+683","Niue"],
+["NF","+672","Norfolk Island"],
+["MP","+1-670","Northern Mariana Islands"],
+["PR","+1-787","Puerto Rico"],
+["RE","+262","Reunion"],
+["SH","+290","Saint Helena"],
+["MF","+590","Saint Martin"],
+["PM","+508","Saint Pierre and Miquelon"],
+["SX","+1-721","Sint Maarten"],
+["SJ","+47","Svalbard and Jan Mayen"],
+["TK","+690","Tokelau"],
+["TC","+1-649","Turks and Caicos Islands"],
+["VI","+1-340","U.S. Virgin Islands"],
+["WF","+681","Wallis and Futuna"],
+["EH","+212","Western Sahara"]
 
 ];
 
@@ -1046,73 +1060,37 @@ const countryCodes = [
 function populateCountrySelects(){
 
     const callSelect =
-        document.getElementById(
-            "callCountry"
-        );
+        document.getElementById("callCountry");
 
     const whatsappSelect =
-        document.getElementById(
-            "whatsappCountry"
-        );
-
+        document.getElementById("whatsappCountry");
 
     callSelect.innerHTML="";
     whatsappSelect.innerHTML="";
 
+    countryCodes.forEach(function(country){
 
-    countryCodes.forEach(
-        function(country){
+        const code=country[1];
+        const name=country[2];
 
-            const code =
-                country[1];
+        const option1=document.createElement("option");
 
-            const name =
-                country[2];
+        option1.value=code;
 
+        option1.textContent=
+            name+" ("+code+")";
 
-            const option1 =
-                document.createElement(
-                    "option"
-                );
+        const option2=document.createElement("option");
 
-            option1.value=code;
+        option2.value=code;
 
-            option1.textContent =
-                name +
-                " (" +
-                code +
-                ")";
+        option2.textContent=
+            name+" ("+code+")";
 
+        callSelect.appendChild(option1);
+        whatsappSelect.appendChild(option2);
 
-            const option2 =
-                document.createElement(
-                    "option"
-                );
-
-            option2.value=code;
-
-            option2.textContent =
-                name +
-                " (" +
-                code +
-                ")";
-
-
-            callSelect.appendChild(
-                option1
-            );
-
-            whatsappSelect.appendChild(
-                option2
-            );
-
-        }
-    );
-
-
-    /* Default country is Pakistan.
-       This is ONLY the starting selection.
-       Users can select ANY country. */
+    });
 
     callSelect.value="+92";
     whatsappSelect.value="+92";
@@ -1123,92 +1101,49 @@ function populateCountrySelects(){
    INTERNATIONAL NUMBER
 ========================= */
 
-function makeInternationalNumber(
-    number,
-    countryCode
-){
+function makeInternationalNumber(number,countryCode){
 
     if(!number)
         return "";
 
-
-    let value =
-        String(number)
-        .trim();
-
-
-    /*
-       If user already entered
-       an international number,
-       keep it.
-    */
+    let value=String(number).trim();
 
     if(value.startsWith("+")){
 
-        return "+" +
-            value
-            .substring(1)
-            .replace(/\D/g,"");
+        return "+"+
+            value.substring(1).replace(/\D/g,"");
 
     }
-
 
     if(value.startsWith("00")){
 
-        return "+" +
-            value
-            .substring(2)
-            .replace(/\D/g,"");
+        return "+"+
+            value.substring(2).replace(/\D/g,"");
 
     }
 
-
-    const digits =
-        value.replace(
-            /\D/g,
-            ""
-        );
-
+    const digits=value.replace(/\D/g,"");
 
     if(!digits)
         return "";
 
-
-    const codeDigits =
-        String(countryCode)
-        .replace(/\D/g,"");
-
-
-    /*
-       If number already starts
-       with selected country code,
-       don't add it again.
-    */
+    const codeDigits=
+        String(countryCode).replace(/\D/g,"");
 
     if(
         codeDigits &&
         digits.startsWith(codeDigits)
     ){
 
-        return "+" + digits;
+        return "+"+digits;
 
     }
 
+    const localNumber=
+        digits.replace(/^0+/,"");
 
-    /*
-       Remove local leading zeros
-       before adding country code.
-    */
-
-    const localNumber =
-        digits.replace(
-            /^0+/,
-            ""
-        );
-
-
-    return "+" +
-        codeDigits +
+    return "+"+
+        codeDigits+
         localNumber;
 }
 
@@ -1217,7 +1152,7 @@ function makeInternationalNumber(
    TRANSLATIONS
 ========================= */
 
-const translations = {
+const translations={
 
 en:{
 hero:"Register your pet and help bring lost pets safely home.",
@@ -1392,17 +1327,20 @@ selectPet:"Жаныбардын түрүн тандаңыз"
 };
 
 
+/* =========================
+   LANGUAGE
+========================= */
+
 function changeLanguage(){
 
-    const lang =
+    const lang=
         document.getElementById(
             "languageSelect"
         ).value;
 
-    const t =
-        translations[lang];
+    const t=translations[lang];
 
-    document.documentElement.dir =
+    document.documentElement.dir=
         (lang==="ur" || lang==="ar")
         ? "rtl"
         : "ltr";
@@ -1445,101 +1383,94 @@ function changeLanguage(){
 
 
 /* =========================
-   PET ID
+   NEW PET ID
+   FORMAT: pet-7k4k
 ========================= */
 
 function generatePetId(){
 
-    let number=parseInt(
-        localStorage.getItem(
-            "findMyPetNextNumber"
-        ) || "1"
-    );
+    const chars=
+        "abcdefghijklmnopqrstuvwxyz0123456789";
 
-    const petId =
-        "FMP-" +
-        String(number).padStart(3,"0");
+    let code="";
 
-    localStorage.setItem(
-        "findMyPetNextNumber",
-        number+1
-    );
+    for(let i=0;i<4;i++){
 
-    return petId;
+        code +=
+            chars.charAt(
+                Math.floor(
+                    Math.random()*chars.length
+                )
+            );
+
+    }
+
+    return "pet-"+code;
 }
 
 
 /* =========================
-   REGISTER PET - SUPABASE
+   REGISTER PET
 ========================= */
 
 async function registerPet(){
 
-    const petType =
+    const petType=
         document.getElementById(
             "petType"
         ).value;
 
-    const petName =
+    const petName=
         document.getElementById(
             "petName"
         ).value.trim();
 
-    const ownerName =
+    const ownerName=
         document.getElementById(
             "ownerName"
         ).value.trim();
 
-
-    const rawCallNumber =
+    const rawCallNumber=
         document.getElementById(
             "callNumber"
         ).value.trim();
 
-
-    const rawWhatsappNumber =
+    const rawWhatsappNumber=
         document.getElementById(
             "whatsappNumber"
         ).value.trim();
 
-
-    const callCountry =
+    const callCountry=
         document.getElementById(
             "callCountry"
         ).value;
 
-
-    const whatsappCountry =
+    const whatsappCountry=
         document.getElementById(
             "whatsappCountry"
         ).value;
 
-
-    const callNumber =
+    const callNumber=
         makeInternationalNumber(
             rawCallNumber,
             callCountry
         );
 
-
-    const whatsappNumber =
+    const whatsappNumber=
         makeInternationalNumber(
             rawWhatsappNumber,
             whatsappCountry
         );
 
-
-    const color =
+    const color=
         document.getElementById(
             "color"
         ).value.trim();
 
-
-    const petId =
+    const petId=
         generatePetId();
 
-
-    const pet = {
+    const pet={
 
         petId:petId,
 
@@ -1557,26 +1488,23 @@ async function registerPet(){
 
     };
 
-
-    const {
-        error
-    } = await supabaseClient
+    const {error}=await supabaseClient
         .from("pets")
         .insert([{
 
-            pet_id: pet.petId,
+            pet_id:pet.petId,
 
-            pet_type: pet.petType || null,
+            pet_type:pet.petType || null,
 
-            pet_name: pet.petName || null,
+            pet_name:pet.petName || null,
 
-            owner_name: pet.ownerName || null,
+            owner_name:pet.ownerName || null,
 
-            call_number: pet.callNumber || null,
+            call_number:pet.callNumber || null,
 
-            whatsapp_number: pet.whatsappNumber || null,
+            whatsapp_number:pet.whatsappNumber || null,
 
-            pet_color: pet.color || null
+            pet_color:pet.color || null
 
         }]);
 
@@ -1592,8 +1520,7 @@ async function registerPet(){
         return;
     }
 
-
-    window.currentRegisteredPet = pet;
+    window.currentRegisteredPet=pet;
 
     showQRCode(pet);
 }
@@ -1621,53 +1548,40 @@ function showQRCode(pet){
         "qrSection"
     ).style.display="block";
 
-
     document.getElementById(
         "registeredPetName"
-    ).textContent =
+    ).textContent=
         pet.petName || "My Pet";
-
 
     document.getElementById(
         "registeredPetId"
-    ).textContent =
-        "Pet ID: " + pet.petId;
+    ).textContent=
+        "Pet ID: "+pet.petId;
 
-
-    const qrContainer =
+    const qrContainer=
         document.getElementById(
             "qrcode"
         );
 
     qrContainer.innerHTML="";
 
-
-    const currentUrl =
-        window.location.origin +
-        window.location.pathname +
-        "?pet=" +
+    const currentUrl=
+        window.location.origin+
+        window.location.pathname+
+        "?pet="+
         encodeURIComponent(
             pet.petId
         );
 
-
     new QRCode(
-
         qrContainer,
-
         {
-
             text:currentUrl,
-
             width:220,
-
             height:220,
-
             correctLevel:
                 QRCode.CorrectLevel.H
-
         }
-
     );
 }
 
@@ -1694,7 +1608,6 @@ function backToMenu(){
         "foundSection"
     ).style.display="none";
 
-
     document.getElementById(
         "petType"
     ).value="";
@@ -1719,11 +1632,21 @@ function backToMenu(){
         "color"
     ).value="";
 
+    document.getElementById(
+        "searchPetId"
+    ).value="";
 
     document.getElementById(
         "qrcode"
     ).innerHTML="";
 
+    document.getElementById(
+        "searchQRCode"
+    ).innerHTML="";
+
+    document.getElementById(
+        "searchResultQR"
+    ).style.display="none";
 
     if(
         window.history &&
@@ -1738,26 +1661,23 @@ function backToMenu(){
 
     }
 
-
     document.getElementById(
         "registrationSection"
     ).scrollIntoView({
-
         behavior:"smooth",
-
         block:"start"
-
     });
 }
 
 
 /* =========================
-   SEARCH PET - SUPABASE
+   SEARCH PET
+   SEARCH SHOWS ONLY QR
 ========================= */
 
 async function findPet(){
 
-    const id =
+    const id=
         document.getElementById(
             "searchPetId"
         ).value.trim();
@@ -1776,17 +1696,9 @@ async function findPet(){
     const {
         data,
         error
-    } = await supabaseClient
+    }=await supabaseClient
         .from("pets")
-        .select(`
-            pet_id,
-            pet_type,
-            pet_name,
-            owner_name,
-            call_number,
-            whatsapp_number,
-            pet_color
-        `)
+        .select("pet_id")
         .eq(
             "pet_id",
             id
@@ -1816,34 +1728,16 @@ async function findPet(){
     }
 
 
-    const pet = {
-
-        petId:data.pet_id,
-
-        petType:data.pet_type || "",
-
-        petName:data.pet_name || "",
-
-        ownerName:data.owner_name || "",
-
-        callNumber:data.call_number || "",
-
-        whatsappNumber:data.whatsapp_number || "",
-
-        color:data.pet_color || ""
-
-    };
-
-
-    showFoundPet(pet);
+    showSearchResultQR(data.pet_id);
 }
 
 
 /* =========================
-   SHOW FOUND PET
+   SEARCH RESULT
+   ONLY QR CODE
 ========================= */
 
-function showFoundPet(pet){
+function showSearchResultQR(petId){
 
     document.getElementById(
         "registrationSection"
@@ -1862,40 +1756,59 @@ function showFoundPet(pet){
     ).style.display="block";
 
 
-    window.currentFoundPet =
-        pet;
-
-
     document.getElementById(
         "foundTitle"
-    ).textContent =
-        translations[
-            document.getElementById(
-                "languageSelect"
-            ).value
-        ].found;
+    ).textContent="Pet QR Code";
 
 
     document.getElementById(
         "foundPetInfo"
-    ).innerHTML =
-        createPetInfo(pet);
+    ).innerHTML="";
 
 
     document.getElementById(
         "callButton"
-    ).style.display =
-        pet.callNumber
-        ? "block"
-        : "none";
+    ).style.display="none";
 
 
     document.getElementById(
         "whatsappButton"
-    ).style.display =
-        pet.whatsappNumber
-        ? "block"
-        : "none";
+    ).style.display="none";
+
+
+    const qrBox=
+        document.getElementById(
+            "searchQRCode"
+        );
+
+    qrBox.innerHTML="";
+
+
+    const currentUrl=
+        window.location.origin+
+        window.location.pathname+
+        "?pet="+
+        encodeURIComponent(
+            petId
+        );
+
+
+    new QRCode(
+        qrBox,
+        {
+            text:currentUrl,
+            width:220,
+            height:220,
+            correctLevel:
+                QRCode.CorrectLevel.H
+        }
+    );
+
+
+    document.getElementById(
+        "searchResultQR"
+    ).style.display="block";
+
 }
 
 
@@ -1905,13 +1818,12 @@ function showFoundPet(pet){
 
 function createPetInfo(pet){
 
-    let html =
+    let html=
         `<div class="pet-info">`;
-
 
     if(pet.petId){
 
-        html += `
+        html+=`
 
         <div class="info-row">
 
@@ -1927,10 +1839,9 @@ function createPetInfo(pet){
 
     }
 
-
     if(pet.petName){
 
-        html += `
+        html+=`
 
         <div class="info-row">
 
@@ -1946,10 +1857,9 @@ function createPetInfo(pet){
 
     }
 
-
     if(pet.petType){
 
-        html += `
+        html+=`
 
         <div class="info-row">
 
@@ -1965,10 +1875,9 @@ function createPetInfo(pet){
 
     }
 
-
     if(pet.ownerName){
 
-        html += `
+        html+=`
 
         <div class="info-row">
 
@@ -1984,10 +1893,9 @@ function createPetInfo(pet){
 
     }
 
-
     if(pet.color){
 
-        html += `
+        html+=`
 
         <div class="info-row">
 
@@ -2003,9 +1911,7 @@ function createPetInfo(pet){
 
     }
 
-
-    html += `</div>`;
-
+    html+=`</div>`;
 
     return html;
 }
@@ -2058,9 +1964,8 @@ function callOwner(){
     )
         return;
 
-
-    window.location.href =
-        "tel:" +
+    window.location.href=
+        "tel:"+
         window.currentFoundPet.callNumber;
 }
 
@@ -2077,17 +1982,7 @@ function whatsappOwner(){
     )
         return;
 
-
-    /*
-       The number is already saved
-       internationally during registration.
-
-       Remove + and all other
-       non-digit characters because
-       wa.me requires digits only.
-    */
-
-    const phone =
+    const phone=
         String(
             window.currentFoundPet.whatsappNumber
         )
@@ -2095,7 +1990,6 @@ function whatsappOwner(){
             /\D/g,
             ""
         );
-
 
     if(!phone){
 
@@ -2106,9 +2000,8 @@ function whatsappOwner(){
         return;
     }
 
-
     window.open(
-        "https://wa.me/" +
+        "https://wa.me/"+
         phone,
         "_blank"
     );
@@ -2116,20 +2009,19 @@ function whatsappOwner(){
 
 
 /* =========================
-   QR SCAN - SUPABASE
+   QR SCAN
+   SHOW ONLY CONTACT BUTTONS
 ========================= */
 
 async function showFoundPetFromQR(){
 
-    const params =
+    const params=
         new URLSearchParams(
             window.location.search
         );
 
-
-    const petId =
+    const petId=
         params.get("pet");
-
 
     if(!petId)
         return;
@@ -2152,27 +2044,25 @@ async function showFoundPetFromQR(){
     ).style.display="block";
 
 
-    /* EXACT QR SCAN SENTENCE */
-
     document.getElementById(
         "foundTitle"
-    ).textContent =
+    ).textContent=
         "Please help me get back to my owner. 🥺";
 
-
-    /* QR SCAN PAR KOI PET INFORMATION NAHI */
 
     document.getElementById(
         "foundPetInfo"
     ).innerHTML="";
 
 
-    /* BUTTONS PEHLE HIDE */
+    document.getElementById(
+        "searchResultQR"
+    ).style.display="none";
+
 
     document.getElementById(
         "callButton"
     ).style.display="none";
-
 
     document.getElementById(
         "whatsappButton"
@@ -2184,7 +2074,7 @@ async function showFoundPetFromQR(){
         const {
             data,
             error
-        } = await supabaseClient
+        }=await supabaseClient
             .from("pets")
             .select(
                 "call_number, whatsapp_number"
@@ -2209,7 +2099,7 @@ async function showFoundPetFromQR(){
 
         if(
             !data ||
-            data.length === 0
+            data.length===0
         ){
 
             console.log(
@@ -2221,11 +2111,10 @@ async function showFoundPetFromQR(){
         }
 
 
-        const row =
-            data[0];
+        const row=data[0];
 
 
-        const callNumber =
+        const callNumber=
             row.call_number
             ? String(
                 row.call_number
@@ -2233,7 +2122,7 @@ async function showFoundPetFromQR(){
             : "";
 
 
-        const whatsappNumber =
+        const whatsappNumber=
             row.whatsapp_number
             ? String(
                 row.whatsapp_number
@@ -2241,7 +2130,7 @@ async function showFoundPetFromQR(){
             : "";
 
 
-        window.currentFoundPet = {
+        window.currentFoundPet={
 
             callNumber:
                 callNumber,
@@ -2252,8 +2141,6 @@ async function showFoundPetFromQR(){
         };
 
 
-        /* ONLY SIM NUMBER EXISTS */
-
         if(callNumber){
 
             document.getElementById(
@@ -2263,8 +2150,6 @@ async function showFoundPetFromQR(){
         }
 
 
-        /* ONLY WHATSAPP NUMBER EXISTS */
-
         if(whatsappNumber){
 
             document.getElementById(
@@ -2272,6 +2157,7 @@ async function showFoundPetFromQR(){
             ).style.display="block";
 
         }
+
 
     }catch(error){
 
@@ -2291,11 +2177,10 @@ async function showFoundPetFromQR(){
 
 async function saveQRToGallery(){
 
-    const qrCanvas =
+    const qrCanvas=
         document.querySelector(
             "#qrcode canvas"
         );
-
 
     if(!qrCanvas){
 
@@ -2306,26 +2191,21 @@ async function saveQRToGallery(){
         return;
     }
 
-
-    const petName =
+    const petName=
         document.getElementById(
             "registeredPetName"
         ).textContent;
 
-
-    const canvas =
+    const canvas=
         document.createElement(
             "canvas"
         );
 
-
     canvas.width=800;
     canvas.height=950;
 
-
-    const ctx =
+    const ctx=
         canvas.getContext("2d");
-
 
     ctx.fillStyle="#ffffff";
 
@@ -2336,15 +2216,12 @@ async function saveQRToGallery(){
         950
     );
 
-
     ctx.fillStyle="#3f2c20";
 
     ctx.textAlign="center";
 
-
     ctx.font=
         "bold 38px Arial";
-
 
     ctx.fillText(
         "🐾 Find My Pet",
@@ -2352,17 +2229,14 @@ async function saveQRToGallery(){
         75
     );
 
-
     ctx.font=
         "bold 30px Arial";
-
 
     ctx.fillText(
         petName,
         400,
         145
     );
-
 
     ctx.drawImage(
         qrCanvas,
@@ -2372,10 +2246,8 @@ async function saveQRToGallery(){
         400
     );
 
-
     ctx.font=
         "22px Arial";
-
 
     ctx.fillText(
         "Scan this QR code to help return this pet home.",
@@ -2383,10 +2255,8 @@ async function saveQRToGallery(){
         680
     );
 
-
     ctx.font=
         "bold 26px Arial";
-
 
     ctx.fillText(
         "Find My Pet",
@@ -2394,20 +2264,16 @@ async function saveQRToGallery(){
         845
     );
 
-
     ctx.font=
         "18px Arial";
 
-
     ctx.fillStyle="#8b7567";
-
 
     ctx.fillText(
         "Helping lost pets find their way home",
         400,
         880
     );
-
 
     canvas.toBlob(
         async function(blob){
@@ -2421,20 +2287,14 @@ async function saveQRToGallery(){
                 return;
             }
 
-
-            const file =
+            const file=
                 new File(
-
                     [blob],
-
                     "Find-My-Pet-QR.png",
-
                     {
                         type:"image/png"
                     }
-
                 );
-
 
             if(
                 navigator.share &&
@@ -2460,7 +2320,7 @@ async function saveQRToGallery(){
                 }catch(error){
 
                     if(
-                        error.name ===
+                        error.name===
                         "AbortError"
                     ){
 
@@ -2472,35 +2332,28 @@ async function saveQRToGallery(){
 
             }
 
-
-            const url =
+            const url=
                 URL.createObjectURL(
                     blob
                 );
 
-
-            const link =
+            const link=
                 document.createElement(
                     "a"
                 );
-
 
             link.href=url;
 
             link.download=
                 "Find-My-Pet-QR.png";
 
-
             document.body.appendChild(
                 link
             );
 
-
             link.click();
 
-
             link.remove();
-
 
             setTimeout(
                 function(){
@@ -2525,9 +2378,8 @@ async function saveQRToGallery(){
 
 async function saveInformation(){
 
-    const pet =
+    const pet=
         window.currentRegisteredPet;
-
 
     if(!pet){
 
@@ -2538,23 +2390,18 @@ async function saveInformation(){
         return;
     }
 
-
-    const canvas =
+    const canvas=
         document.createElement(
             "canvas"
         );
 
-
     canvas.width=800;
     canvas.height=900;
 
-
-    const ctx =
+    const ctx=
         canvas.getContext("2d");
 
-
     ctx.fillStyle="#ffffff";
-
 
     ctx.fillRect(
         0,
@@ -2563,15 +2410,12 @@ async function saveInformation(){
         900
     );
 
-
     ctx.fillStyle="#3f2c20";
 
     ctx.textAlign="center";
 
-
     ctx.font=
         "bold 38px Arial";
-
 
     ctx.fillText(
         "🐾 Find My Pet",
@@ -2579,10 +2423,8 @@ async function saveInformation(){
         80
     );
 
-
     ctx.font=
         "bold 30px Arial";
-
 
     ctx.fillText(
         pet.petName || "My Pet",
@@ -2590,13 +2432,10 @@ async function saveInformation(){
         145
     );
 
-
     ctx.textAlign="left";
-
 
     ctx.font=
         "bold 24px Arial";
-
 
     ctx.fillText(
         "Pet Information",
@@ -2604,10 +2443,8 @@ async function saveInformation(){
         220
     );
 
-
     ctx.font=
         "bold 20px Arial";
-
 
     ctx.fillText(
         "Pet ID:",
@@ -2615,10 +2452,8 @@ async function saveInformation(){
         275
     );
 
-
     ctx.font=
         "20px Arial";
-
 
     ctx.fillText(
         pet.petId || "",
@@ -2626,9 +2461,7 @@ async function saveInformation(){
         275
     );
 
-
     let y=335;
-
 
     const information=[
 
@@ -2646,7 +2479,6 @@ async function saveInformation(){
 
     ];
 
-
     information.forEach(
         function(item){
 
@@ -2655,17 +2487,14 @@ async function saveInformation(){
                 ctx.font=
                     "bold 20px Arial";
 
-
                 ctx.fillText(
                     item[0]+":",
                     70,
                     y
                 );
 
-
                 ctx.font=
                     "20px Arial";
-
 
                 ctx.fillText(
                     item[1],
@@ -2673,21 +2502,17 @@ async function saveInformation(){
                     y
                 );
 
-
-                y += 65;
+                y+=65;
 
             }
 
         }
     );
 
-
     ctx.textAlign="center";
-
 
     ctx.font=
         "bold 26px Arial";
-
 
     ctx.fillText(
         "Find My Pet",
@@ -2695,20 +2520,16 @@ async function saveInformation(){
         800
     );
 
-
     ctx.font=
         "18px Arial";
 
-
     ctx.fillStyle="#8b7567";
-
 
     ctx.fillText(
         "Helping lost pets find their way home",
         400,
         840
     );
-
 
     canvas.toBlob(
         async function(blob){
@@ -2722,20 +2543,14 @@ async function saveInformation(){
                 return;
             }
 
-
-            const file =
+            const file=
                 new File(
-
                     [blob],
-
                     "Find-My-Pet-Information.png",
-
                     {
                         type:"image/png"
                     }
-
                 );
-
 
             if(
                 navigator.share &&
@@ -2761,7 +2576,7 @@ async function saveInformation(){
                 }catch(error){
 
                     if(
-                        error.name ===
+                        error.name===
                         "AbortError"
                     ){
 
@@ -2773,36 +2588,28 @@ async function saveInformation(){
 
             }
 
-
-            const url =
+            const url=
                 URL.createObjectURL(
                     blob
                 );
 
-
-            const link =
+            const link=
                 document.createElement(
                     "a"
                 );
 
-
             link.href=url;
-
 
             link.download=
                 "Find-My-Pet-Information.png";
-
 
             document.body.appendChild(
                 link
             );
 
-
             link.click();
 
-
             link.remove();
-
 
             setTimeout(
                 function(){
@@ -2827,11 +2634,10 @@ async function saveInformation(){
 
 function printQR(){
 
-    const qrCanvas =
+    const qrCanvas=
         document.querySelector(
             "#qrcode canvas"
         );
-
 
     if(!qrCanvas){
 
@@ -2842,31 +2648,26 @@ function printQR(){
         return;
     }
 
-
-    const petName =
+    const petName=
         document.getElementById(
             "registeredPetName"
         ).textContent;
 
-
-    const petId =
+    const petId=
         document.getElementById(
             "registeredPetId"
         ).textContent;
 
-
-    const qrImage =
+    const qrImage=
         qrCanvas.toDataURL(
             "image/png"
         );
 
-
-    const printWindow =
+    const printWindow=
         window.open(
             "",
             "_blank"
         );
-
 
     printWindow.document.write(`
 
@@ -2940,7 +2741,6 @@ function printQR(){
         </html>
 
     `);
-
 
     printWindow.document.close();
 }
